@@ -3,7 +3,7 @@ import { Box, Typography, Button } from "@mui/material";
 
 export const HeroSection = styled(Box)({
     minHeight: "100vh",
-    background: "#020b2d",
+    background: "#0F1427",
 
     display: "flex",
     alignItems: "center",
@@ -27,10 +27,11 @@ export const HeroContent = styled(Box)({
 
 export const HeroTitle = styled(Typography)({
     fontFamily: "Coolvetica, Arial, sans-serif",
-    fontSize: "4.5rem",
+    fontSize: "5rem",
     fontWeight: 400,
     lineHeight: 1.1,
     color: "#fff",
+    width: "900px",
 
     marginBottom: "24px",
 
@@ -52,11 +53,13 @@ export const HeroDescription = styled(Typography)({
     fontSize: "1.3rem",
     lineHeight: 1.7,
     marginBottom: "40px",
+    width: "650px",
 });
 
 export const ButtonsContainer = styled(Box)({
     display: "flex",
     gap: "20px",
+
 
     "@media (max-width: 900px)": {
         justifyContent: "center",
@@ -68,6 +71,8 @@ export const OutlineButton = styled(Button)({
     borderColor: "#fff",
     borderRadius: "999px",
     padding: "12px 30px",
+    fontFamily: "Inter, Arial, sans-serif",
+    fontWeight: 500,
 });
 
 export const PurpleButton = styled(Button)({
@@ -76,10 +81,12 @@ export const PurpleButton = styled(Button)({
 
     background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
     color: "#fff",
+    fontFamily: "Inter, Arial, sans-serif",
+    fontWeight: 500,
 });
 
 export const HeroImage = styled("img")({
-    width: "600px",
+    width: "700px",
     maxWidth: "100%",
 
     "@media (max-width: 900px)": {

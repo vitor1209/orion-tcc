@@ -22,7 +22,7 @@ export const NavbarContent = styled(Box)({
 });
 
 export const Logo = styled("img")({
-  height: "75px",
+  height: "100px",
   objectFit: "contain",
 });
 
@@ -34,7 +34,7 @@ export const NavLinks = styled(Box)({
     textDecoration: "none",
     color: "#111",
     fontSize: "1rem",
-    fontWeight: 500,
+    fontWeight: 700,
   },
 
   "@media (max-width: 768px)": {
