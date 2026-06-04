@@ -9,6 +9,7 @@ export const Section = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  height: "800px",
 
   /* Curva branca no topo */
   "&::before": {
@@ -73,18 +74,17 @@ export const Description = styled(Typography)({
   fontSize: "1rem",
   color: "#c0c8e0",
   lineHeight: 1.65,
-  marginBottom: "12px",
 });
 
 export const LogoImage = styled("img")({
-  width: "180px",
+  width: "225px",
   maxWidth: "100%",
   height: "auto",
   marginBottom: "32px",
   display: "block",
   marginLeft: "auto",
   marginRight: "auto",
-  objectFit: "cover",
+  objectFit: "contain",
 });
 
 export const ButtonsRow = styled(Box)({
