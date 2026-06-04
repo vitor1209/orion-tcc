@@ -42,14 +42,17 @@ export const Eyebrow = styled.p`
 `;
 
 export const Title = styled.h2`
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.05;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0 0 12px;
   letter-spacing: -0.04em;
 `;
 
 export const Subtitle = styled.p`
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   max-width: 720px;
   margin: 0 auto;
   color: #5b6782;
@@ -116,6 +119,7 @@ export const StepNumber = styled.div`
 `;
 
 export const StepTitle = styled.h3`
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1.08rem;
   font-weight: 700;
   margin: 0 0 10px;
@@ -123,6 +127,8 @@ export const StepTitle = styled.h3`
 `;
 
 export const StepDescription = styled.p`
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
   margin: 0;
   color: #5b6782;
   line-height: 1.6;

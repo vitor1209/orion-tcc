@@ -26,8 +26,9 @@ export const HeroContent = styled(Box)({
 });
 
 export const HeroTitle = styled(Typography)({
+    fontFamily: "Coolvetica, Arial, sans-serif",
     fontSize: "4.5rem",
-    fontWeight: 700,
+    fontWeight: 400,
     lineHeight: 1.1,
     color: "#fff",
 
@@ -45,6 +46,8 @@ export const GradientText = styled("span")({
 });
 
 export const HeroDescription = styled(Typography)({
+    fontFamily: "Inter, Arial, sans-serif",
+    fontWeight: 400,
     color: "#D8D8D8",
     fontSize: "1.3rem",
     lineHeight: 1.7,
