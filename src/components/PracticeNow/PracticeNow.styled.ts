@@ -81,6 +81,7 @@ export const LogoImage = styled("img")({
   display: "block",
   marginLeft: "auto",
   marginRight: "auto",
+  objectFit: "cover",
 });
 
 export const ButtonsRow = styled(Box)({

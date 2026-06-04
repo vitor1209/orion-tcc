@@ -39,13 +39,13 @@ const SoundWaves = () => {
 
       {/* Grupo esquerdo de ondas */}
       {[
-        { cx: 60,  h: 220, cls: "w1" },
-        { cx: 100, h: 300, cls: "w2" },
-        { cx: 140, h: 180, cls: "w3" },
-        { cx: 180, h: 260, cls: "w4" },
-        { cx: 220, h: 140, cls: "w5" },
-        { cx: 260, h: 200, cls: "w1" },
-        { cx: 300, h: 320, cls: "w2" },
+        { cx: 60, h: 160, cls: "w1" },
+        { cx: 100, h: 200, cls: "w2" },
+        { cx: 140, h: 140, cls: "w3" },
+        { cx: 180, h: 180, cls: "w4" },
+        { cx: 220, h: 120, cls: "w5" },
+        { cx: 260, h: 150, cls: "w1" },
+        { cx: 300, h: 210, cls: "w2" },
       ].map((b, i) => (
         <rect
           key={`l${i}`}
@@ -63,13 +63,13 @@ const SoundWaves = () => {
 
       {/* Grupo direito de ondas */}
       {[
-        { cx: 778, h: 220, cls: "w1" },
-        { cx: 738, h: 300, cls: "w3" },
-        { cx: 698, h: 180, cls: "w2" },
-        { cx: 658, h: 260, cls: "w5" },
-        { cx: 618, h: 140, cls: "w4" },
-        { cx: 578, h: 200, cls: "w1" },
-        { cx: 538, h: 320, cls: "w3" },
+        { cx: 778, h: 160, cls: "w1" },
+        { cx: 738, h: 200, cls: "w3" },
+        { cx: 698, h: 140, cls: "w2" },
+        { cx: 658, h: 180, cls: "w5" },
+        { cx: 618, h: 120, cls: "w4" },
+        { cx: 578, h: 150, cls: "w1" },
+        { cx: 538, h: 210, cls: "w3" },
       ].map((b, i) => (
         <rect
           key={`r${i}`}
