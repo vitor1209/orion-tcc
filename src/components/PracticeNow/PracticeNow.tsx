@@ -1,5 +1,6 @@
 import React from "react";
 import logo from "../../assets/logo-practice.png";
+import ondaSonora from "../../assets/onda-sonora.mp4";
 import {
   Section,
   WavesWrapper,
@@ -13,78 +14,24 @@ import {
   SecondaryButton,
 } from "./PracticeNow.styled";
 
-/* Ondas sonoras SVG animadas */
 const SoundWaves = () => {
-  const centerY = 300;
-
   return (
-    <svg
-      viewBox="0 0 838 600"
-      xmlns="http://www.w3.org/2000/svg"
-      style={{ width: "100%", height: "100%", position: "absolute", inset: 0 }}
-      preserveAspectRatio="xMidYMid slice"
+    <video
+      autoPlay
+      muted
+      loop
+      playsInline
+      style={{
+        position: "absolute",
+        inset: 0,
+        width: "100%",
+        height: "100%",
+        objectFit: "cover",
+        opacity: 0.35,
+      }}
     >
-      <defs>
-        <style>{`
-          @keyframes wave1 { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(0.5)} }
-          @keyframes wave2 { 0%,100%{transform:scaleY(0.6)} 50%{transform:scaleY(1)} }
-          @keyframes wave3 { 0%,100%{transform:scaleY(0.8)} 33%{transform:scaleY(0.4)} 66%{transform:scaleY(1)} }
-          .w1{animation:wave1 2.4s ease-in-out infinite;transform-origin:center}
-          .w2{animation:wave2 1.8s ease-in-out infinite;transform-origin:center}
-          .w3{animation:wave3 2.1s ease-in-out infinite;transform-origin:center}
-          .w4{animation:wave1 2.8s ease-in-out infinite 0.4s;transform-origin:center}
-          .w5{animation:wave2 2.2s ease-in-out infinite 0.2s;transform-origin:center}
-        `}</style>
-      </defs>
-
-      {/* Grupo esquerdo de ondas */}
-      {[
-        { cx: 60, h: 160, cls: "w1" },
-        { cx: 100, h: 200, cls: "w2" },
-        { cx: 140, h: 140, cls: "w3" },
-        { cx: 180, h: 180, cls: "w4" },
-        { cx: 220, h: 120, cls: "w5" },
-        { cx: 260, h: 150, cls: "w1" },
-        { cx: 300, h: 210, cls: "w2" },
-      ].map((b, i) => (
-        <rect
-          key={`l${i}`}
-          className={b.cls}
-          x={b.cx - 14}
-          y={centerY - b.h / 2}
-          width={28}
-          height={b.h}
-          rx={14}
-          fill="none"
-          stroke="rgba(160,140,220,0.35)"
-          strokeWidth={2}
-        />
-      ))}
-
-      {/* Grupo direito de ondas */}
-      {[
-        { cx: 778, h: 160, cls: "w1" },
-        { cx: 738, h: 200, cls: "w3" },
-        { cx: 698, h: 140, cls: "w2" },
-        { cx: 658, h: 180, cls: "w5" },
-        { cx: 618, h: 120, cls: "w4" },
-        { cx: 578, h: 150, cls: "w1" },
-        { cx: 538, h: 210, cls: "w3" },
-      ].map((b, i) => (
-        <rect
-          key={`r${i}`}
-          className={b.cls}
-          x={b.cx - 14}
-          y={centerY - b.h / 2}
-          width={28}
-          height={b.h}
-          rx={14}
-          fill="none"
-          stroke="rgba(160,140,220,0.35)"
-          strokeWidth={2}
-        />
-      ))}
-    </svg>
+      <source src={ondaSonora} type="video/mp4" />
+    </video>
   );
 };
 
