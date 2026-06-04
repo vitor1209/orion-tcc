@@ -1,5 +1,8 @@
+import fundoPartitura from "../../assets/fundo_partitura.png";
 import {
   Section,
+  BackgroundLayer,
+  WaveLayer,
   Container,
   Header,
   Eyebrow,
@@ -38,6 +41,14 @@ const steps = [
 export function HowItWorks() {
   return (
     <Section>
+      <BackgroundLayer style={{ backgroundImage: `url(${fundoPartitura})` }} />
+      <WaveLayer
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+        aria-label="Efeito de onda"
+      >
+        <path fill="#0E1527" fill-opacity="1" d="M0,128L80,144C160,160,320,192,480,176C640,160,800,96,960,85.3C1120,75,1280,117,1360,138.7L1440,160L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"></path>
+      </WaveLayer>
       <Container>
         <Header>
           <Eyebrow>Como funciona</Eyebrow>

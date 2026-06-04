@@ -4,21 +4,33 @@ export const Section = styled.section`
   position: relative;
   overflow: hidden;
   background:
-    linear-gradient(180deg, #f6f7fb 0%, #edf0f7 100%);
+    linear-gradient(180deg, rgba(246, 247, 251, 0.92) 0%, rgba(237, 240, 247, 0.96) 100%),
+    linear-gradient(180deg, rgba(124, 92, 255, 0.10) 0%, rgba(124, 92, 255, 0.00) 45%);
   color: #172033;
-  padding: 96px 24px 120px;
+  padding: 400px 24px 200px;
+`;
 
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(20, 28, 52, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(20, 28, 52, 0.06) 1px, transparent 1px);
-    background-size: 42px 42px;
-    opacity: 0.35;
-    pointer-events: none;
-  }
+export const BackgroundLayer = styled.div`
+  position: absolute;
+  inset: 0;
+  background-image: url("../../assets/fundo_partitura.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.08;
+  pointer-events: none;
+`;
+
+export const WaveLayer = styled.svg`
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10px;
+  width: 100%;
+  height: auto;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
 `;
 
 export const Container = styled.div`
@@ -26,16 +38,19 @@ export const Container = styled.div`
   z-index: 1;
   max-width: 1240px;
   margin: 0 auto;
+
 `;
 
 export const Header = styled.div`
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 450px;
 `;
 
 export const Eyebrow = styled.p`
   text-transform: uppercase;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   letter-spacing: 0.25em;
+  font-weight: 600;
   font-size: 0.85rem;
   color: #7c5cff;
   margin-bottom: 12px;
@@ -61,22 +76,16 @@ export const Subtitle = styled.p`
 `;
 
 export const StepsGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 22px;
-
-  @media (max-width: 1100px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 640px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 export const StepCard = styled.article`
   position: relative;
+  flex: 1 1 260px;
+  max-width: 320px;
   background: linear-gradient(180deg, #ffffff 0%, #f5f7ff 100%);
   border: 1px solid #e5e9f5;
   border-radius: 24px;
