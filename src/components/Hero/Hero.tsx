@@ -15,7 +15,7 @@ import {
 
 export function Hero() {
     return (
-        <HeroSection>
+        <HeroSection id="topo">
             <HeroContent>
                 <HeroTitle>
                     Aprenda

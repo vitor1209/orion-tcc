@@ -11,7 +11,9 @@ export function Navbar() {
   return (
     <NavbarContainer>
       <NavbarContent>
-        <Logo src={logo} alt="Orion" />
+        <a href="#topo" aria-label="Voltar ao topo">
+          <Logo src={logo} alt="Orion" />
+        </a>
 
         <NavLinks>
           <a href="#como-funciona">Como Funciona</a>

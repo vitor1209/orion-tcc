@@ -30,6 +30,19 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+section[id="como-funciona"] {
+  scroll-margin-top: -250px;
+}
+
+section[id="pratique"] {
+  scroll-margin-top: 90px;
+}
+
+section[id="proposito"] {
+  scroll-margin-top: -20px;
 }
 
 html,

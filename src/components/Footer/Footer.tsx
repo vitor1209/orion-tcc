@@ -32,7 +32,9 @@ export function Footer() {
     <S.FooterWrapper>
       <S.Inner>
         <S.BrandBlock>
-          <S.Logo src={logo} alt="ORION" />
+          <a href="#topo" aria-label="Voltar ao topo">
+            <S.Logo src={logo} alt="Orion" />
+          </a>
           <S.Tagline>LUVA INTERATIVA MUSICAL</S.Tagline>
           <S.Description>
             Como luva inteligente que transforma cada toque em aprendizado,
