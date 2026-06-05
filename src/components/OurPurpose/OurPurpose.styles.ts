@@ -110,7 +110,7 @@ export const FeatureImage = styled.img`
   transition: transform 0.25s ease, filter 0.25s ease;
 
   &:hover {
-    transform: scale(1.05);
+    transform: scale(1.10);
     filter: brightness(1.02);
   }
 `;
