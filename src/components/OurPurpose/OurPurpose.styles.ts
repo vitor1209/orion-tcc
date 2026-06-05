@@ -107,4 +107,10 @@ export const FeatureImage = styled.img`
   width: 100%;
   max-width: 320px;
   object-fit: contain;
+  transition: transform 0.25s ease, filter 0.25s ease;
+
+  &:hover {
+    transform: scale(1.05);
+    filter: brightness(1.02);
+  }
 `;
