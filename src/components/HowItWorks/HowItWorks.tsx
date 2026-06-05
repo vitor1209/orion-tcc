@@ -40,7 +40,7 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <Section>
+    <Section id="como-funciona">
       <BackgroundLayer style={{ backgroundImage: `url(${fundoPartitura})` }} />
       <WaveLayer
         xmlns="http://www.w3.org/2000/svg"

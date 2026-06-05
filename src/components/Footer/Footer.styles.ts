@@ -87,10 +87,11 @@ export const LinkList = styled.ul`
   gap: 10px;
 `;
 
-export const LinkItem = styled.li`
+export const LinkItem = styled.a`
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   color: #555;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
 

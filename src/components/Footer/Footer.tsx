@@ -1,7 +1,11 @@
 import * as S from "./Footer.styles";
 import logo from "../../assets/logo.png";
 
-const sections = ["Como Funciona", "Pratique", "Propósito"];
+const sections = [
+  { label: "Como Funciona", href: "#como-funciona" },
+  { label: "Pratique", href: "#pratique" },
+  { label: "Propósito", href: "#proposito" },
+];
 
 const collaborators = [
   { name: "kaio", github: "https://github.com/kaiodk" },
@@ -39,8 +43,10 @@ export function Footer() {
         <S.LinksBlock>
           <S.ColumnTitle>Seções</S.ColumnTitle>
           <S.LinkList>
-            {sections.map((s) => (
-              <S.LinkItem key={s}>{s}</S.LinkItem>
+            {sections.map((section) => (
+              <S.LinkItem key={section.label} href={section.href}>
+                {section.label}
+              </S.LinkItem>
             ))}
           </S.LinkList>
         </S.LinksBlock>

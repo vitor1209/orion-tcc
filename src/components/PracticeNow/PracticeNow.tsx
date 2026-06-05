@@ -37,7 +37,7 @@ const SoundWaves = () => {
 
 const PracticeNow: React.FC = () => {
   return (
-    <Section id="pratique-agora">
+    <Section id="pratique">
       <WavesWrapper>
         <SoundWaves />
       </WavesWrapper>

@@ -37,7 +37,7 @@ const features = [
 
 export function OurPurpose() {
   return (
-    <S.Section>
+    <S.Section id="proposito">
       <S.Header>
         <S.Title>Nosso Propósito</S.Title>
         <S.Subtitle>
