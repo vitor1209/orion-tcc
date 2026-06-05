@@ -22,7 +22,7 @@ export const NavbarContent = styled(Box)({
 });
 
 export const Logo = styled("img")({
-  height: "100px",
+  height: "50px",
   objectFit: "contain",
 });
 
