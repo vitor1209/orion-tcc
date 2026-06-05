@@ -3,9 +3,7 @@ import { Hero } from "./components/Hero/Hero";
 import { HowItWorks } from "./components/HowItWorks/HowItWorks";
 import PracticeNow from "./components/PracticeNow/PracticeNow";
 import { OurPurpose } from "./components/OurPurpose/OurPurpose";
-
-
-
+import { Footer } from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -15,6 +13,7 @@ function App() {
       <HowItWorks />
       <PracticeNow />
       <OurPurpose />
+      <Footer />
     </>
   );
 }

@@ -4,8 +4,9 @@ import { AppBar, Box } from "@mui/material";
 export const NavbarContainer = styled(AppBar)({
   backgroundColor: "#FFFFFF",
   boxShadow: "none",
-  position: "fixed",
+  position: "fixed", 
   top: 0,
+  borderBottom: "1px solid #e0e0e0",
 });
 
 export const NavbarContent = styled(Box)({

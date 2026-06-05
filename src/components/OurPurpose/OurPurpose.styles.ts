@@ -15,60 +15,66 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 2rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 2.1rem;
   font-weight: 700;
   color: #111;
   margin-bottom: 16px;
 `;
 
 export const Subtitle = styled.p`
-  font-size: 0.95rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   color: #444;
-  line-height: 1.6;
+  line-height: 1.7;
 
 `;
 
 export const Logo = styled.img`
-  height: 200px;
+  height: 75px;
   object-fit: contain;
 `;
 
 export const FeatureList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 48px;
+  gap: 64px;
   width: 100%;
-  max-width: 760px;
+  max-width: 1080px;
 `;
 
 export const FeatureItem = styled.div<{ $reverse: boolean }>`
   display: flex;
   flex-direction: ${({ $reverse }) => ($reverse ? "row-reverse" : "row")};
   align-items: center;
-  gap: 40px;
+  gap: 64px;
+  padding: 10px 0;
 
   @media (max-width: 600px) {
     flex-direction: column;
+    gap: 24px;
   }
 `;
 
 export const TextBlock = styled.div`
-  flex: 1;
+  flex: 1.15;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 `;
 
 export const FeatureTitle = styled.h3`
-  font-size: 1.3rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1.6rem;
   font-weight: 700;
   color: #111;
 `;
 
 export const FeatureDescription = styled.p`
-  font-size: 0.875rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 1rem;
   color: #555;
-  line-height: 1.6;
+  line-height: 1.75;
 `;
 
 export const LearnMoreButton = styled.button`
@@ -77,7 +83,8 @@ export const LearnMoreButton = styled.button`
   color: #fff;
   border: none;
   padding: 10px 20px;
-  font-size: 0.875rem;
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
   font-weight: 500;
   border-radius: 6px;
   cursor: pointer;
@@ -98,6 +105,6 @@ export const ImageBlock = styled.div`
 
 export const FeatureImage = styled.img`
   width: 100%;
-  max-width: 220px;
+  max-width: 320px;
   object-fit: contain;
 `;
