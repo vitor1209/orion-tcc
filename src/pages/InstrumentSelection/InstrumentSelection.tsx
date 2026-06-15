@@ -1,6 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Guitar, Music, Piano } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import logo from "../../assets/logo.png";
+import pianoImage from "../../assets/piano.png";
+import flautaImage from "../../assets/flauta.png";
+import violaoImage from "../../assets/guitarra.png";
 import { Footer } from "../../components/Footer/Footer";
 import {
   PageWrapper,
@@ -16,26 +19,30 @@ import {
   WelcomeSubtitle,
   CardsGrid,
   InstrumentCard,
-  CardIcon,
   CardTitle,
   CardDescription,
+  CardImageWrapper,
+  CardImage,
 } from "./InstrumentSelection.styles";
 
 const instruments = [
   {
     title: "Teclado",
     description: "instrumento eletrofone",
-    Icon: Piano,
+    image: pianoImage,
+    imageMaxWidth: "190px",
   },
   {
     title: "Flauta",
     description: "instrumento de sopro (aerofone)",
-    Icon: Music,
+    image: flautaImage,
+    imageMaxWidth: "190px",
   },
   {
     title: "Violão",
     description: "instrumento de percussão",
-    Icon: Guitar,
+    image: violaoImage,
+    imageMaxWidth: "160px",
   },
 ];
 
@@ -69,13 +76,13 @@ export function InstrumentSelection() {
           </WelcomeSubtitle>
 
           <CardsGrid>
-            {instruments.map(({ title, description, Icon }) => (
+            {instruments.map(({ title, description, image, imageMaxWidth }) => (
               <InstrumentCard key={title}>
-                <CardIcon>
-                  <Icon size={32} />
-                </CardIcon>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
+                <CardImageWrapper>
+                  <CardImage src={image} alt={title} style={{ maxWidth: imageMaxWidth }} />
+                </CardImageWrapper>
               </InstrumentCard>
             ))}
           </CardsGrid>

@@ -8,7 +8,7 @@ export const PageWrapper = styled.div`
 `;
 
 export const PageInner = styled.div`
-  max-width: 1180px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 32px 24px 24px;
 `;
@@ -27,7 +27,7 @@ export const Topbar = styled.header`
 `;
 
 export const BrandBlock = styled.div`
-  display: flex;
+  display: block;
   align-items: center;
   gap: 20px;
 `;
@@ -117,46 +117,60 @@ export const WelcomeSubtitle = styled.p`
 
 export const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, minmax(220px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
 
   @media (max-width: 980px) {
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    gap: 12px;
+  }
+
+  @media (max-width: 680px) {
     grid-template-columns: 1fr;
   }
 `;
 
 export const InstrumentCard = styled.article`
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 22px;
-  min-height: 260px;
-  padding: 30px;
-  border-radius: 28px;
+  justify-content: flex-start;
+  gap: 3px;
+  min-height: 220px;
+  padding: 30px 24px 14px 24px;
+  border-radius: 24px;
   background: #ffffff;
-  border: 1px solid rgba(124, 92, 255, 0.12);
-  box-shadow: 0 16px 40px rgba(77, 44, 176, 0.08);
+  border: 1px solid rgba(124, 92, 255, 0.14);
+  box-shadow: 0 12px 24px rgba(77, 44, 176, 0.08);
+  overflow: visible;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 
   &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 52px rgba(77, 44, 176, 0.16);
+    transform: translateY(-4px);
+    box-shadow: 0 18px 38px rgba(77, 44, 176, 0.14);
   }
 `;
 
-export const CardIcon = styled.div`
-  display: inline-flex;
-  align-items: center;
+export const CardImageWrapper = styled.div`
+  margin-top: auto;
+  display: flex;
+  align-items: flex-end;
   justify-content: center;
-  width: 78px;
-  height: 78px;
-  border-radius: 24px;
-  background: linear-gradient(135deg, rgba(124, 92, 255, 0.12), rgba(196, 140, 255, 0.18));
-  color: #6e56ff;
+  width: 100%;
+  min-height: 90px;
+  overflow: visible;
+`;
+
+export const CardImage = styled.img`
+  width: 100%;
+  max-width: 160px;
+  object-fit: contain;
+  transform: translateY(12px);
 `;
 
 export const CardTitle = styled.h2`
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 1.35rem;
+  font-size: 1.15rem;
   color: #141625;
   margin: 0;
 `;
