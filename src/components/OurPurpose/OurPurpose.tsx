@@ -1,9 +1,9 @@
 import * as S from "./OurPurpose.styles";
 
-import logo from "../../assets/logo.png";
-import musicNotes from "../../assets/notas.png";
-import neuron from "../../assets/neuronio.png";
-import pianist from "../../assets/nuvem.png";
+import logo from "../../assets/images/logo.png";
+import musicNotes from "../../assets/images/notas.png";
+import neuron from "../../assets/images/neuronio.png";
+import pianist from "../../assets/images/nuvem.png";
 
 const features = [
   {

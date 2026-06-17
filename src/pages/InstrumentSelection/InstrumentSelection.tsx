@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import logo from "../../assets/logo.png";
-import pianoImage from "../../assets/piano.png";
-import flautaImage from "../../assets/flauta.png";
-import violaoImage from "../../assets/guitarra.png";
+import logo from "../../assets/images/logo.png";
+import pianoImage from "../../assets/images/piano.png";
+import flautaImage from "../../assets/images/flauta.png";
+import violaoImage from "../../assets/images/guitarra.png";
 import { Footer } from "../../components/Footer/Footer";
 import {
   PageWrapper,

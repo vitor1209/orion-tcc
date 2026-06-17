@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../../assets/logo-practice.png";
-import ondaSonora from "../../assets/onda-sonora.mp4";
+import logo from "../../assets/images/logo-practice.png";
+import ondaSonora from "../../assets/videos/onda-sonora.mp4";
 import {
   Section,
   WavesWrapper,

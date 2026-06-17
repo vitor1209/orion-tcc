@@ -1,4 +1,4 @@
-import glove from "../../assets/glove.png";
+import glove from "../../assets/images/glove.png";
 
 import {
     HeroSection,
