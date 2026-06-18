@@ -20,10 +20,10 @@ import {
   CardDescription,
   CardImageWrapper,
   CardImage,
-} from "./InstrumentSelection.styles";
-import { instruments } from "./InstrumentSelection.utils";
+} from "./InstrumentTeclado.styles";
+import { instruments } from "./InstrumentTeclado.utils";
 
-export function InstrumentSelection() {
+export function InstrumentTeclado() {
   const navigate = useNavigate();
 
   return (
@@ -35,7 +35,7 @@ export function InstrumentSelection() {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/home")}>
+          <BackButton onClick={() => navigate("/InstrumentSelection")}>
             <ArrowLeft size={16} />
             Voltar
           </BackButton>
@@ -47,14 +47,14 @@ export function InstrumentSelection() {
         </AccentLine>
 
         <Content>
-          <WelcomeTitle>Seja bem-vindo!</WelcomeTitle>
+          <WelcomeTitle>Instrumento escolhido!</WelcomeTitle>
           <WelcomeSubtitle>
-            Selecione o instrumento que deseja aprender.
+            Escolha o nível que deseja aprender.
           </WelcomeSubtitle>
 
           <CardsGrid>
             {instruments.map(({ title, description, image, imageMaxWidth }) => (
-              <InstrumentCard key={title} onClick={() => navigate("/Teclado")}>
+              <InstrumentCard key={title} >
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
                 <CardImageWrapper>
