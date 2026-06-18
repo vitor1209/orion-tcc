@@ -35,7 +35,7 @@ export function InstrumentSelection() {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/home")}> 
+          <BackButton onClick={() => navigate("/home")}>
             <ArrowLeft size={16} />
             Voltar
           </BackButton>
