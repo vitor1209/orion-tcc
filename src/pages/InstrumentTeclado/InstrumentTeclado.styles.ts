@@ -117,11 +117,12 @@ export const WelcomeSubtitle = styled.p`
 
 export const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  justify-content: center;
   gap: 14px;
 
   @media (max-width: 980px) {
-    grid-template-columns: repeat(2, minmax(140px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
     gap: 12px;
   }
 
@@ -182,4 +183,108 @@ export const CardDescription = styled.p`
   line-height: 1.65;
   color: #5b6782;
   margin: 0;
+`;
+
+import { motion } from "framer-motion";
+
+export const LevelSelectorWrapper = styled.div`
+  position: relative;
+  width: 100%;
+  max-width: 820px;
+  margin: 40px auto 0;
+`;
+
+export const LevelLine = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 5px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    #b06cff 0%,
+    #9d75ff 40%,
+    #8ea2ff 100%
+  );
+  transform: translateY(-50%);
+`;
+
+export const LevelEndDot = styled.div`
+  position: absolute;
+  right: -4px;
+  top: 50%;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #8ea2ff;
+  transform: translateY(-50%);
+`;
+
+export const LevelsContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    gap: 12px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
+export const LevelOption = styled.div`
+  position: relative;
+  background: #E7E9ED;
+  border-radius: 999px;
+`;
+
+export const ActivePill = styled(motion.div)`
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    #b56eff 0%,
+    #9747ff 100%
+  );
+
+  box-shadow: 0 10px 24px rgba(151, 71, 255, 0.3);
+`;
+
+interface LevelButtonProps {
+  $active: boolean;
+}
+
+export const LevelButton = styled.button<LevelButtonProps>`
+  position: relative;
+  z-index: 2;
+
+  min-width: 170px;
+  height: 52px;
+
+  border-radius: 999px;
+  border: none;
+
+  background: transparent;
+
+  color: ${({ $active }) =>
+    $active ? "#fff" : "#000"};
+
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease,
+              transform 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
 `;

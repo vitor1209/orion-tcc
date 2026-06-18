@@ -20,11 +20,27 @@ import {
   CardDescription,
   CardImageWrapper,
   CardImage,
+  LevelSelectorWrapper,
+  LevelLine,
+  LevelEndDot,
+  LevelsContainer,
+  LevelButton,
+  LevelOption,
+  ActivePill,
 } from "./InstrumentTeclado.styles";
 import { instruments } from "./InstrumentTeclado.utils";
+import { useState } from "react";
 
 export function InstrumentTeclado() {
   const navigate = useNavigate();
+
+  const [level, setLevel] = useState("iniciante");
+
+  const levels = [
+    "iniciante",
+    "intermediario",
+    "avancado",
+  ];
 
   return (
     <PageWrapper>
@@ -63,6 +79,37 @@ export function InstrumentTeclado() {
               </InstrumentCard>
             ))}
           </CardsGrid>
+
+          <LevelSelectorWrapper>
+            <LevelLine />
+            <LevelEndDot />
+
+            <LevelsContainer>
+              {levels.map((item) => (
+                <LevelOption key={item}>
+                  {level === item && (
+                    <ActivePill
+                      layoutId="activeLevel"
+                      transition={{
+                        type: "spring",
+                        stiffness: 350,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+
+                  <LevelButton
+                    $active={level === item}
+                    onClick={() => setLevel(item)}
+                  >
+                    {item === "iniciante" && "Iniciante"}
+                    {item === "intermediario" && "Intermediário"}
+                    {item === "avancado" && "Avançado"}
+                  </LevelButton>
+                </LevelOption>
+              ))}
+            </LevelsContainer>
+          </LevelSelectorWrapper>
         </Content>
       </PageInner>
 
