@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+
 
 export const PageWrapper = styled.div`
   min-height: 100vh;
@@ -59,13 +61,6 @@ export const BackButton = styled.button`
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 16px 36px rgba(95, 74, 248, 0.12);
-  }
 `;
 
 export const AccentLine = styled.div`
@@ -133,7 +128,6 @@ export const CardsGrid = styled.div`
 
 export const InstrumentCard = styled.article`
   position: relative;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -145,12 +139,6 @@ export const InstrumentCard = styled.article`
   border: 1px solid rgba(124, 92, 255, 0.14);
   box-shadow: 0 12px 24px rgba(77, 44, 176, 0.08);
   overflow: visible;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  &:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 38px rgba(77, 44, 176, 0.14);
-  }
 `;
 
 export const CardImageWrapper = styled.div`
@@ -184,8 +172,6 @@ export const CardDescription = styled.p`
   color: #5b6782;
   margin: 0;
 `;
-
-import { motion } from "framer-motion";
 
 export const LevelSelectorWrapper = styled.div`
   position: relative;
@@ -286,5 +272,44 @@ export const LevelButton = styled.button<LevelButtonProps>`
 
   &:hover {
     transform: translateY(-2px);
+  }
+`;
+
+export const ContinueButton = styled.button`
+  align-self: center;
+
+  min-width: 200px;
+  height: 58px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #b56eff 0%,
+    #9747ff 100%
+  );
+
+  color: white;
+
+  font-family: "Inter";
+  font-size: 1rem;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow: 0 12px 24px rgba(151, 71, 255, 0.25);
+
+  transition: all 0.25s ease;
+
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(151, 71, 255, 0.35);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    box-shadow: none;
   }
 `;

@@ -27,20 +27,22 @@ import {
   LevelButton,
   LevelOption,
   ActivePill,
+  ContinueButton,
 } from "./InstrumentTeclado.styles";
-import { instruments } from "./InstrumentTeclado.utils";
+import { instruments, levels } from "./InstrumentTeclado.utils";
 import { useState } from "react";
 
 export function InstrumentTeclado() {
+
   const navigate = useNavigate();
 
-  const [level, setLevel] = useState("iniciante");
+  const [level, setLevel] = useState("");
 
-  const levels = [
-    "iniciante",
-    "intermediario",
-    "avancado",
-  ];
+  const handleContinue = () => {
+    if (!level) return;
+
+    navigate(`/instrumento/teclado/${level}`);
+  };
 
   return (
     <PageWrapper>
@@ -65,7 +67,9 @@ export function InstrumentTeclado() {
         <Content>
           <WelcomeTitle>Instrumento escolhido!</WelcomeTitle>
           <WelcomeSubtitle>
-            Escolha o nível que deseja aprender.
+            {level
+              ? `Você escolheu o nível ${level}. Clique em "Começar Jornada" para continuar.`
+              : "Escolha o nível que deseja aprender."}
           </WelcomeSubtitle>
 
           <CardsGrid>
@@ -85,9 +89,9 @@ export function InstrumentTeclado() {
             <LevelEndDot />
 
             <LevelsContainer>
-              {levels.map((item) => (
-                <LevelOption key={item}>
-                  {level === item && (
+              {levels.map(({ value, label }) => (
+                <LevelOption key={value}>
+                  {level === value && (
                     <ActivePill
                       layoutId="activeLevel"
                       transition={{
@@ -99,17 +103,21 @@ export function InstrumentTeclado() {
                   )}
 
                   <LevelButton
-                    $active={level === item}
-                    onClick={() => setLevel(item)}
+                    $active={level === value}
+                    onClick={() => setLevel(value)}
                   >
-                    {item === "iniciante" && "Iniciante"}
-                    {item === "intermediario" && "Intermediário"}
-                    {item === "avancado" && "Avançado"}
+                    {label}
                   </LevelButton>
                 </LevelOption>
               ))}
             </LevelsContainer>
           </LevelSelectorWrapper>
+          <ContinueButton
+            disabled={!level}
+            onClick={handleContinue}
+          >
+            Começar Jornada
+          </ContinueButton>
         </Content>
       </PageInner>
 

@@ -1,6 +1,6 @@
 import pianoImage from "../../assets/images/piano.png";
 
-const instruments = [
+export const instruments = [
   {
     title: "Teclado",
     description: "instrumento eletrofone",
@@ -9,4 +9,18 @@ const instruments = [
   },
 ];
 
-export { instruments };
+export const levels = [
+  {
+    value: "iniciante",
+    label: "Iniciante",
+  },
+  {
+    value: "intermediario",
+    label: "Intermediário",
+  },
+  {
+    value: "avancado",
+    label: "Avançado",
+  },
+];
+
