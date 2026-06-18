@@ -132,6 +132,7 @@ export const CardsGrid = styled.div`
 
 export const InstrumentCard = styled.article`
   position: relative;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;

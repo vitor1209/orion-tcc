@@ -28,7 +28,7 @@ const SoundWaves = () => {
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        opacity: 0.35,
+        opacity: 0.75,
       }}
     >
       <source src={ondaSonora} type="video/mp4" />

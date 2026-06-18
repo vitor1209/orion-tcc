@@ -12,12 +12,6 @@ export const Inner = styled.div`
   display: flex;
   flex-direction: row;
   gap: 180px;
-
-
-  @media (max-width: 680px) {
-    flex-direction: column;
-    gap: 40px;
-  }
 `;
 
 export const BrandBlock = styled.div`
