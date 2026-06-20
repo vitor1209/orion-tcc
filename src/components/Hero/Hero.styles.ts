@@ -28,7 +28,7 @@ export const HeroContent = styled(Box)({
 export const HeroTitle = styled(Typography)({
     fontFamily: "Ubuntu, Arial, sans-serif",
     fontSize: "3.5rem",
-    fontWeight: 400,
+    fontWeight: 600,
     lineHeight: 1.1,
     color: "#fff",
     width: "900px",

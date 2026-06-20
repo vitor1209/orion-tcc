@@ -8,7 +8,12 @@ export const Section = styled.section`
     linear-gradient(180deg, rgba(124, 92, 255, 0.10) 0%, rgba(124, 92, 255, 0.00) 45%);
   color: #172033;
   padding: 300px 20px 0px;
-  height: 140vh;
+min-height: 100vh;
+padding: 300px 20px 100px;
+
+@media (max-width: 768px) {
+  padding: 180px 20px 80px;
+}
 `;
 
 export const BackgroundLayer = styled.div`
@@ -37,7 +42,7 @@ export const WaveLayer = styled.svg`
 export const Container = styled.div`
   position: relative;
   z-index: 1;
-  max-width: 1240px;
+  max-width: 1400px;
   margin: 0 auto;
 
 `;
@@ -80,58 +85,25 @@ export const Subtitle = styled.p`
 
 export const StepsGrid = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 5%;
-  // flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content:  space-between;
+  gap: 40px;
   position: relative;
   z-index: 1;
+
+  @media (max-width: 840px) {
+display: grid;
+    grid-template-columns: repeat(2, 1fr);
+      gap: 32px;
+  justify-content:  center;
+}
+
+  @media (max-width: 530px) {
+    grid-template-columns: 1fr;
+
+  }
+
   
-`;
-
-export const StepCard = styled.article`
-  position: relative;
-  flex: 1 1 210px;
-  max-width: 290px;
-  min-height: 190px;
-  background: linear-gradient(180deg, #ffffff 0%, #f5f7ff 100%);
-  border: 1px solid #e5e9f5;
-  border-radius: 24px;
-  padding: 20px;
-  padding-top: 60px;
-  // margin-left: 12px;
-  // margin-right: 50px;
-  box-shadow:
-    0 14px 28px rgba(15, 23, 42, 0.08),
-    0 2px 6px rgba(124, 92, 255, 0.08);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-
-  &:nth-child(1) {
-    transform: scale(1.20);
-    min-height: 240px;
-  }
-
-  &:nth-child(2) {
-    // transform: scale(1.10);
-    min-height: 220px;
-  }
-
-  &:nth-child(3) {
-    transform: scale(1.00);
-    min-height: 200px;
-  }
-
-  &:nth-child(4) {
-    transform: scale(0.91);
-    min-height: 190px;
-  }
-
-  &:hover {
-    transform: translateY(-4px) scale(1.25);
-    box-shadow:
-      0 18px 32px rgba(15, 23, 42, 0.12),
-      0 0 0 1px rgba(124, 92, 255, 0.12);
-  }
 `;
 
 export const StepNumber = styled.div`
@@ -160,7 +132,6 @@ export const StepNumber = styled.div`
 
 export const StepTitle = styled.h3`
   font-family: "Ubuntu", Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
   font-weight: 700;
   margin: 0 0 10px;
   color: #172033;
@@ -172,5 +143,108 @@ export const StepDescription = styled.p`
   margin: 0;
   color: #5b6782;
   line-height: 1.6;
-  font-size: 0.95rem;
 `;
+
+
+export const StepCard = styled.article`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  flex: 1 1 210px;
+  max-width: 320px;
+  background: linear-gradient(180deg, #ffffff 0%, #f5f7ff 100%);
+  border: 1px solid #e5e9f5;
+  border-radius: 24px;
+  padding: 20px;
+  padding-top: 60px;
+
+  box-shadow:
+    0 14px 28px rgba(15, 23, 42, 0.08),
+    0 2px 6px rgba(124, 92, 255, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+
+
+&:nth-child(1) {
+  min-height: 240px;
+
+  ${StepTitle} {
+    font-size: 1.6rem;
+  }
+
+  ${StepDescription} {
+    font-size: 1.2rem;
+  }
+}
+
+&:nth-child(2) {
+  min-height: 220px;
+
+  ${StepTitle} {
+    font-size: 1.5rem;
+  }
+
+  ${StepDescription} {
+    font-size: 1.15rem;
+  }
+}
+
+&:nth-child(3) {
+  min-height: 200px;
+
+  ${StepTitle} {
+    font-size: 1.4em;
+  }
+
+  ${StepDescription} {
+    font-size: 1.10rem;
+  }
+}
+
+&:nth-child(4) {
+  min-height: 180px;
+
+  ${StepTitle} {
+    font-size: 1.3rem;
+  }
+
+  ${StepDescription} {
+    font-size: 1.1rem;
+  }
+}
+
+  &:hover {
+    transform: translateY(-4px) scale(1.2);
+    box-shadow:
+      0 18px 32px rgba(15, 23, 42, 0.12),
+      0 0 0 1px rgba(124, 92, 255, 0.12);
+  }
+
+  @media (max-width: 1024px) {
+  width: 220px;
+}
+
+@media (max-width: 840px) {
+  width: 100%;
+  max-width: 340px;
+
+  min-height: 180px !important;
+  &:nth-child(1),
+  &:nth-child(2),
+  &:nth-child(3),
+  &:nth-child(4) {
+    min-height: 180px;
+
+    ${StepTitle} {
+      font-size: 1.1rem;
+    }
+
+    ${StepDescription} {
+      font-size: 0.9rem;
+    }
+}
+}
+`;
+

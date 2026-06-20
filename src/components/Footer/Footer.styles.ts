@@ -38,7 +38,7 @@ export const Logo = styled.img`
 `;
 
 export const Tagline = styled.p`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.18em;
@@ -48,7 +48,7 @@ export const Tagline = styled.p`
 `;
 
 export const Description = styled.p`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 0.75rem;
   color: #555;
   line-height: 1.7;
@@ -71,7 +71,7 @@ export const CollabBlock = styled.div`
 `;
 
 export const ColumnTitle = styled.h4`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: #111;
@@ -88,7 +88,7 @@ export const LinkList = styled.ul`
 `;
 
 export const LinkItem = styled.a`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   color: #555;
   text-decoration: none;
@@ -110,7 +110,7 @@ export const CollabItem = styled.a`
   display: flex;
   align-items: center;
   gap: 8px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   color: #555;
   text-decoration: none;

@@ -15,7 +15,7 @@ export const Header = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 2.1rem;
   font-weight: 700;
   color: #111;
@@ -23,7 +23,7 @@ export const Title = styled.h2`
 `;
 
 export const Subtitle = styled.p`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   color: #444;
   line-height: 1.7;
@@ -64,14 +64,14 @@ export const TextBlock = styled.div`
 `;
 
 export const FeatureTitle = styled.h3`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 1.6rem;
   font-weight: 700;
   color: #111;
 `;
 
 export const FeatureDescription = styled.p`
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   color: #555;
   line-height: 1.75;
@@ -83,7 +83,7 @@ export const LearnMoreButton = styled.button`
   color: #fff;
   border: none;
   padding: 10px 20px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
   border-radius: 6px;
