@@ -56,7 +56,7 @@ export const Content = styled(Box)({
 });
 
 export const Title = styled(Typography)({
-  fontFamily: "Inter, Arial, sans-serif",
+  fontFamily: "Ubuntu, Arial, sans-serif",
   fontSize: "clamp(2rem, 5vw, 3rem)",
   fontWeight: 700,
   color: "#ffffff",
@@ -69,7 +69,7 @@ export const Highlight = styled("span")({
 });
 
 export const Description = styled(Typography)({
-  fontFamily: "Inter, Arial, sans-serif",
+  fontFamily: "Ubuntu, Arial, sans-serif",
   fontWeight: 400,
   fontSize: "1rem",
   color: "#c0c8e0",
@@ -114,7 +114,7 @@ export const SecondaryButton = styled(Button)({
   padding: "11px 28px",
   border: "2px solid rgba(255,255,255,0.5)",
   color: "#fff",
-  fontFamily: "Inter, Arial, sans-serif",
+  fontFamily: "Ubuntu, Arial, sans-serif",
   fontWeight: 500,
   textTransform: "none",
   fontSize: "0.95rem",
