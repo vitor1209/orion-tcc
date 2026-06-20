@@ -23,7 +23,7 @@ import {
 } from "./InstrumentSelection.styles";
 import { instruments } from "./InstrumentSelection.utils";
 
-export function InstrumentSelection() {
+export const InstrumentSelection = () => {
   const navigate = useNavigate();
 
   return (
@@ -35,7 +35,7 @@ export function InstrumentSelection() {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/home")}>
+          <BackButton onClick={() => navigate("/")}>
             <ArrowLeft size={16} />
             Voltar
           </BackButton>

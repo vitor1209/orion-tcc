@@ -5,7 +5,7 @@ import PracticeNow from "../../components/PracticeNow/PracticeNow";
 import { OurPurpose } from "../../components/OurPurpose/OurPurpose";
 import { Footer } from "../../components/Footer/Footer";
 
-export function Home() {
+export const Home = () => {
   return (
     <>
       <Navbar />
