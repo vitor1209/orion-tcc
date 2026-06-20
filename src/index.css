@@ -66,3 +66,25 @@ h6 {
   font-family: "Ubuntu", Arial, Helvetica, sans-serif;
   font-weight: 700;
 }
+
+/* formatacao da barra de rolagem */
+
+body::-webkit-scrollbar {
+    width: 12px;
+    /*largura da barra de rolagem */
+    background-color: #f5f5f5;
+}
+
+body::-webkit-scrollbar-track {
+    background: #f5f5f5;
+    /*cor de fundo da barra de rolagem */
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: #15204b;
+    /*cor do scroll (thumb) da barra de rolagem */
+    border-radius: 20px;
+    /* arredondar o scroll (thumb) */
+    border: 3px solid #f5f5f5;
+    /* criar um espaco em volta do scroll */
+}
