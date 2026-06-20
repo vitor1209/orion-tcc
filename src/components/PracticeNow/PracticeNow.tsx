@@ -1,6 +1,7 @@
 import React from "react";
-import logo from "../../assets/logo-practice.png";
-import ondaSonora from "../../assets/onda-sonora.mp4";
+import { useNavigate } from "react-router-dom";
+import logo from "../../assets/images/logo-practice.png";
+import ondaSonora from "../../assets/videos/onda-sonora.mp4";
 import {
   Section,
   WavesWrapper,
@@ -27,7 +28,7 @@ const SoundWaves = () => {
         width: "100%",
         height: "100%",
         objectFit: "cover",
-        opacity: 0.35,
+        opacity: 0.75,
       }}
     >
       <source src={ondaSonora} type="video/mp4" />
@@ -36,6 +37,8 @@ const SoundWaves = () => {
 };
 
 const PracticeNow: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <Section id="pratique">
       <WavesWrapper>
@@ -55,7 +58,9 @@ const PracticeNow: React.FC = () => {
         <LogoImage src={logo} alt="Logo Orion" />
 
         <ButtonsRow>
-          <PrimaryButton variant="contained">Modo Guiado</PrimaryButton>
+          <PrimaryButton variant="contained" onClick={() => navigate("/")}>
+            Modo Guiado
+          </PrimaryButton>
           <SecondaryButton variant="outlined">Modo Livre</SecondaryButton>
         </ButtonsRow>
       </Content>

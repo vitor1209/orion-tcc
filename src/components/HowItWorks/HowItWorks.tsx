@@ -1,4 +1,4 @@
-import fundoPartitura from "../../assets/fundo_partitura.png";
+import fundoPartitura from "../../assets/images/fundo_partitura.png";
 import {
   Section,
   BackgroundLayer,
