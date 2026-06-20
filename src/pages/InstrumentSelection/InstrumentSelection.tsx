@@ -54,7 +54,7 @@ export function InstrumentSelection() {
 
           <CardsGrid>
             {instruments.map(({ title, description, image, imageMaxWidth }) => (
-              <InstrumentCard key={title}>
+              <InstrumentCard key={title} onClick={() => navigate("/Teclado")}>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
                 <CardImageWrapper>
