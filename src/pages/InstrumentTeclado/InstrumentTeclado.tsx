@@ -32,7 +32,7 @@ import {
 import { instruments, levels } from "./InstrumentTeclado.utils";
 import { useState } from "react";
 
-export function InstrumentTeclado() {
+export const  InstrumentTeclado = () => {
 
   const navigate = useNavigate();
 

@@ -2,7 +2,7 @@ import { Navbar } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import { ButtonsContainer, GradientText, HeroContent, HeroDescricao, HeroImage, HeroSection, HeroTitle, ImageContainer, OutlineButton, PurpleButton } from "./Home.styled";
 
-export function Home() {
+export const Home = () => {
   return (
     <>
       <Navbar />
