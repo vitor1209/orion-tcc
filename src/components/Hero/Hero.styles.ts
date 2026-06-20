@@ -26,8 +26,8 @@ export const HeroContent = styled(Box)({
 });
 
 export const HeroTitle = styled(Typography)({
-    fontFamily: "Coolvetica, Arial, sans-serif",
-    fontSize: "5rem",
+    fontFamily: "Ubuntu, Arial, sans-serif",
+    fontSize: "3.5rem",
     fontWeight: 400,
     lineHeight: 1.1,
     color: "#fff",
@@ -47,10 +47,10 @@ export const GradientText = styled("span")({
 });
 
 export const HeroDescription = styled(Typography)({
-    fontFamily: "Inter, Arial, sans-serif",
+    fontFamily: "Ubuntu, Arial, sans-serif",
     fontWeight: 400,
     color: "#D8D8D8",
-    fontSize: "1.3rem",
+    fontSize: "1.1rem",
     lineHeight: 1.7,
     marginBottom: "40px",
     width: "650px",
@@ -71,7 +71,7 @@ export const OutlineButton = styled(Button)({
     borderColor: "#fff",
     borderRadius: "999px",
     padding: "12px 30px",
-    fontFamily: "Inter, Arial, sans-serif",
+    fontFamily: "Ubuntu, Arial, sans-serif",
     fontWeight: 500,
 });
 
@@ -81,7 +81,7 @@ export const PurpleButton = styled(Button)({
 
     background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
     color: "#fff",
-    fontFamily: "Inter, Arial, sans-serif",
+    fontFamily: "Ubuntu, Arial, sans-serif",
     fontWeight: 500,
 });
 
@@ -103,15 +103,16 @@ export const ImageContainer = styled(Box)({
     "&::before": {
         content: '""',
         position: "absolute",
-        width: "450px",
-        height: "450px",
+        width: "400px",
+        height: "400px",
 
         background:
             "radial-gradient(circle, rgba(118,95,255,.35) 0%, rgba(118,95,255,0) 70%)",
 
         top: "50%",
         left: "50%",
-        transform: "translate(-50%, -50%)",
+        transform: "translate(-80%, -50%)", 
+        // alteracao p nao quebrar a pagina
         zIndex: 0,
     },
 });
