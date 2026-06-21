@@ -3,7 +3,8 @@ import { Home } from "../pages/Home/Home";
 import { InstrumentSelection } from "../pages/InstrumentSelection/InstrumentSelection";
 import { InstrumentTeclado } from "../pages/InstrumentTeclado/InstrumentTeclado";
 import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
- 
+import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
+
 export const Router = createBrowserRouter([
   {
     path: "/",
@@ -21,5 +22,9 @@ export const Router = createBrowserRouter([
   {
     path: "/SelecaoModo",
     element: <ModeSelection />,
+  },
+  {
+    path: "/PraticaLivre/Camera",
+    element: <CameraPage />,
   }
 ]);
