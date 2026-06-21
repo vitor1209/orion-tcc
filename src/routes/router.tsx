@@ -11,7 +11,7 @@ export const Router = createBrowserRouter([
     index: true,
   },
   {
-    path: "/SelecaoInstrumento",
+    path: "/SelecaoInstrumento/",
     element: <InstrumentSelection />,
   },
   {

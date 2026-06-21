@@ -53,7 +53,7 @@ export const  InstrumentTeclado = () => {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/InstrumentSelection")}>
+          <BackButton onClick={() => navigate("/SelecaoInstrumento")}>
             <ArrowLeft size={16} />
             Voltar
           </BackButton>

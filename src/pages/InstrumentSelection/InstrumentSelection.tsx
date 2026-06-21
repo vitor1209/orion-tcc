@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
@@ -22,9 +21,18 @@ import {
   CardImage,
 } from "./InstrumentSelection.styles";
 import { instruments } from "./InstrumentSelection.utils";
+import { useNavigate, useLocation } from "react-router-dom";
+
 
 export const InstrumentSelection = () => {
   const navigate = useNavigate();
+ const location = useLocation();
+const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
+
+  enum ROTAS_MODO {
+    guiado = "/Teclado",
+    livre = "/PraticaLivre/Camera",
+  };
 
   return (
     <PageWrapper>
@@ -54,7 +62,8 @@ export const InstrumentSelection = () => {
 
           <CardsGrid>
             {instruments.map(({ title, description, image, imageMaxWidth }) => (
-              <InstrumentCard key={title} onClick={() => navigate("/Teclado")}>
+              <InstrumentCard key={title}   onClick={() => navigate(ROTAS_MODO[modo as keyof typeof ROTAS_MODO] ?? "/Teclado")}
+>
                 <CardTitle>{title}</CardTitle>
                 <CardDescription>{description}</CardDescription>
                 <CardImageWrapper>

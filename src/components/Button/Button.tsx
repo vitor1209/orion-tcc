@@ -3,16 +3,21 @@ import { Link } from "react-router"
 import * as Component from "./Button.styled"
 
 export const Button = ({
-    variante = "ButtonBranco",
+    variante = "Branco",
     tamanho,
     loading,
     disabled,
     children,
     espacamento,
-
+    to,
     ...props
 }: ButtonProp) => {
-
+    const linkProps = {
+        LinkComponent: Link,
+        viewTransition: true,
+        rel: "noreferrer",
+        to,
+    }
 
     return (
         <Component.ButtonVariants
@@ -22,6 +27,7 @@ export const Button = ({
             tamanho={tamanho}
             espacamento={espacamento || 0}
             {...props}
+            {...(to && linkProps)}
         >
             {<span>{children}</span>}
 

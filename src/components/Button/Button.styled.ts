@@ -6,10 +6,10 @@ export const ButtonVariants = styled(ButtonBase, {
     tamanho: "sm" | "md" | "lg" | "xl",
     espacamento: number,
     variante:
-    | "ButtonBranco"
-    | "ButtonRoxo"
-    | "ButtonGradiente"
-    | "ButtonPreto"
+    | "Branco"
+    | "Roxo"
+    | "Gradiente"
+    | "Preto"
 }>(({ tamanho, espacamento, variante }) => {
     const sizeMap = {
         sm: { height: 30, fontSize: 14 },
@@ -48,7 +48,7 @@ export const ButtonVariants = styled(ButtonBase, {
 
 
 
-        ...(variante === "ButtonBranco" && {
+        ...(variante === "Branco" && {
             color: "white",
             border: "solid 2px white",
             transition: " transform 0.3s",
@@ -61,7 +61,7 @@ export const ButtonVariants = styled(ButtonBase, {
         }),
 
 
-        ...(variante === "ButtonGradiente" && {
+        ...(variante === "Gradiente" && {
             background: "linear-gradient(90deg,#b05cff,#8b5cf6)",
             color: "white",
             transition: " transform 0.3s",
@@ -74,7 +74,7 @@ export const ButtonVariants = styled(ButtonBase, {
         }),
 
 
-        ...(variante === "ButtonPreto" && {
+        ...(variante === "Preto" && {
             background: "#111",
             color: "white",
             alignSelf: "flex-start",
@@ -89,11 +89,7 @@ export const ButtonVariants = styled(ButtonBase, {
             },
         }),
 
-
-
-
-
-        // ...(variante === "ButtonRoxo" && {
+        // ...(variante === "Roxo" && {
         //     background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
         //     color: "white",
         //     "&:hover": { opacity: 0.5 },
