@@ -5,6 +5,7 @@ export interface ButtonProp extends ButtonBaseProps {
         | "ButtonBranco"
         | "ButtonRoxo"
         | "ButtonGradiente"
+        | "ButtonPreto"
 
     tamanho: "sm" | "md" | "lg" | "xl"
     espacamento?: number

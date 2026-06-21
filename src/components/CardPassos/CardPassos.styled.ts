@@ -95,7 +95,7 @@ export const StepCard = styled(Box, {
         transition: "0.25s",
 
         "&:hover": {
-            transform: "translateY(-4px)",
+            transform: "translateY(-20px)",
         },
 
         [`& ${StepTitle}`]: {
