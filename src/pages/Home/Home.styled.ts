@@ -21,8 +21,6 @@ export const Content = styled(Box)({
   maxWidth: "600px",
 });
 
-
-
 export const GradientText = styled("span")({
   background: "linear-gradient(90deg, #c56fff, #8f7cff)",
   WebkitBackgroundClip: "text",
@@ -43,13 +41,10 @@ export const ButtonsContainer = styled(Box)({
   marginTop: "40px",
 });
 
-
-
 export const HeroImage = styled("img")({
   width: "500px",
   maxWidth: "100%",
 });
-
 
 export const HeroContent = styled(Box)({
   maxWidth: "1650px",
@@ -69,7 +64,6 @@ export const HeroTitle = styled(Typography)({
     fontSize: "3rem",
   },
 });
-
 
 export const HeroDescricao = styled(Typography)({
   fontFamily: "Ubuntu, Arial, sans-serif",
@@ -104,23 +98,6 @@ export const ImageContainer = styled(Box)({
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 export const Section = styled(Box)({
   position: "relative",
   overflow: "hidden",
@@ -134,8 +111,6 @@ export const Section = styled(Box)({
     padding: "180px 20px 80px",
   },
 });
-
-
 
 export const BackgroundLayer = styled(Box)({
   position: "absolute",
@@ -191,8 +166,6 @@ export const Title = styled(Typography)({
   letterSpacing: "-0.04em",
 });
 
-
-
 export const Subtitle = styled(Typography)({
   fontFamily: "Ubuntu, Arial, Helvetica, sans-serif",
   fontWeight: 400,
@@ -220,13 +193,6 @@ export const StepsGrid = styled(Box)({
     gridTemplateColumns: "1fr",
   },
 });
-
-
-
-
-
-
-
 
 
 
@@ -323,8 +289,6 @@ export const DescricaoOnda = styled(Typography)({
 
 
 
-
-
 export const SectionProposito = styled(Box)({
   backgroundColor: "#f0f0f0",
   padding: "64px 24px",
@@ -360,15 +324,11 @@ export const Logo = styled("img")({
   objectFit: "contain",
 });
 
-
-
 export const FeatureList = styled(Stack)({
   width: "100%",
   maxWidth: 1080,
   gap: 64,
 });
-
-
 
 export const FeatureItem = styled(Stack, {
     shouldForwardProp: (prop) => prop !== "reverse",
@@ -386,13 +346,10 @@ export const FeatureItem = styled(Stack, {
     },
 }));
 
-
-
 export const TextBlock = styled(Stack)({
     flex: 1.15,
     gap: 16,
 });
-
 
 
 export const FeatureTitle = styled(Typography)({
@@ -402,15 +359,12 @@ export const FeatureTitle = styled(Typography)({
     color: "#111",
 });
 
-
 export const FeatureDescription = styled(Typography)({
     fontFamily: "Ubuntu",
     fontSize: "1.25rem",
     color: "#555",
     lineHeight: 1.75,
 });
-
-
 
 export const ImageBlock = styled(Box)({
     flex: 1,
@@ -419,9 +373,6 @@ export const ImageBlock = styled(Box)({
     justifyContent: "center",
     alignItems: "center",
 });
-
-
-
 
 export const FeatureImage = styled("img")({
     width: "100%",
