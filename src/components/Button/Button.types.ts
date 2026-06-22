@@ -2,9 +2,10 @@ import type { ButtonBaseProps } from "@mui/material"
 
 export interface ButtonProp extends ButtonBaseProps {
     variante?:
-        | "ButtonBranco"
-        | "ButtonRoxo"
-        | "ButtonGradiente"
+        | "Branco"
+        | "Roxo"
+        | "Gradiente"
+        | "Preto"
 
     tamanho: "sm" | "md" | "lg" | "xl"
     espacamento?: number

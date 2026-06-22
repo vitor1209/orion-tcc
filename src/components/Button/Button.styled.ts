@@ -6,9 +6,10 @@ export const ButtonVariants = styled(ButtonBase, {
     tamanho: "sm" | "md" | "lg" | "xl",
     espacamento: number,
     variante:
-    | "ButtonBranco"
-    | "ButtonRoxo"
-    | "ButtonGradiente"
+    | "Branco"
+    | "Roxo"
+    | "Gradiente"
+    | "Preto"
 }>(({ tamanho, espacamento, variante }) => {
     const sizeMap = {
         sm: { height: 30, fontSize: 14 },
@@ -34,7 +35,9 @@ export const ButtonVariants = styled(ButtonBase, {
         textDecoration: "none",
         color: "inherit",
         padding: "12px 28px",
-        "&:hover": { filter: "brightness(80%)" },
+        "&:hover": {
+            filter: "brightness(80%)",
+        },
         "&:disabled, &.disabled": {
             opacity: 0.8,
             background: "grey !important",
@@ -44,24 +47,53 @@ export const ButtonVariants = styled(ButtonBase, {
         },
 
 
-        
-        ...(variante === "ButtonBranco" && {
+
+        ...(variante === "Branco" && {
             color: "white",
             border: "solid 2px white",
-            transition: " 0.5s",
+            transition: " transform 0.3s",
+            "&:hover": {
+                border: "2px solid #fff",
+                background: "rgba(255,255,255,0.06)",
+                transform: "scale(1.05)"
+
+            }
         }),
 
 
-        ...(variante === "ButtonGradiente" && {
+        ...(variante === "Gradiente" && {
             background: "linear-gradient(90deg,#b05cff,#8b5cf6)",
             color: "white",
-            "&:hover": { opacity: 0.5 },
+            transition: " transform 0.3s",
+
+            "&:hover": {
+                background: "linear-gradient(90deg, #9d4cff, #7c3aed)",
+                transform: "scale(1.05)"
+
+            },
         }),
-        ...(variante === "ButtonRoxo" && {
-    background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
+
+
+        ...(variante === "Preto" && {
+            background: "#111",
             color: "white",
-            "&:hover": { opacity: 0.5 },
+            alignSelf: "flex-start",
+            borderRadius: 6,
+            transition: " transform 0.3s",
+
+
+            "&:hover": {
+                background: "#333",
+                transform: "scale(1.05)"
+
+            },
         }),
+
+        // ...(variante === "Roxo" && {
+        //     background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
+        //     color: "white",
+        //     "&:hover": { opacity: 0.5 },
+        // }),
 
     }
 })

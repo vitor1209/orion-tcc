@@ -14,28 +14,28 @@ export const styles = {
 
     video: {
         width: {
-            xs: "378px",
-            sm: "590px",
-            md: "640px",
+            xs: "300px",
+            sm: "470px",
+            md: "520px",
         },
         height: {
-            xs: "266px",
-            sm: "430px",
-            md: "480px",
+            xs: "210px",
+            sm: "340px",
+            md: "380px",
         },
         borderRadius: "16px",
         backgroundColor: "black",
     },
     placeholder: {
         width: {
-            xs: "378px",
-            sm: "590px",
-            md: "640px",
+            xs: "300px",
+            sm: "470px",
+            md: "520px",
         },
         height: {
-            xs: "266px",
-            sm: "430px",
-            md: "480px",
+            xs: "210px",
+            sm: "340px",
+            md: "380px",
         },
         borderRadius: "16px",
         border: "2px dashed",

@@ -1,0 +1,76 @@
+import { styled } from "@mui/material/styles";
+import { Box, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
+
+export const PageWrapper = styled(Box)({
+  minHeight: "100vh",
+  backgroundColor: "#f5f5f5",
+  display: "flex",
+  flexDirection: "column",
+});
+
+export const ModalCard = styled(Stack)({
+  position: "relative",
+  zIndex: 1,
+  backgroundColor: "#ffffff",
+  borderRadius: "20px",
+  padding: "40px",
+  margin: "40px auto",
+  width: "100%",
+  maxWidth: "75vw",
+  boxShadow: "0 4px 32px rgba(0,0,0,0.08)",
+  alignItems: "center",
+
+  "@media (max-width: 900px)": {
+    margin: "20px 16px",
+    padding: "24px",
+  },
+});
+
+export const EyebrowLabel = styled(Typography)({
+  fontWeight: 600,
+  fontSize: "0.75rem",
+  letterSpacing: "0.1em",
+  textTransform: "uppercase",
+  color: "#8f7cff",
+  marginBottom: "8px",
+});
+
+export const PageTitle = styled(Typography)({
+  fontFamily: "Ubuntu, Arial, sans-serif",
+  fontSize: "1.75rem",
+  fontWeight: 700,
+  color: "#111111",
+  lineHeight: 1.2,
+  marginBottom: "8px",
+
+  "@media (max-width: 600px)": {
+    fontSize: "1.4rem",
+  },
+});
+
+export const PageSubtitle = styled(Typography)({
+  fontSize: "0.9rem",
+  color: "#888888",
+  lineHeight: 1.6,
+  marginBottom: "24px",
+});
+
+export const CameraBox = styled(Box)({
+  backgroundColor: "#d9d9d9",
+  borderRadius: "12px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  overflow: "hidden",
+  margin: "0 auto",
+  aspectRatio: "5/3",
+  padding: "0 2rem",
+  width: "100%",
+  maxWidth: "75vw",
+  "@media (max-width: 600px)": {
+    maxWidth: "100%",
+    aspectRatio: "4/3",
+  },
+});
+

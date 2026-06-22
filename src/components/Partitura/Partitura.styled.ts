@@ -4,8 +4,7 @@ export const styles = {
         display: "flex",
         flexDirection: "column",
         gap: 2,
-        width: "95%",
-        padding: 2,
+        padding:"2 0",
     },
 
     header: {
