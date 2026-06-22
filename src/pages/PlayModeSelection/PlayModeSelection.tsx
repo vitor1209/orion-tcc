@@ -17,6 +17,7 @@ import {
   Tagline,
   BackButton,
   AccentLine,
+  AccentLineFill,
   Content,
   WelcomeTitle,
   WelcomeSubtitle,
@@ -34,10 +35,10 @@ export const ModeSelection = () => {
   return (
     <PageWrapper>
       <PageInner>
-        <Topbar>
+        <Topbar as="header">
           <BrandBlock>
-            <LogoImage src={logo} alt="Orion" />
-            <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
+            <LogoImage as="img" src={logo} alt="Orion" />
+            <Tagline as="p">LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
           <BackButton onClick={() => navigate("/Teclado")}>
@@ -47,13 +48,13 @@ export const ModeSelection = () => {
         </Topbar>
 
         <AccentLine>
-          <div />
+          <AccentLineFill />
           <ArrowRight size={18} />
         </AccentLine>
 
-        <Content>
-          <WelcomeTitle>Como deseja tocar?</WelcomeTitle>
-          <WelcomeSubtitle>
+        <Content as="main">
+          <WelcomeTitle as="h1">Como deseja tocar?</WelcomeTitle>
+          <WelcomeSubtitle as="p">
             Selecione a forma de interação que deseja utilizar para tocar o instrumento.
           </WelcomeSubtitle>
 
@@ -65,15 +66,15 @@ export const ModeSelection = () => {
             >
               <ModeCard onClick={() => navigate("/camera")}>
                 <CardContent>
-                  <CardTitle>Câmera</CardTitle>
+                  <CardTitle as="h2">Câmera</CardTitle>
 
-                  <CardDescription>
+                  <CardDescription as="p">
                     Utilize suas mãos para tocar através do reconhecimento por
                     câmera.
                   </CardDescription>
                 </CardContent>
 
-                <CardIcon src={cameraIcon} alt="Câmera" />
+                <CardIcon as="img" src={cameraIcon} alt="Câmera" />
               </ModeCard>
             </motion.div>
 
@@ -88,14 +89,14 @@ export const ModeSelection = () => {
             >
               <ModeCard onClick={() => navigate("/glove")}>
                 <CardContent>
-                  <CardTitle>Luva Musical</CardTitle>
+                  <CardTitle as="h2">Luva Musical</CardTitle>
 
-                  <CardDescription>
+                  <CardDescription as="p">
                     Utilize a luva Orion para tocar através dos sensores.
                   </CardDescription>
                 </CardContent>
 
-                <CardIcon src={handIcon} alt="Luva Musical" />
+                <CardIcon as="img" src={handIcon} alt="Luva Musical" />
               </ModeCard>
             </motion.div>
           </CardsGrid>
