@@ -261,7 +261,7 @@ export const LevelButton = styled.button<LevelButtonProps>`
   color: ${({ $active }) =>
     $active ? "#fff" : "#000"};
 
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 600;
 
@@ -292,7 +292,7 @@ export const ContinueButton = styled.button`
 
   color: white;
 
-  font-family: "Inter";
+  font-family: "Inter", Arial, Helvetica, sans-serif;
   font-size: 1rem;
   font-weight: 700;
 

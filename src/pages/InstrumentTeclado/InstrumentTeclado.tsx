@@ -32,7 +32,7 @@ import {
 import { instruments, levels } from "./InstrumentTeclado.utils";
 import { useState } from "react";
 
-export const  InstrumentTeclado = () => {
+export const InstrumentTeclado = () => {
 
   const navigate = useNavigate();
 
@@ -104,7 +104,9 @@ export const  InstrumentTeclado = () => {
 
                   <LevelButton
                     $active={level === value}
-                    onClick={() => setLevel(value)}
+                    onClick={() => {
+                      setLevel(value);
+                    }}
                   >
                     {label}
                   </LevelButton>
@@ -114,7 +116,10 @@ export const  InstrumentTeclado = () => {
           </LevelSelectorWrapper>
           <ContinueButton
             disabled={!level}
-            onClick={handleContinue}
+            onClick={() => {
+              handleContinue();
+              navigate("/SelecaoModo");
+            }}
           >
             Começar Jornada
           </ContinueButton>
