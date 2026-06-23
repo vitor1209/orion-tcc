@@ -64,7 +64,7 @@ export const ModeSelection = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ModeCard onClick={() => navigate("/camera")}>
+              <ModeCard onClick={() => navigate("/introducao-guiada?interacao=camera")}>
                 <CardContent>
                   <CardTitle as="h2">Câmera</CardTitle>
 
@@ -87,7 +87,7 @@ export const ModeSelection = () => {
                 delay: 0.05,
               }}
             >
-              <ModeCard onClick={() => navigate("/glove")}>
+              <ModeCard onClick={() => navigate("/introducao-guiada?interacao=luva")}>
                 <CardContent>
                   <CardTitle as="h2">Luva Musical</CardTitle>
 
