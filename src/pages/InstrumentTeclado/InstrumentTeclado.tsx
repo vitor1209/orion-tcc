@@ -38,12 +38,6 @@ export const InstrumentTeclado = () => {
 
   const [level, setLevel] = useState("");
 
-  const handleContinue = () => {
-    if (!level) return;
-
-    navigate(`/instrumento/teclado/${level}`);
-  };
-
   return (
     <PageWrapper>
       <PageInner>
@@ -117,7 +111,6 @@ export const InstrumentTeclado = () => {
           <ContinueButton
             disabled={!level}
             onClick={() => {
-              handleContinue();
               navigate("/SelecaoModo");
             }}
           >
