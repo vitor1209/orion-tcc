@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
 import { Button } from "../../components/Button/Button";
