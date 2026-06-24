@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
 import { Button } from "../../components/Button/Button";
@@ -38,12 +38,6 @@ export const InstrumentTeclado = () => {
 
   const [level, setLevel] = useState("");
 
-  const handleContinue = () => {
-    if (!level) return;
-
-    navigate(`/instrumento/teclado/${level}`);
-  };
-
   return (
     <PageWrapper>
       <PageInner>
@@ -61,7 +55,6 @@ export const InstrumentTeclado = () => {
 
         <AccentLine>
           <div />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content>
@@ -117,7 +110,6 @@ export const InstrumentTeclado = () => {
           <ContinueButton
             disabled={!level}
             onClick={() => {
-              handleContinue();
               navigate("/SelecaoModo");
             }}
           >

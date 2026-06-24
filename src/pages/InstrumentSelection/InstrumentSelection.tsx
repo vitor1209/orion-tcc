@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft} from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
 import { Button } from "../../components/Button/Button";
@@ -51,7 +51,6 @@ const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
 
         <AccentLine>
           <div />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content>

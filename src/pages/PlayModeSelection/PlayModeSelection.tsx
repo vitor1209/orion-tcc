@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
 import logo from "../../assets/images/logo.png";
@@ -49,7 +49,6 @@ export const ModeSelection = () => {
 
         <AccentLine>
           <AccentLineFill />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content as="main">
