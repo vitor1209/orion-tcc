@@ -7,6 +7,7 @@ import cameraIcon from "../../assets/images/camera.png";
 import handIcon from "../../assets/images/mao.png";
 
 import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
 
 import {
   PageWrapper,
@@ -15,7 +16,6 @@ import {
   BrandBlock,
   LogoImage,
   Tagline,
-  BackButton,
   AccentLine,
   AccentLineFill,
   Content,
@@ -41,10 +41,10 @@ export const ModeSelection = () => {
             <Tagline as="p">LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/Teclado")}>
+          <Button variante="Voltar" tamanho="md" onClick={() => navigate("/Teclado")}>
             <ArrowLeft size={16} />
             Voltar
-          </BackButton>
+          </Button>
         </Topbar>
 
         <AccentLine>
