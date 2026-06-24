@@ -4,6 +4,8 @@ import { InstrumentSelection } from "../pages/InstrumentSelection/InstrumentSele
 import { InstrumentTeclado } from "../pages/InstrumentTeclado/InstrumentTeclado";
 import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
 import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
+import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
+import { AtividadeGuiada1 } from "../pages/AtividadeGuiada1/AtividadeGuiada1";
 
 export const Router = createBrowserRouter([
   {
@@ -26,5 +28,13 @@ export const Router = createBrowserRouter([
   {
     path: "/PraticaLivre/Camera",
     element: <CameraPage />,
+  },
+  {
+    path: "/introducao-guiada",
+    element: <IntroducaoGuiada />,
+  },
+  {
+    path: "/atividade-guiada-1",
+    element: <AtividadeGuiada1 />,
   }
 ]);
