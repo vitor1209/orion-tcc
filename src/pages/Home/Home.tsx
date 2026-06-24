@@ -10,6 +10,13 @@ import logoO from "../../assets/images/logo.png";
 import { features, passos } from "./Home.utils";
 
 export const Home = () => {
+  const scrollToSection = (sectionId: string) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <>
       <Navbar />
@@ -35,8 +42,18 @@ export const Home = () => {
           </Style.HeroDescricao>
 
           <Style.ButtonsContainer>
-            <Button variante="Branco" tamanho="lg">Como funciona</Button>
-            <Button variante="Gradiente" tamanho="lg">
+            <Button
+              variante="Branco"
+              tamanho="lg"
+              onClick={() => scrollToSection("como-funciona")}
+            >
+              Como funciona
+            </Button>
+            <Button
+              variante="Gradiente"
+              tamanho="lg"
+              onClick={() => scrollToSection("pratique")}
+            >
               Começar agora
             </Button>
           </Style.ButtonsContainer>
