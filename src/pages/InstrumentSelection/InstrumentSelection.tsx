@@ -51,7 +51,6 @@ const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
 
         <AccentLine>
           <div />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content>

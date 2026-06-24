@@ -55,7 +55,6 @@ export const InstrumentTeclado = () => {
 
         <AccentLine>
           <div />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content>

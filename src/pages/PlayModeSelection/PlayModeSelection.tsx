@@ -49,7 +49,6 @@ export const ModeSelection = () => {
 
         <AccentLine>
           <AccentLineFill />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content as="main">
