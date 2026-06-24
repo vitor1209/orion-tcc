@@ -301,30 +301,6 @@ export const LevelChip = styled(Chip)({
   },
 });
 
-export const BackButton = styled(Button)({
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 10,
-  minWidth: 0,
-  padding: "12px 20px",
-  border: "1px solid rgba(95, 74, 248, 0.18)",
-  color: "#2d214f",
-  borderRadius: 999,
-  backgroundColor: "#ffffff",
-  fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-  fontSize: "0.95rem",
-  fontWeight: 700,
-  lineHeight: "normal",
-  textTransform: "none",
-  transition: "transform 0.2s ease, box-shadow 0.2s ease",
-
-  "&:hover": {
-    backgroundColor: "#ffffff",
-    transform: "translateY(-1px)",
-    boxShadow: "0 16px 36px rgba(95, 74, 248, 0.12)",
-  },
-});
-
 export const ActivityCard = styled(Paper)(({ theme }) => ({
   position: "relative",
   display: "flex",

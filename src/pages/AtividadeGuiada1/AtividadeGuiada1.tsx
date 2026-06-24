@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
 import * as S from "./AtividadeGuiada1.styles";
 
 const lessons = ["Introdução", "Atividade 1", "Atividade 2", "Atividade 3"];
@@ -68,10 +69,14 @@ export function AtividadeGuiada1() {
               <S.LevelChip label="Iniciante" size="small" />
             </S.HeadingGroup>
 
-            <S.BackButton onClick={() => navigate("/introducao-guiada?interacao=luva")}>
+            <Button
+              variante="Voltar"
+              tamanho="md"
+              onClick={() => navigate("/introducao-guiada?interacao=luva")}
+            >
               <ArrowLeft size={16} />
               Voltar
-            </S.BackButton>
+            </Button>
           </S.Header>
 
           <S.ActivityCard elevation={0} as="article">

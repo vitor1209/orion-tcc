@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
 import {
   PageWrapper,
   PageInner,
@@ -9,7 +10,6 @@ import {
   BrandBlock,
   LogoImage,
   Tagline,
-  BackButton,
   AccentLine,
   Content,
   WelcomeTitle,
@@ -53,10 +53,10 @@ export const InstrumentTeclado = () => {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/SelecaoInstrumento")}>
+          <Button variante="Voltar" tamanho="md" onClick={() => navigate("/SelecaoInstrumento")}>
             <ArrowLeft size={16} />
             Voltar
-          </BackButton>
+          </Button>
         </Topbar>
 
         <AccentLine>

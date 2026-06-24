@@ -2,6 +2,7 @@ import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
 import * as S from "./IntroducaoGuiada.styles";
 
 const lessons = ["Introdução", "Atividade 1", "Atividade 2", "Atividade 3"];
@@ -40,10 +41,10 @@ export function IntroducaoGuiada() {
               <S.LevelChip label="Iniciante" size="small" />
             </S.HeadingGroup>
 
-            <S.BackButton onClick={() => navigate("/SelecaoModo")}>
+            <Button variante="Voltar" tamanho="md" onClick={() => navigate("/SelecaoModo")}>
               <ArrowLeft size={16} />
               Voltar
-            </S.BackButton>
+            </Button>
           </S.Header>
 
           <S.TheoryCard elevation={0} as="article">

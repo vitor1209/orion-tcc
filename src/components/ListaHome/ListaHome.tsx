@@ -9,8 +9,6 @@ import {
 } from "./ListaHome.styled";
 import { Button } from "../../components/Button/Button";
 
-
-import logo from "../../assets/images/logo.png";
 import musicNotes from "../../assets/images/notas.png";
 import neuron from "../../assets/images/neuronio.png";
 import pianist from "../../assets/images/nuvem.png";
@@ -62,7 +60,7 @@ const features = [
                 </FeatureDescription>
 
                 <Button
-                    variante="ButtonPreto"
+                    variante="Preto"
                     tamanho="md"
                 >
                     Saiba mais
