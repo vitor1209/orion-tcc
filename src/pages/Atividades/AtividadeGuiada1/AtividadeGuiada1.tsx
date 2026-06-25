@@ -1,17 +1,25 @@
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import type { SliderProps } from "@mui/material/Slider";
 
-import { Footer } from "../../components/Footer/Footer";
-import { Button } from "../../components/Button/Button";
+import { Footer } from "../../../components/Footer/Footer";
+import { Button } from "../../../components/Button/Button";
 import * as S from "./AtividadeGuiada1.styles";
 
 const lessons = ["Introdução", "Atividade 1", "Atividade 2", "Atividade 3"];
+const octaveOptions = [1, 2];
 
 export function AtividadeGuiada1() {
   const navigate = useNavigate();
   const [octave, setOctave] = useState(1);
   const [volume, setVolume] = useState(32);
+  const handleVolumeChange: NonNullable<SliderProps["onChange"]> = (
+    _event,
+    value
+  ) => {
+    setVolume(Array.isArray(value) ? value[0] : value);
+  };
 
   return (
     <S.Page>
@@ -25,7 +33,7 @@ export function AtividadeGuiada1() {
               <S.VolumeSlider
                 aria-label="Volume"
                 value={volume}
-                onChange={(_, value) => setVolume(value as number)}
+                onChange={handleVolumeChange}
               />
             </S.ControlGroup>
 
@@ -33,7 +41,7 @@ export function AtividadeGuiada1() {
               <S.ControlLabel>Oitava:</S.ControlLabel>
               <S.ControlHint>Selecione a oitava desejada</S.ControlHint>
               <S.OctaveOptions>
-                {[1, 2].map((value) => (
+                {octaveOptions.map((value) => (
                   <S.OctaveButton
                     key={value}
                     active={octave === value}
