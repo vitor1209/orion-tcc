@@ -31,7 +31,7 @@ const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
 
   enum ROTAS_MODO {
     guiado = "/Teclado",
-    livre = "/PraticaLivre/Camera",
+    livre = "/SelecaoModo?modo=livre",
   };
 
   return (

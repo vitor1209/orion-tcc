@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -31,6 +31,16 @@ import {
 
 export const ModeSelection = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
+  const isModoLivre = modo === "livre";
+  const backRoute = isModoLivre ? "/SelecaoInstrumento?modo=livre" : "/Teclado";
+  const cameraRoute = isModoLivre
+    ? "/PraticaLivre/Camera?interacao=camera"
+    : "/introducao-guiada?interacao=camera";
+  const gloveRoute = isModoLivre
+    ? "/PraticaLivre/Camera?interacao=luva"
+    : "/introducao-guiada?interacao=luva";
 
   return (
     <PageWrapper>
@@ -41,7 +51,7 @@ export const ModeSelection = () => {
             <Tagline as="p">LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <Button variante="Voltar" tamanho="md" onClick={() => navigate("/Teclado")}>
+          <Button variante="Voltar" tamanho="md" onClick={() => navigate(backRoute)}>
             <ArrowLeft size={16} />
             Voltar
           </Button>
@@ -63,7 +73,7 @@ export const ModeSelection = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ModeCard onClick={() => navigate("/introducao-guiada?interacao=camera")}>
+              <ModeCard onClick={() => navigate(cameraRoute)}>
                 <CardContent>
                   <CardTitle as="h2">Câmera</CardTitle>
 
@@ -86,7 +96,7 @@ export const ModeSelection = () => {
                 delay: 0.05,
               }}
             >
-              <ModeCard onClick={() => navigate("/introducao-guiada?interacao=luva")}>
+              <ModeCard onClick={() => navigate(gloveRoute)}>
                 <CardContent>
                   <CardTitle as="h2">Luva Musical</CardTitle>
 
