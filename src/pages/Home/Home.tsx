@@ -8,6 +8,7 @@ import logo from "../../assets/images/logo-practice.png";
 import ondaSonora from "../../assets/videos/onda-sonora.mp4";
 import logoO from "../../assets/images/logo.png";
 import { features, passos } from "./Home.utils";
+import luva from "../../assets/images/luva.png";
 
 export const Home = () => {
   const scrollToSection = (sectionId: string) => {
@@ -61,7 +62,7 @@ export const Home = () => {
         </Style.HeroContent>
 
         <Style.ImageContainer>
-          {/* <Style.HeroImage alt="Luva Orion" /> */}
+          <Style.HeroImage alt="Luva Orion" src={luva} />
         </Style.ImageContainer>
 
       </Style.HeroSection>

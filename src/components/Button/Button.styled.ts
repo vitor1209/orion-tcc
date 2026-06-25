@@ -104,7 +104,6 @@ export const ButtonVariants = styled(ButtonBase, {
             borderRadius: 999,
             backgroundColor: "#ffffff",
             color: "#2d214f",
-            fontFamily: '"Inter", Arial, Helvetica, sans-serif',
             fontSize: "0.95rem",
             fontWeight: 700,
             lineHeight: "normal",
