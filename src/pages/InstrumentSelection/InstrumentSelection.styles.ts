@@ -8,7 +8,11 @@ export const PageWrapper = styled.div`
 `;
 
 export const PageInner = styled.div`
+  display: flex;
+  flex-direction: column;
   max-width: 960px;
+  min-height: 100vh;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 32px 24px 24px;
 `;
@@ -47,27 +51,6 @@ export const Tagline = styled.p`
   margin: 0;
 `;
 
-export const BackButton = styled.button`
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(95, 74, 248, 0.18);
-  background: #ffffff;
-  color: #2d214f;
-  border-radius: 999px;
-  padding: 12px 20px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 16px 36px rgba(95, 74, 248, 0.12);
-  }
-`;
-
 export const AccentLine = styled.div`
   display: flex;
   align-items: center;
@@ -93,6 +76,8 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  justify-content: center;
+  flex: 1;
   padding-bottom: 40px;
 `;
 

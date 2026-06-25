@@ -10,6 +10,7 @@ export const ButtonVariants = styled(ButtonBase, {
     | "Roxo"
     | "Gradiente"
     | "Preto"
+    | "Voltar"
 }>(({ tamanho, espacamento, variante }) => {
     const sizeMap = {
         sm: { height: 30, fontSize: 14 },
@@ -86,6 +87,38 @@ export const ButtonVariants = styled(ButtonBase, {
                 background: "#333",
                 transform: "scale(1.05)"
 
+            },
+        }),
+
+        ...(variante === "Voltar" && {
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: 0,
+            minHeight: "auto",
+            padding: "12px 20px",
+            border: "1px solid rgba(95, 74, 248, 0.18)",
+            borderRadius: 999,
+            backgroundColor: "#ffffff",
+            color: "#2d214f",
+            fontFamily: '"Inter", Arial, Helvetica, sans-serif',
+            fontSize: "0.95rem",
+            fontWeight: 700,
+            lineHeight: "normal",
+            textTransform: "none",
+            transition: "transform 0.2s ease, box-shadow 0.2s ease",
+
+            "& > span": {
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 10,
+            },
+
+            "&:hover": {
+                backgroundColor: "#ffffff",
+                filter: "none",
+                transform: "translateY(-1px)",
+                boxShadow: "0 16px 36px rgba(95, 74, 248, 0.12)",
             },
         }),
 

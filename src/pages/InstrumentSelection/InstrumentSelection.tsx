@@ -1,6 +1,7 @@
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft} from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
+import { Button } from "../../components/Button/Button";
 import {
   PageWrapper,
   PageInner,
@@ -8,7 +9,6 @@ import {
   BrandBlock,
   LogoImage,
   Tagline,
-  BackButton,
   AccentLine,
   Content,
   WelcomeTitle,
@@ -31,7 +31,7 @@ const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
 
   enum ROTAS_MODO {
     guiado = "/Teclado",
-    livre = "/PraticaLivre/Camera",
+    livre = "/SelecaoModo?modo=livre",
   };
 
   return (
@@ -43,15 +43,14 @@ const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <BackButton onClick={() => navigate("/")}>
+          <Button variante="Voltar" tamanho="md" onClick={() => navigate("/")}>
             <ArrowLeft size={16} />
             Voltar
-          </BackButton>
+          </Button>
         </Topbar>
 
         <AccentLine>
           <div />
-          <ArrowRight size={18} />
         </AccentLine>
 
         <Content>

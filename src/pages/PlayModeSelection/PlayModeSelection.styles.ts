@@ -13,9 +13,12 @@ export const PageWrapper = styled(Stack)`
 
 export const PageInner = styled(Stack)`
   && {
-    display: block;
+    display: flex;
+    flex-direction: column;
   }
   max-width: 960px;
+  min-height: 100vh;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 32px 24px 24px;
 `;
@@ -62,34 +65,6 @@ export const Tagline = styled(Typography)`
   margin: 0;
 `;
 
-export const BackButton = styled(Stack).attrs({ as: "button" })`
-  display: inline-flex;
-  && {
-    flex-direction: row;
-  }
-  align-items: center;
-  gap: 10px;
-  border: 1px solid rgba(95, 74, 248, 0.18);
-  background: #ffffff;
-  color: #2d214f;
-  border-radius: 999px;
-  padding: 12px 20px;
-  font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  line-height: normal;
-  min-width: 0;
-  text-transform: none;
-  cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-  &:hover {
-    background: #ffffff;
-    transform: translateY(-1px);
-    box-shadow: 0 16px 36px rgba(95, 74, 248, 0.12);
-  }
-`;
-
 export const AccentLine = styled(Stack)`
   display: flex;
   && {
@@ -110,6 +85,8 @@ export const Content = styled(Stack)`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  justify-content: center;
+  flex: 1;
   padding-bottom: 40px;
 `;
 

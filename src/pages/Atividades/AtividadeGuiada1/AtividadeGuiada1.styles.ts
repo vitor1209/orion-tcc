@@ -1,9 +1,9 @@
 import { Button, Chip, Paper, Slider, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import fundoNotas from "../../assets/images/fundo_notas.png";
-import partitura from "../../assets/images/partitura.png";
-import pianoAlt from "../../assets/images/pianoAlt.png";
+import fundoNotas from "../../../assets/images/fundo_notas.png";
+import partitura from "../../../assets/images/partitura.png";
+import pianoAlt from "../../../assets/images/pianoAlt.png";
 
 export const partituraImage = partitura;
 export const pianoImage = pianoAlt;
@@ -21,7 +21,7 @@ export const Page = styled(Stack)({
 
 export const ActivityArea = styled(Stack)(({ theme }) => ({
   flex: "1 0 auto",
-  minHeight: "clamp(540px, 68vh, 780px)",
+  minHeight: "100dvh",
   flexDirection: "row",
   borderTop: "1px solid #9ca3af",
   borderBottom: "none",
@@ -298,30 +298,6 @@ export const LevelChip = styled(Chip)({
 
   "& .MuiChip-label": {
     paddingInline: 12,
-  },
-});
-
-export const BackButton = styled(Button)({
-  display: "inline-flex",
-  alignItems: "center",
-  gap: 10,
-  minWidth: 0,
-  padding: "12px 20px",
-  border: "1px solid rgba(95, 74, 248, 0.18)",
-  color: "#2d214f",
-  borderRadius: 999,
-  backgroundColor: "#ffffff",
-  fontFamily: '"Inter", Arial, Helvetica, sans-serif',
-  fontSize: "0.95rem",
-  fontWeight: 700,
-  lineHeight: "normal",
-  textTransform: "none",
-  transition: "transform 0.2s ease, box-shadow 0.2s ease",
-
-  "&:hover": {
-    backgroundColor: "#ffffff",
-    transform: "translateY(-1px)",
-    boxShadow: "0 16px 36px rgba(95, 74, 248, 0.12)",
   },
 });
 
