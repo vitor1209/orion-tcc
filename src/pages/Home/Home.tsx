@@ -176,7 +176,13 @@ export const Home = () => {
               <Style.TextBlock>
                 <Style.FeatureTitle>{feature.title}</Style.FeatureTitle>
                 <Style.FeatureDescription>{feature.description}</Style.FeatureDescription>
-                <Button variante="Preto" tamanho="md">Saiba mais</Button>
+                <Button
+                  variante="Preto"
+                  tamanho="md"
+                  to={`/proposito?topico=${feature.slug}`}
+                >
+                  Saiba mais
+                </Button>
               </Style.TextBlock>
 
               <Style.ImageBlock>

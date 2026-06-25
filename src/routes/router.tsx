@@ -6,6 +6,7 @@ import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
 import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
 import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
 import { AtividadeGuiada1 } from "../pages/Atividades/AtividadeGuiada1/AtividadeGuiada1";
+import { Proposito } from "../pages/Proposito/Proposito";
 
 export const Router = createBrowserRouter([
   {
@@ -36,5 +37,9 @@ export const Router = createBrowserRouter([
   {
     path: "/atividade-guiada-1",
     element: <AtividadeGuiada1 />,
+  },
+  {
+    path: "/proposito",
+    element: <Proposito />,
   }
 ]);

@@ -34,6 +34,7 @@ export const features = [
       "Democratizamos o acesso à educação musical, permitindo que qualquer pessoa explore instrumentos sem barreiras financeiras ou físicas.",
     image: musicNotes,
     imageAlt: "Notas musicais",
+    slug: "aprendizado-acessivel",
     reverse: false,
   },
   {
@@ -43,6 +44,7 @@ export const features = [
       "A prática musical estimula áreas cerebrais ligadas à memória, atenção e criatividade, promovendo um desenvolvimento cognitivo completo.",
     image: neuron,
     imageAlt: "Neurônio",
+    slug: "cognicao",
     reverse: true,
   },
   {
@@ -52,6 +54,7 @@ export const features = [
       "Os movimentos precisos dos dedos fortalecem a coordenação motora fina e a conexão entre mãos e mente.",
     image: pianist,
     imageAlt: "Pianista",
+    slug: "desenvolvimento-motor",
     reverse: false,
   },
 ];
