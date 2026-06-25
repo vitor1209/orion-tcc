@@ -16,7 +16,7 @@ export const Page = styled(Stack)({
 
 export const LessonArea = styled(Stack)(({ theme }) => ({
   flex: "1 0 auto",
-  minHeight: "clamp(520px, 68vh, 780px)",
+  minHeight: "100dvh",
   flexDirection: "row",
   borderTop: "1px solid #9ca3af",
   borderBottom: "none",

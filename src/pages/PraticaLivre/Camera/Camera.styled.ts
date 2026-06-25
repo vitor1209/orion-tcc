@@ -12,6 +12,8 @@ export const PageWrapper = styled(Box)({
 export const ModalCard = styled(Stack)({
   position: "relative",
   zIndex: 1,
+  minHeight: "calc(100vh - 80px)",
+  boxSizing: "border-box",
   backgroundColor: "#ffffff",
   borderRadius: "20px",
   padding: "40px",
@@ -22,6 +24,7 @@ export const ModalCard = styled(Stack)({
   alignItems: "center",
 
   "@media (max-width: 900px)": {
+    minHeight: "calc(100vh - 40px)",
     margin: "20px 16px",
     padding: "24px",
   },
