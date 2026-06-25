@@ -1,12 +1,49 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography } from "@mui/material";
 import { Stack } from "@mui/system";
+import notaTop from "../../../assets/images/notas1.png";
+import notaBottom from "../../../assets/images/notas1.png";
 
 export const PageWrapper = styled(Box)({
   minHeight: "100vh",
   backgroundColor: "#f5f5f5",
   display: "flex",
   flexDirection: "column",
+  position: "relative",
+  overflow: "hidden",
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    top: -300,
+    right: 0,
+    width: "640px",
+    height: "640px",
+    backgroundImage: `url(${notaBottom})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "top right",
+    opacity: 0.18,
+    pointerEvents: "none",
+    zIndex: 0,
+    transform: "rotate(180deg)",
+  },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    bottom: "23%",
+    left: 0,
+    width: "640px",
+    height: "640px",
+    backgroundImage: `url(${ notaTop})`,
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "contain",
+    backgroundPosition: "bottom left",
+    opacity: 0.18,
+    pointerEvents: "none",
+    zIndex: 0,
+  },
 });
 
 export const ModalCard = styled(Stack)({
@@ -60,20 +97,20 @@ export const PageSubtitle = styled(Typography)({
 });
 
 export const CameraBox = styled(Box)({
-  backgroundColor: "#d9d9d9",
   borderRadius: "12px",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   overflow: "hidden",
-  margin: "0 auto",
-  aspectRatio: "5/3",
-  padding: "0 2rem",
   width: "100%",
-  maxWidth: "75vw",
   "@media (max-width: 600px)": {
     maxWidth: "100%",
-    aspectRatio: "4/3",
   },
 });
 
+export const BackButtonWrapper = styled(Box)({
+  position: "absolute",
+  top: "16px",
+  right: "16px",
+  zIndex: 2,
+});
