@@ -8,7 +8,11 @@ export const PageWrapper = styled.div`
 `;
 
 export const PageInner = styled.div`
+  display: flex;
+  flex-direction: column;
   max-width: 960px;
+  min-height: 100vh;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 32px 24px 24px;
 `;
@@ -72,6 +76,8 @@ export const Content = styled.main`
   display: flex;
   flex-direction: column;
   gap: 32px;
+  justify-content: center;
+  flex: 1;
   padding-bottom: 40px;
 `;
 

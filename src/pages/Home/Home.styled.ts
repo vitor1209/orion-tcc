@@ -290,11 +290,14 @@ export const DescricaoOnda = styled(Typography)({
 
 
 export const SectionProposito = styled(Box)({
+  minHeight: "100vh",
+  boxSizing: "border-box",
   backgroundColor: "#f0f0f0",
   padding: "64px 24px",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
+  justifyContent: "center",
 });
 
 export const HeaderProposito = styled(Stack)({
