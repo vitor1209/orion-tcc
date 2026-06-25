@@ -9,7 +9,9 @@ export const Button = ({
     disabled,
     children,
     espacamento,
+    icon: Icon,
     to,
+    ladoIcon = "esquerda",
     ...props
 }: ButtonProp) => {
     const linkProps = {
@@ -18,6 +20,15 @@ export const Button = ({
         rel: "noreferrer",
         to,
     }
+
+     const iconSizeMap = {
+        sm: 15,
+        md: 20,
+        lg: 25,
+        xl: 30,
+    }
+
+    const iconSize = iconSizeMap[tamanho] || 20
 
     return (
         <Component.ButtonVariants
@@ -29,7 +40,10 @@ export const Button = ({
             {...props}
             {...(to && linkProps)}
         >
+                    
+            {ladoIcon == "esquerda" && Icon && <Icon size={iconSize} />}
             {<span>{children}</span>}
+            {ladoIcon == "direita" && Icon && <Icon size={iconSize} />}
 
         </Component.ButtonVariants>
     )

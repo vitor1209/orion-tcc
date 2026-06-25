@@ -4,7 +4,7 @@ export const styles = {
         justifyContent: "center",
         flexDirection: {
             xs: "column",
-            md: "row",
+            md: "column",
         },
         alignItems: "center",
         width: "100%",
@@ -16,12 +16,12 @@ export const styles = {
         width: {
             xs: "300px",
             sm: "470px",
-            md: "520px",
+            md: "640px",
         },
         height: {
             xs: "210px",
             sm: "340px",
-            md: "380px",
+            md: "480px",
         },
         borderRadius: "16px",
         backgroundColor: "black",
@@ -30,12 +30,12 @@ export const styles = {
         width: {
             xs: "300px",
             sm: "470px",
-            md: "520px",
+            md: "640px",
         },
         height: {
             xs: "210px",
             sm: "340px",
-            md: "380px",
+            md: "480px",
         },
         borderRadius: "16px",
         border: "2px dashed",
@@ -57,9 +57,19 @@ export const styles = {
     },
     buttons: {
         display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-
+        width: "90%",
+        flexDirection: "row",
+        justifyContent: "space-between",
         gap: 2,
+    },
+    cameraWrapper: {
+        position: "relative",
+        borderRadius: "12px",
+        overflow: "hidden",
+        backgroundColor: "#d9d9d9",
+        minHeight: "200px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
     },
 };
