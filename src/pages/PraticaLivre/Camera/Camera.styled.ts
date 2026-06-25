@@ -77,3 +77,19 @@ export const CameraBox = styled(Box)({
   },
 });
 
+
+
+export const Topbar = styled(Stack)({
+  flexDirection: "row",
+    display: "flex",
+  alignItems: "center",
+  justifyContent: "space-between",
+  gap: "18px",
+  padding: "16px 0 24px",
+
+  "@media (max-width: 760px)": {
+    flexDirection: "column",
+    alignItems: "flex-start",
+  }
+})
+

@@ -61,7 +61,7 @@ export const Home = () => {
         </Style.HeroContent>
 
         <Style.ImageContainer>
-          <Style.HeroImage alt="Luva Orion" />
+          {/* <Style.HeroImage alt="Luva Orion" /> */}
         </Style.ImageContainer>
 
       </Style.HeroSection>

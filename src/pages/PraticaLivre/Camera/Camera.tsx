@@ -7,10 +7,14 @@ import { Camera } from "../../../components/Camera/Camera";
 import { Partitura } from "../../../components/Partitura/Partitura";
 import { Footer } from "../../../components/Footer/Footer";
 import * as Style from "./Camera.styled";
+import { Button } from "../../../components/Button/Button";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const CameraPage = () => {
   const { isStreamActive, sessionKey, startSession, stopSession, wsAtivo } =
     useCameraPage();
+
 
   return (
     <Style.PageWrapper>
@@ -50,14 +54,22 @@ const CameraSessao = ({
     useNotes(wsAtivo);
   useNotaSound({ notas: ultimaNota });
 
+  const navigate = useNavigate();
+
   return (
     <Stack spacing={2}>
 
-      <Style.EyebrowLabel>Modo Livre</Style.EyebrowLabel>
-
+      <Style.Topbar>
+        <Style.EyebrowLabel>Modo Livre</Style.EyebrowLabel>
+        <Button variante="Voltar" tamanho="sm" onClick={() => navigate("/")}>
+          <ArrowLeft size={16} />
+          Voltar
+        </Button>
+      </Style.Topbar>
       <Style.PageTitle>
         Faça os gestos da manossolfa para a câmera.
       </Style.PageTitle>
+
 
       <Style.PageSubtitle>
         Com base nos ensinamentos da parte teórica, toque com sua luva as notas
