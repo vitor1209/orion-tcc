@@ -4,7 +4,7 @@ export const styles = {
         flexDirection: "row",
 		alignItems: "center",
         gap: 2,
-        padding:"2 0",
+        padding:"2 0",  
     },
 
     header: {
@@ -16,6 +16,7 @@ export const styles = {
     },
 
     score: {
+        flex: 1,
         width: "100%",
         minHeight: "220px",
         borderRadius: 2,

@@ -7,6 +7,8 @@ import { Camera } from "../../../components/Camera/Camera";
 import { Partitura } from "../../../components/Partitura/Partitura";
 import { Footer } from "../../../components/Footer/Footer";
 import * as Style from "./Camera.styled";
+import { Button } from "../../../components/Button/Button";
+import { ArrowLeft } from "lucide-react";
 
 export const CameraPage = () => {
   const { isStreamActive, sessionKey, startSession, stopSession, wsAtivo } =
@@ -14,6 +16,14 @@ export const CameraPage = () => {
 
   return (
     <Style.PageWrapper>
+
+      <Style.BackButtonWrapper>
+        <Button variante="Voltar" tamanho="md" to="/SelecaoModo?modo=livre">
+          <ArrowLeft size={16} />
+          Voltar
+        </Button>
+      </Style.BackButtonWrapper>
+
       <Style.ModalCard>
         <CameraSessao
           key={sessionKey}
@@ -52,6 +62,9 @@ const CameraSessao = ({
         Com base nos ensinamentos da parte teórica, toque com sua luva as notas
         correspondentes dessa partitura
       </Style.PageSubtitle>
+      <Style.PageSubtitle>
+        Conexão WS: {statusConexao}
+      </Style.PageSubtitle>
 
       <Style.CameraBox>
         <Camera
@@ -59,7 +72,6 @@ const CameraSessao = ({
           onStart={onStart}
           onStop={onStop}
           ultimaNota={ultimaNota}
-          statusConexao={statusConexao}
         />
 
       </Style.CameraBox>

@@ -107,3 +107,10 @@ export const CameraBox = styled(Box)({
     maxWidth: "100%",
   },
 });
+
+export const BackButtonWrapper = styled(Box)({
+  position: "absolute",
+  top: "16px",
+  right: "16px",
+  zIndex: 2,
+});

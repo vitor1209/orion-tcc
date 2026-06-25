@@ -10,7 +10,10 @@ export const ButtonVariants = styled(ButtonBase, {
     | "Roxo"
     | "Gradiente"
     | "Preto"
+    | "Vermelho"
     | "Voltar"
+    | "Icone"
+
 }>(({ tamanho, espacamento, variante }) => {
     const sizeMap = {
         sm: { height: 30, fontSize: 14 },
@@ -122,11 +125,35 @@ export const ButtonVariants = styled(ButtonBase, {
             },
         }),
 
-        // ...(variante === "Roxo" && {
-        //     background: "linear-gradient(90deg,#C06CFF,#8B5CF6)",
-        //     color: "white",
-        //     "&:hover": { opacity: 0.5 },
-        // }),
+        ...(variante === "Icone" && {
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 0,
+            minWidth: 0,
+            width: height,
+            height: height,
+            borderRadius: "50%",
+            background: "linear-gradient(90deg,#b05cff,#8b5cf6)",
+            color: "white",
+            transition: "transform 0.3s",
+
+            "& > span": {
+                display: "none",
+            },
+
+            "&:hover": {
+                background: "linear-gradient(90deg, #9d4cff, #7c3aed)",
+                transform: "scale(1.05)",
+                filter: "none",
+            },
+        }),
+
+        ...(variante === "Vermelho" && {
+            background: "linear-gradient(90deg,#EF4444,#DC2626)",
+            color: "white",
+            "&:hover": { opacity: 0.5 },
+        }),
 
     }
 })

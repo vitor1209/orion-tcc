@@ -4,6 +4,7 @@ import { usePartitura } from "./Partitura.hook";
 import type { PartituraProps } from "./Partitura.type";
 import { useNotaSound } from "../../hooks/useNotaSound/useNotaSound.hook";
 import { Button } from "../Button/Button";
+import { CirclePlay, Trash2 } from "lucide-react";
 
 export const Partitura = ({ notas = [], onClear }: PartituraProps) => {
 	const {
@@ -14,25 +15,21 @@ export const Partitura = ({ notas = [], onClear }: PartituraProps) => {
 
 	return (
 		<Stack sx={styles.container}>
-			<Stack direction="column" spacing={2}>
+			<Stack direction="column" spacing={1}>
 				<Button
-					variante="Gradiente"
-					tamanho="md"
-					color="secondary"
+					variante="Icone"
+					tamanho="xl"
+					icon={CirclePlay}
 					onClick={tocarPartitura}
 					disabled={notas.length === 0}
-				>
-					Tocar partitura
-				</Button>
+				/>
 				<Button
-					variante="Gradiente"
-					tamanho="md"
-					color="error"
+					variante="Icone"
+					tamanho="xl"
+					icon={Trash2}
 					onClick={onClear}
 					disabled={notas.length === 0 || !onClear}
-				>
-					Apagar partitura
-				</Button>
+				/>
 			</Stack>
 
 			<Box sx={styles.score}>

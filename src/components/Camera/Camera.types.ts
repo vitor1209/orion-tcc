@@ -3,5 +3,4 @@ export type CameraProps = {
     onStart: () => void;
     onStop: () => void;
     ultimaNota: string | null;
-    statusConexao: string;
 };
