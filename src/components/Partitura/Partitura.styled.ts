@@ -1,8 +1,8 @@
 export const styles = {
 
     container: {
-        display: "flex",
-        flexDirection: "column",
+        flexDirection: "row",
+		alignItems: "center",
         gap: 2,
         padding:"2 0",
     },
@@ -21,7 +21,6 @@ export const styles = {
         borderRadius: 2,
         border: "1px solid",
         borderColor: "divider",
-        backgroundColor: "background.paper",
         overflow: "hidden",
         position: "relative",
         display: "flex",

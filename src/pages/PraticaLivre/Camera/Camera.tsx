@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import type { CameraSessaoProps } from "./Camera.types";
 import { useCameraPage } from "./Camera.hook";
 import { useNotes } from "../../../hooks/useNotes/useNotes.hook";
@@ -14,17 +14,6 @@ export const CameraPage = () => {
 
   return (
     <Style.PageWrapper>
-      {/* <img
-        src={notaTop}
-        alt=""
-        style={{ top: 0, right: 0, width: "220px" }}
-      />
-      <img
-        src={notaBottom}
-        alt=""
-        style={{ bottom: 0, left: 0, width: "200px" }}
-      /> */}
-
       <Style.ModalCard>
         <CameraSessao
           key={sessionKey}
@@ -64,22 +53,15 @@ const CameraSessao = ({
         correspondentes dessa partitura
       </Style.PageSubtitle>
 
-      <Stack>
-        <Typography variant="overline" color="text.secondary">
-          Conexão: {statusConexao}
-        </Typography>
-
-        <Typography variant="h6">
-          Última nota: {ultimaNota ?? ""}
-        </Typography>
-      </Stack>
-
       <Style.CameraBox>
         <Camera
           isStreamActive={isStreamActive}
           onStart={onStart}
           onStop={onStop}
+          ultimaNota={ultimaNota}
+          statusConexao={statusConexao}
         />
+
       </Style.CameraBox>
 
       <Partitura notas={listaNotas} onClear={limparNotas} />
