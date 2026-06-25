@@ -41,10 +41,7 @@ export const ButtonsContainer = styled(Box)({
   marginTop: "40px",
 });
 
-export const HeroImage = styled("img")({
-  width: "500px",
-  maxWidth: "100%",
-});
+
 
 export const HeroContent = styled(Box)({
   maxWidth: "1650px",
@@ -82,20 +79,26 @@ export const ImageContainer = styled(Box)({
   "&::before": {
     content: '""',
     position: "absolute",
-    width: "400px",
-    height: "400px",
+    width: "90%",
+    height: "90%",
 
     background:
       "radial-gradient(circle, rgba(118,95,255,.35) 0%, rgba(118,95,255,0) 70%)",
 
     top: "50%",
-    left: "50%",
+    left: "74%",
     transform: "translate(-80%, -50%)",
     // alteracao p nao quebrar a pagina
     zIndex: 0,
   },
 });
 
+export const HeroImage = styled("img")({
+  width: "800px",
+  maxWidth: "100%",
+  position: "relative",
+  zIndex: 10,
+});
 
 
 export const Section = styled(Box)({

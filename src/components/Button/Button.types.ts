@@ -20,4 +20,3 @@ export interface ButtonProp extends ButtonBaseProps {
     icon?: LucideIcon
     ladoIcon?: "esquerda" | "direita"
 }
-
