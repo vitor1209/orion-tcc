@@ -1,9 +1,9 @@
 import { Button, Chip, Paper, Slider, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
-import fundoNotas from "../../assets/images/fundo_notas.png";
-import partitura from "../../assets/images/partitura.png";
-import pianoAlt from "../../assets/images/pianoAlt.png";
+import fundoNotas from "../../../assets/images/fundo_notas.png";
+import partitura from "../../../assets/images/partitura.png";
+import pianoAlt from "../../../assets/images/pianoAlt.png";
 
 export const partituraImage = partitura;
 export const pianoImage = pianoAlt;
