@@ -1,18 +1,35 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import type { NotaType } from "../../utils/Notas.types";
 
 export const useLuva = () => {
   const [estado, setEstado] = useState<NotaType | null>(null);
+  const [conectado, setConectado] = useState(false);
+  const luvaRef = useRef<Luva | null>(null);
+
   const conectar = async () => {
+    if (luvaRef.current) return; 
+
     const luva = new Luva({}, (linha) => {
       setEstado(JSON.parse(linha));
     });
-    await luva.conectar();
+
+    luvaRef.current = luva;
+    const sucesso = await luva.conectar();
+    setConectado(sucesso);
+
+    if (!sucesso) {
+      luvaRef.current = null;
+    }
   };
 
-  return { conectar, estado };
-}
+  const desconectar = async () => {
+    await luvaRef.current?.desconectar();
+    luvaRef.current = null;
+    setConectado(false);
+  };
 
+  return { conectar, desconectar, estado, conectado };
+};
 type FiltroLuva = {
   usbVendorId?: number;
   usbProductId?: number;

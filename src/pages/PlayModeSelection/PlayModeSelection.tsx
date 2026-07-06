@@ -28,6 +28,7 @@ import {
   CardContent,
   CardIcon,
 } from "./PlayModeSelection.styles";
+import { useLuva } from "../../hooks/useLuva/useLuva.hook";
 
 export const ModeSelection = () => {
   const navigate = useNavigate();
@@ -38,9 +39,11 @@ export const ModeSelection = () => {
   const cameraRoute = isModoLivre
     ? "/PraticaLivre/Camera?interacao=camera"
     : "/introducao-guiada?interacao=camera";
-  const gloveRoute = isModoLivre
-    ? "/PraticaLivre/Camera?interacao=luva"
-    : "/introducao-guiada?interacao=luva";
+  // const gloveRoute = isModoLivre
+  //   ? "/conexaoLuva"
+  //   : "/introducao-guiada?interacao=luva";
+
+  const { conectar } = useLuva();
 
   return (
     <PageWrapper>
@@ -96,7 +99,7 @@ export const ModeSelection = () => {
                 delay: 0.05,
               }}
             >
-              <ModeCard onClick={() => navigate(gloveRoute)}>
+              <ModeCard onClick={conectar}>
                 <CardContent>
                   <CardTitle as="h2">Luva Musical</CardTitle>
 
