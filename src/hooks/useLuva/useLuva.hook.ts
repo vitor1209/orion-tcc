@@ -7,7 +7,8 @@ export const useLuva = () => {
   const luvaRef = useRef<Luva | null>(null);
 
   const conectar = async () => {
-    if (luvaRef.current) return; 
+    if (luvaRef.current) return;
+    await desconectar();
 
     const luva = new Luva({}, (linha) => {
       setEstado(JSON.parse(linha));
@@ -23,6 +24,10 @@ export const useLuva = () => {
   };
 
   const desconectar = async () => {
+    const ports = await navigator.serial.getPorts();
+    for (const port of ports) {
+      await port.forget();
+    }
     await luvaRef.current?.desconectar();
     luvaRef.current = null;
     setConectado(false);
@@ -87,18 +92,20 @@ class Luva {
   }
 
   async conectar(taxaEnvio = 9600): Promise<boolean> {
-    const filters = Object.keys(this.filtro).length
-      ? [this.filtro]
-      : undefined;
-    try {
 
+    const filters = Object.keys(this.filtro).length ? [this.filtro] : undefined;
+    try {
       this.porta = await navigator.serial.requestPort({ filters });
       await this.porta.open({ baudRate: taxaEnvio });
       this.conectado = true;
       this.lerContinuamente();
       return true;
     } catch (erro) {
-      console.error("Erro ao abrir a porta", erro);
+      if (erro instanceof DOMException && erro.name === "NotFoundError") {
+        console.warn("Usuário cancelou a seleção da porta");
+      } else {
+        console.error("Erro ao abrir a porta", erro);
+      }
       this.conectado = false;
       return false;
     }
