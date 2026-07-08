@@ -1,45 +1,103 @@
-import { Stack } from "@mui/material";
+import { Stack, ToggleButton, Typography } from "@mui/material";
 import { Footer } from "../../../components/Footer/Footer";
 import { Button } from "../../../components/Button/Button";
 import { ArrowLeft } from "lucide-react";
-import { EyebrowLabel, ModalCard, PageSubtitle, PageTitle } from "./Luva.styled";
+import { EyebrowLabel, ModalCard, PageSubtitle, PageTitle, ToggleButtonGroupStyled } from "./Luva.styled";
 import { Piano, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
 import "./stylesPiano.css";
-import { usePlaybackGravacao } from "./luva.utils";
-
-const firstNote = MidiNumbers.fromNote("c4");
-const lastNote = MidiNumbers.fromNote("b4");
-
-type EventoGravado = {
-    time: number;
-    duration: number;
-    midiNumber: number;
-}
-
-const eventosMock: EventoGravado[] = [
-    { time: 0, duration: 0.5, midiNumber: MidiNumbers.fromNote("c4") },
-    { time: 0.5, duration: 0.5, midiNumber: MidiNumbers.fromNote("d4") },
-    { time: 1, duration: 0.5, midiNumber: MidiNumbers.fromNote("e4") },
-    { time: 1.5, duration: 0.5, midiNumber: MidiNumbers.fromNote("f4") },
-    { time: 2, duration: 1, midiNumber: MidiNumbers.fromNote("g4") },
-];
-
+import { Partitura } from "../../../components/Partitura/Partitura";
+import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import fundoNotas from "../../../assets/images/fundo_notas.png";
 
 export const LuvaPage = () => {
-    const { onClickPlay } = usePlaybackGravacao(eventosMock);
+
+    const [oitava, setOitava] = useState<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">("4");
+
+    const handleChange = (
+        _: React.MouseEvent<HTMLElement>,
+        newValue: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8"
+    ) => {
+        if (newValue !== null) {
+            setOitava(newValue);
+        }
+    };
+
+    const firstNote = MidiNumbers.fromNote("c" + oitava);
+    const lastNote = MidiNumbers.fromNote("b" + oitava);
+
 
     return (
         <>
-            <Stack direction={"row"} minHeight={"95vh"} spacing={2}>
-                <Stack width={"30%"} bgcolor={"#F8FAFF"} p={"5% 10% 0 5%"} border={"#ECECEC 2px solid"}>
-                    <p>ajustes</p>
+            <Stack direction={"row"} minHeight={"100vh"} spacing={2}>
+                
+                <Stack width={"30%"} bgcolor={"#F8FAFF"} border={"#ECECEC 2px solid"}>
+
+                    <Stack p={"15% 15% 0 15%"}>
+                        <Typography fontSize={"1.8rem"} fontWeight={"bold"} >
+                            Ajustes:
+                        </Typography>
+
+                        <Stack mt={2}>
+                            <Typography
+                                variant="h6"
+                                fontWeight={600}
+                                sx={{ mb: 0.5 }}
+                            >
+                                Oitava:
+                            </Typography>
+
+                            <Typography
+                                variant="body2"
+                                color="text.secondary"
+                                sx={{ mb: 2 }}
+                            >
+                                Selecione a oitava desejada
+                            </Typography>
+
+                            <ToggleButtonGroupStyled
+                                value={oitava}
+                                exclusive
+                                onChange={handleChange}
+                                sx={{
+
+                                }}
+                            >
+                                <ToggleButton value="1">1</ToggleButton>
+                                <ToggleButton value="2">2</ToggleButton>
+                                <ToggleButton value="3">3</ToggleButton>
+                                <ToggleButton value="4">4</ToggleButton>
+                                <ToggleButton value="5">5</ToggleButton>
+                                <ToggleButton value="6">6</ToggleButton>
+                                <ToggleButton value="7">7</ToggleButton>
+                                <ToggleButton value="8">8</ToggleButton>
+                            </ToggleButtonGroupStyled>
+
+                        </Stack>
+                    </Stack>
+
+                    <Stack
+                        flex={1}
+                        justifyContent="center"
+                        alignItems="center"
+                        width={"100%"}
+                        sx={{
+                            backgroundImage: `url(${fundoNotas})`,
+                            backgroundRepeat: "no-repeat",
+                            backgroundPosition: "center",
+                            backgroundSize: "contain",
+                        }}
+                    />
+
                 </Stack>
-                <Stack width={"70%"} alignItems={"flex-end"} p={"5% 5% 0 10%"}>
+
+                <Stack width={"70%"} alignItems={"end"} p={"5% 5% 5% 0"}>
                     <Button variante="Voltar" tamanho="md" to="/SelecaoModo?modo=livre">
                         <ArrowLeft size={16} />
                         Voltar
                     </Button>
+
                     <Stack>
                         <ModalCard>
                             <EyebrowLabel>Modo Livre</EyebrowLabel>
@@ -48,19 +106,45 @@ export const LuvaPage = () => {
                                 Com base nos ensinamentos da parte teórica, toque com sua luva as notas correspondentes dessa partitura
                             </PageSubtitle>
 
-                            <Piano
-                                noteRange={{ first: firstNote, last: lastNote }}
-                                playNote={() => { }}
-                                stopNote={() => { }}
-                                width={800}
-                            />
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={oitava}
+                                    initial={{
+                                        opacity: 0,
+                                        scale: 0.98,
+                                        filter: "brightness(1)",
+                                    }}
+                                    animate={{
+                                        opacity: 1,
+                                        scale: 1,
+                                        filter: ["brightness(1)", "brightness(1.12)", "brightness(1)"],
+                                    }}
+                                    exit={{
+                                        opacity: 0,
+                                        scale: 0.98,
+                                    }}
+                                    transition={{
+                                        duration: 0.3,
+                                        ease: "easeOut",
+                                    }}
+                                >
 
+                                    <Piano
+                                        key={oitava}
+                                        noteRange={{ first: firstNote, last: lastNote }}
+                                        playNote={() => { }}
+                                        stopNote={() => { }}                                        
+                                        width={800}
+                                    />
+                                </motion.div>
+                            </AnimatePresence>
 
                         </ModalCard>
-                            <Button  variante="Gradiente" onClick={onClickPlay} tamanho={"sm"}>Play</Button>
+                        <Partitura notas={[]} onClear={() => { }} />
                     </Stack>
                 </Stack>
-            </Stack>
+                
+            </Stack >
 
             <Footer />
         </>

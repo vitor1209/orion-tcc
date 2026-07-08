@@ -1,8 +1,7 @@
-import { Stack, styled, Typography } from "@mui/material";
+import { Stack, styled, ToggleButtonGroup, Typography } from "@mui/material";
 
 export const ModalCard = styled(Stack)({
   zIndex: 1,
-  minHeight: "calc(100vh - 20%)",
   boxSizing: "border-box",
   backgroundColor: "#ffffff",
   borderRadius: "20px",
@@ -47,4 +46,37 @@ export const PageSubtitle = styled(Typography)({
   color: "#888888",
   lineHeight: 1.6,
   marginBottom: "24px",
+});
+
+export const ToggleButtonGroupStyled = styled(ToggleButtonGroup)({
+  display: "flex",
+  flexWrap: "wrap",
+  gap: 8,
+
+  "& .MuiToggleButton-root": {
+    flex: "0 0 calc(25% - 6px)",
+    boxSizing: "border-box",
+    border: "none",
+    borderRadius: "999px",
+    height: 32,
+    textTransform: "none",
+    color: "white",
+
+    background: "linear-gradient(90deg, #BDBDBD 0%, #9E9E9E 100%)",
+
+    "&:hover": {
+      background: "linear-gradient(90deg, #A8A8A8 0%, #8F8F8F 100%)",
+    },
+    "&.Mui-selected": {
+      color: "white",
+      background:
+        "linear-gradient(90deg, #9C4DFF 0%, #6C8DFF 100%)",
+      transition: "background 5s",
+    },
+
+    "&.Mui-selected:hover": {
+      background:
+        "linear-gradient(90deg, #8A40F5 0%, #5D80FF 100%)",
+    },
+  },
 });
