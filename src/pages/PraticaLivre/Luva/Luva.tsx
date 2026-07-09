@@ -7,13 +7,21 @@ import { Piano, MidiNumbers } from "react-piano";
 import "react-piano/dist/styles.css";
 import "./stylesPiano.css";
 import { Partitura } from "../../../components/Partitura/Partitura";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import fundoNotas from "../../../assets/images/fundo_notas.png";
+import { useLuva } from "../../../hooks/useLuva/useLuva.hook";
+import type { NotaComOitava } from "../../../utils/Notas.types";
+import { useNotaSound } from "../../../hooks/useNotaSound/useNotaSound.hook";
 
 export const LuvaPage = () => {
 
     const [oitava, setOitava] = useState<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">("4");
+    const [notas, setNotas] = useState<NotaComOitava[]>([]);
+
+    function limparNotas() {
+        setNotas([]);
+    }
 
     const handleChange = (
         _: React.MouseEvent<HTMLElement>,
@@ -24,14 +32,36 @@ export const LuvaPage = () => {
         }
     };
 
-    const firstNote = MidiNumbers.fromNote("c" + oitava);
-    const lastNote = MidiNumbers.fromNote("b" + oitava);
+    const firstNote = MidiNumbers.fromNote("C" + oitava);
+    const lastNote = MidiNumbers.fromNote("B" + oitava);
 
+    const { estado } = useLuva();
+
+    const notaAtiva = useMemo(() => {
+        if (!estado?.nota) return null;
+        try {
+            const notaComOitava = `${estado.nota}${oitava}` as NotaComOitava;
+            return MidiNumbers.fromNote(notaComOitava);
+        } catch {
+            return null;
+        }
+    }, [estado?.nota, oitava]);
+
+    // useEffect cuida do efeito colateral (atualizar o histórico de notas)
+    useEffect(() => {
+        if (!estado?.nota) return;
+        const notaComOitava = `${estado.nota}${oitava}` as NotaComOitava;
+        setNotas((prev) => [...prev, notaComOitava]);
+    }, [estado?.nota, oitava]);
+
+    const ultimaNota = notas[notas.length - 1];
+
+    useNotaSound({ notas: ultimaNota });
 
     return (
         <>
             <Stack direction={"row"} minHeight={"100vh"} spacing={2}>
-                
+
                 <Stack width={"30%"} bgcolor={"#F8FAFF"} border={"#ECECEC 2px solid"}>
 
                     <Stack p={"15% 15% 0 15%"}>
@@ -129,21 +159,24 @@ export const LuvaPage = () => {
                                     }}
                                 >
 
-                                    <Piano
-                                        key={oitava}
-                                        noteRange={{ first: firstNote, last: lastNote }}
-                                        playNote={() => { }}
-                                        stopNote={() => { }}                                        
-                                        width={800}
-                                    />
+                                    <div className="luva-piano-wrapper">
+                                        <Piano
+                                            key={oitava}
+                                            noteRange={{ first: firstNote, last: lastNote }}
+                                            playNote={() => { }}
+                                            stopNote={() => { }}
+                                            activeNotes={notaAtiva !== null ? [notaAtiva] : []}
+                                            width={800}
+                                        />
+                                    </div>
                                 </motion.div>
                             </AnimatePresence>
 
                         </ModalCard>
-                        <Partitura notas={[]} onClear={() => { }} />
+                        <Partitura notas={notas} onClear={limparNotas} />
                     </Stack>
                 </Stack>
-                
+
             </Stack >
 
             <Footer />

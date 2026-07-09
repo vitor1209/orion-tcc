@@ -4,7 +4,6 @@ import { useLuva } from "../../hooks/useLuva/useLuva.hook";
 export const useSelecaoModo = () => {
     const { conectar, estado, desconectar } = useLuva();
     const navigate = useNavigate();
-    console.log(estado, "estado da luva");
 
     const handleConectar = async () => {
         try {

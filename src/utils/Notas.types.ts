@@ -1,25 +1,21 @@
-export const NOTAS = [
-  "C3",
-  "D3",
-  "E3",
-  "F3",
-  "G3",
-  "A3",
-  "B3",
-  "C4",
-  "D4",
-  "E4",
-  "F4",
-  "G4",
-  "A4",
-  "B4",
-  "C5",
-  "D5",
-  "E5",
-  "F5",
-  "G5",
-  "A5",
-  "B5",
-] as const;
+export type Nota =
+  | "C"
+  | "C#"
+  | "D"
+  | "D#"
+  | "E"
+  | "F"
+  | "F#"
+  | "G"
+  | "G#"
+  | "A"
+  | "A#"
+  | "B";
 
-export type NotaType = typeof NOTAS[number];
+export type Oitava = "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8";
+
+export type NotaComOitava = `${Nota}${Oitava}`;
+
+export type NotaType = {
+  nota: Nota;
+};
