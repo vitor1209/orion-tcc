@@ -122,6 +122,11 @@ export const ButtonVariants = styled(ButtonBase, {
                 transform: "translateY(-1px)",
                 boxShadow: "0 16px 36px rgba(95, 74, 248, 0.12)",
             },
+
+            "@media (max-width: 520px)": {
+                padding: "10px 16px",
+                fontSize: "0.88rem",
+            },
         }),
 
         ...(variante === "Icone" && {
