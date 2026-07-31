@@ -28,6 +28,7 @@ export const ActivityArea = styled(Stack)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
+    minHeight: "auto",
   },
 }));
 
@@ -74,7 +75,7 @@ export const Sidebar = styled(Stack)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     width: "100%",
-    minHeight: 520,
+    minHeight: 460,
     padding: "34px 32px",
     borderRight: 0,
     borderBottom: "1px solid #d8dce6",
@@ -119,7 +120,7 @@ export const ControlHint = styled(Typography)({
 });
 
 export const VolumeSlider = styled(Slider)({
-  width: 156,
+  width: "min(156px, 100%)",
   height: 4,
   padding: "10px 0 2px",
   color: "#9b72ff",
@@ -251,12 +252,17 @@ export const Main = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const Header = styled(Stack)({
+export const Header = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "flex-start",
   justifyContent: "space-between",
   gap: 24,
-});
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: 18,
+  },
+}));
 
 export const HeadingGroup = styled(Stack)({
   gap: 10,
@@ -318,6 +324,10 @@ export const ActivityCard = styled(Paper)(({ theme }) => ({
     marginTop: 34,
     padding: "24px 24px 72px",
   },
+
+  [theme.breakpoints.down(420)]: {
+    padding: "22px 18px 72px",
+  },
 }));
 
 export const Eyebrow = styled(Typography)({
@@ -351,15 +361,24 @@ export const ScoreImage = styled("img")(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     marginBottom: 38,
   },
+
+  [theme.breakpoints.down(420)]: {
+    marginBottom: 28,
+  },
 }));
 
-export const PianoImage = styled("img")({
+export const PianoImage = styled("img")(({ theme }) => ({
   width: "min(52%, 430px)",
   minWidth: 260,
   height: "auto",
   alignSelf: "center",
   objectFit: "contain",
-});
+
+  [theme.breakpoints.down("sm")]: {
+    width: "min(100%, 360px)",
+    minWidth: 0,
+  },
+}));
 
 export const NextButton = styled(Button)({
   position: "absolute",
@@ -377,5 +396,13 @@ export const NextButton = styled(Button)({
   "&:hover": {
     background: "linear-gradient(135deg, #a853f4, #7178f4)",
     boxShadow: "none",
+  },
+
+  "@media (max-width: 520px)": {
+    right: 18,
+    bottom: 14,
+    width: 56,
+    minWidth: 56,
+    height: 48,
   },
 });
