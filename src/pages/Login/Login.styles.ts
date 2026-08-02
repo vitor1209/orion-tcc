@@ -1,5 +1,6 @@
-import { Box, Stack } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { keyframes } from "@emotion/react";
 
 import constelacaoOrion from "../../assets/images/constelacao_orion.png";
 import estrelas from "../../assets/images/estrelass.png";
@@ -9,6 +10,46 @@ import lua from "../../assets/images/lua.png";
 export const imagemConstelacao = constelacaoOrion;
 export const imagemLua = lua;
 export const imagemLogo = logo;
+
+const moverEstrelas = keyframes`
+  from {
+    background-position: left -80px top -120px;
+  }
+
+  to {
+    background-position: left 120px top 120px;
+  }
+`;
+
+const deslizarCamadaEstrelas = keyframes`
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-90px, 70px, 0);
+  }
+`;
+
+const pulsarEstrelas = keyframes`
+  0%, 100% {
+    opacity: 0.28;
+  }
+
+  50% {
+    opacity: 0.46;
+  }
+`;
+
+const flutuarAstro = keyframes`
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0);
+  }
+`;
 
 export const PaginaLogin = styled(Box)(({ theme }) => ({
   position: "relative",
@@ -20,18 +61,55 @@ export const PaginaLogin = styled(Box)(({ theme }) => ({
   padding: "112px 24px 72px",
   backgroundColor: "#101728",
   backgroundImage: `
-    url(${estrelas}),
     url(${estrelas})
   `,
-  backgroundRepeat: "repeat, repeat",
-  backgroundSize: "760px auto, 980px auto",
-  backgroundPosition: "left -80px top -120px, right -120px bottom -160px",
+  backgroundRepeat: "repeat",
+  backgroundSize: "1120px auto",
+  backgroundPosition: "left -80px top -120px",
+  animation: `${moverEstrelas} 95s linear infinite`,
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: "-20%",
+    backgroundImage: `
+      radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.8px),
+      radial-gradient(circle, rgba(190, 207, 255, 0.85) 0 1px, transparent 1.6px)
+    `,
+    backgroundSize: "320px 320px, 480px 480px",
+    backgroundPosition: "20px 40px, 150px 180px",
+    opacity: 0.2,
+    pointerEvents: "none",
+    animation: `${deslizarCamadaEstrelas} 70s linear infinite, ${pulsarEstrelas} 7s ease-in-out infinite`,
+  },
+
+  "&::after": {
+    content: '""',
+    position: "absolute",
+    inset: 0,
+    background:
+      "radial-gradient(circle at 48% 44%, rgba(139, 92, 246, 0.16), transparent 34%), radial-gradient(circle at 20% 22%, rgba(255, 255, 255, 0.08), transparent 22%)",
+    pointerEvents: "none",
+  },
 
   [theme.breakpoints.down("sm")]: {
     padding: "104px 18px 56px",
     alignItems: "flex-start",
-    backgroundSize: "680px auto, 820px auto",
-    backgroundPosition: "left -180px top -120px, right -220px bottom -140px",
+    backgroundSize: "940px auto",
+    backgroundPosition: "left -240px top -120px",
+
+    "&::before": {
+      backgroundSize: "360px 360px, 540px 540px",
+      opacity: 0.16,
+    },
+  },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+
+    "&::before": {
+      animation: "none",
+    },
   },
 }));
 
@@ -52,8 +130,9 @@ export const Constelacao = styled("img")(({ theme }) => ({
   left: "7%",
   top: "20%",
   width: "clamp(180px, 18vw, 260px)",
-  opacity: 0.92,
+  opacity: 0.72,
   pointerEvents: "none",
+  animation: `${flutuarAstro} 8s ease-in-out infinite`,
 
   [theme.breakpoints.down("md")]: {
     left: "4%",
@@ -67,6 +146,10 @@ export const Constelacao = styled("img")(({ theme }) => ({
     left: -22,
     top: 112,
   },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+  },
 }));
 
 export const Lua = styled("img")(({ theme }) => ({
@@ -74,8 +157,9 @@ export const Lua = styled("img")(({ theme }) => ({
   right: "8%",
   bottom: "13%",
   width: "clamp(170px, 16vw, 250px)",
-  opacity: 0.88,
+  opacity: 0.7,
   pointerEvents: "none",
+  animation: `${flutuarAstro} 9s ease-in-out infinite reverse`,
 
   [theme.breakpoints.down("md")]: {
     right: "4%",
@@ -88,24 +172,29 @@ export const Lua = styled("img")(({ theme }) => ({
     right: -28,
     bottom: 24,
   },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+  },
 }));
 
 export const CartaoLogin = styled(Stack)(({ theme }) => ({
   position: "relative",
   zIndex: 2,
-  width: "min(100%, 470px)",
-  minHeight: 470,
+  width: "min(100%, 500px)",
+  minHeight: 540,
   alignItems: "center",
-  padding: "32px 48px 40px",
-  border: "1px solid rgba(148, 163, 255, 0.95)",
-  borderRadius: 34,
-  backgroundColor: "rgba(246, 247, 251, 0.94)",
+  padding: "34px 52px 44px",
+  border: "1px solid rgba(206, 216, 255, 0.72)",
+  borderRadius: 36,
+  backgroundColor: "rgba(255, 255, 255, 0.78)",
   backgroundImage: `url(${estrelas})`,
   backgroundRepeat: "repeat",
-  backgroundSize: "920px auto",
+  backgroundSize: "1180px auto",
   backgroundPosition: "center",
+  backdropFilter: "blur(20px)",
   boxShadow:
-    "0 30px 90px rgba(0, 0, 0, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.9)",
+    "0 34px 100px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.94)",
   overflow: "hidden",
 
   "&::before": {
@@ -114,7 +203,7 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
     inset: 0,
     borderRadius: "inherit",
     background:
-      "radial-gradient(circle at top left, rgba(190, 116, 255, 0.22), transparent 34%), radial-gradient(circle at bottom right, rgba(120, 148, 255, 0.18), transparent 30%)",
+      "linear-gradient(180deg, rgba(255,255,255,0.56), transparent 42%), radial-gradient(circle at top left, rgba(190, 116, 255, 0.24), transparent 34%), radial-gradient(circle at bottom right, rgba(120, 148, 255, 0.2), transparent 30%)",
     pointerEvents: "none",
   },
 
@@ -124,71 +213,85 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
   },
 
   [theme.breakpoints.down("md")]: {
-    width: "min(100%, 440px)",
+    width: "min(100%, 460px)",
   },
 
   [theme.breakpoints.down("sm")]: {
     width: "100%",
     minHeight: "auto",
-    padding: "28px 22px 34px",
-    borderRadius: 24,
+    padding: "28px 22px 36px",
+    borderRadius: 28,
   },
 }));
 
 export const Abas = styled(Box)({
-  width: "min(100%, 310px)",
+  width: "100%",
+  maxWidth: 340,
   display: "grid",
   gridTemplateColumns: "1fr 1fr",
   padding: 5,
   borderRadius: 999,
-  backgroundColor: "rgba(219, 222, 230, 0.9)",
-  marginBottom: 34,
-  boxShadow: "inset 0 2px 8px rgba(15, 23, 42, 0.08)",
+  backgroundColor: "rgba(219, 222, 230, 0.72)",
+  marginBottom: 30,
+  boxShadow: "inset 0 2px 10px rgba(15, 23, 42, 0.1)",
 });
 
-export const AbaAtiva = styled("button")({
-  height: 40,
+export const Aba = styled("button", {
+  shouldForwardProp: (prop) => prop !== "selecionada",
+})<{ selecionada?: boolean }>(({ selecionada }) => ({
+  height: 42,
   border: 0,
   borderRadius: 999,
-  color: "#ffffff",
-  background: "linear-gradient(90deg, #b55cff, #8b5cf6)",
+  color: selecionada ? "#ffffff" : "#9a5cff",
+  background: selecionada ? "linear-gradient(90deg, #b55cff, #8b5cf6)" : "transparent",
   fontFamily: '"Ubuntu", "Inter", sans-serif',
   fontSize: "0.95rem",
   fontWeight: 800,
   cursor: "pointer",
-  boxShadow: "0 8px 18px rgba(139, 92, 246, 0.28)",
-});
-
-export const Aba = styled("button")({
-  height: 40,
-  border: 0,
-  borderRadius: 999,
-  color: "#9a5cff",
-  background: "transparent",
-  fontFamily: '"Ubuntu", "Inter", sans-serif',
-  fontSize: "0.95rem",
-  fontWeight: 800,
-  cursor: "pointer",
+  boxShadow: selecionada ? "0 8px 18px rgba(139, 92, 246, 0.28)" : "none",
   transition: "background-color 0.2s ease, color 0.2s ease",
 
   "&:hover": {
-    color: "#7c3aed",
-    backgroundColor: "rgba(255, 255, 255, 0.48)",
+    color: selecionada ? "#ffffff" : "#7c3aed",
+    backgroundColor: selecionada ? undefined : "rgba(255, 255, 255, 0.48)",
   },
-});
+}));
 
 export const Logo = styled("img")({
-  width: 156,
+  width: 132,
   height: "auto",
   objectFit: "contain",
-  marginBottom: 34,
+  marginBottom: 20,
+});
+
+export const CabecalhoLogin = styled(Stack)({
+  alignItems: "center",
+  textAlign: "center",
+  gap: 8,
+  marginBottom: 30,
+});
+
+export const TituloLogin = styled(Typography)({
+  fontFamily: '"Ubuntu", "Inter", sans-serif',
+  color: "#101322",
+  fontSize: "clamp(1.45rem, 4vw, 1.9rem)",
+  fontWeight: 800,
+  lineHeight: 1.15,
+});
+
+export const SubtituloLogin = styled(Typography)({
+  maxWidth: 340,
+  fontFamily: '"Ubuntu", "Inter", sans-serif',
+  color: "#4f5668",
+  fontSize: "clamp(0.94rem, 2.4vw, 1.02rem)",
+  lineHeight: 1.55,
 });
 
 export const Formulario = styled("form")({
   width: "100%",
   display: "flex",
   flexDirection: "column",
-  gap: 24,
+  gap: 18,
 });
 
 export const GrupoCampo = styled(Box)({
@@ -210,7 +313,7 @@ export const CampoSenha = styled(Box)({
 
 export const Campo = styled("input")({
   width: "100%",
-  height: 46,
+  height: 50,
   boxSizing: "border-box",
   border: "1.5px solid #bd72ff",
   borderRadius: 999,
@@ -244,34 +347,54 @@ export const IconeSenha = styled(Box)({
 
 export const EsqueceuSenha = styled("a")({
   display: "block",
-  marginTop: 10,
-  textAlign: "center",
-  color: "#333333",
+  marginTop: 12,
+  textAlign: "right",
+  color: "#5e3bb8",
   fontFamily: '"Ubuntu", "Inter", sans-serif',
-  fontSize: "0.78rem",
+  fontSize: "0.86rem",
+  fontWeight: 700,
   textDecoration: "none",
+
+  "&:hover": {
+    textDecoration: "underline",
+  },
 });
 
 export const AreaEntrar = styled(Box)(({ theme }) => ({
   position: "relative",
   display: "flex",
   justifyContent: "center",
-  marginTop: 32,
+  marginTop: 18,
 
   "& .MuiButtonBase-root": {
-    minWidth: 200,
-    minHeight: 46,
-    padding: "10px 42px",
+    width: "100%",
+    minHeight: 50,
+    padding: "12px 42px",
+    background: "#AA4CFF",
     fontSize: "1.05rem",
     fontWeight: 800,
-    boxShadow: "0 14px 28px rgba(146, 63, 231, 0.34)",
+    boxShadow: "0 16px 32px rgba(146, 63, 231, 0.34)",
+
+    "&:hover": {
+      background: "#AA4CFF",
+      filter: "brightness(0.95)",
+    },
+  },
+
+  "& .MuiButtonBase-root:disabled, & .MuiButtonBase-root.Mui-disabled": {
+    background: "#C27DFF !important",
+    color: "rgba(255, 255, 255, 0.82) !important",
+    boxShadow: "none",
+    filter: "none",
+    opacity: 0.72,
+    cursor: "not-allowed",
   },
 
   [theme.breakpoints.down("sm")]: {
-    marginTop: 22,
+    marginTop: 18,
 
     "& .MuiButtonBase-root": {
-      width: "min(100%, 210px)",
+      width: "100%",
     },
   },
 }));
