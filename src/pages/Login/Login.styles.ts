@@ -51,6 +51,40 @@ const flutuarAstro = keyframes`
   }
 `;
 
+const surgirCartao = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+`;
+
+const surgirConteudo = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(0, 10px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+`;
+
+const brilhoBotao = keyframes`
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+
+  to {
+    transform: translateX(220%) skewX(-18deg);
+  }
+`;
+
 export const PaginaLogin = styled(Box)(({ theme }) => ({
   position: "relative",
   minHeight: "100dvh",
@@ -196,6 +230,14 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
   boxShadow:
     "0 34px 100px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.94)",
   overflow: "hidden",
+  animation: `${surgirCartao} 0.6s cubic-bezier(.2,.8,.2,1) both`,
+  transition: "transform 0.28s ease, box-shadow 0.28s ease",
+
+  "&:hover": {
+    transform: "translateY(-4px)",
+    boxShadow:
+      "0 40px 110px rgba(0, 0, 0, 0.38), inset 0 1px 0 rgba(255, 255, 255, 0.96)",
+  },
 
   "&::before": {
     content: '""',
@@ -221,6 +263,15 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
     minHeight: "auto",
     padding: "28px 22px 36px",
     borderRadius: 28,
+  },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+    transition: "none",
+
+    "&:hover": {
+      transform: "none",
+    },
   },
 }));
 
@@ -249,11 +300,17 @@ export const Aba = styled("button", {
   fontWeight: 800,
   cursor: "pointer",
   boxShadow: selecionada ? "0 8px 18px rgba(139, 92, 246, 0.28)" : "none",
-  transition: "background-color 0.2s ease, color 0.2s ease",
+  transition:
+    "background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease",
 
   "&:hover": {
     color: selecionada ? "#ffffff" : "#7c3aed",
     backgroundColor: selecionada ? undefined : "rgba(255, 255, 255, 0.48)",
+    transform: "translateY(-1px)",
+  },
+
+  "&:active": {
+    transform: "translateY(0)",
   },
 }));
 
@@ -269,6 +326,7 @@ export const CabecalhoLogin = styled(Stack)({
   textAlign: "center",
   gap: 8,
   marginBottom: 30,
+  animation: `${surgirConteudo} 0.45s ease both`,
 });
 
 export const TituloLogin = styled(Typography)({
@@ -292,10 +350,16 @@ export const Formulario = styled("form")({
   display: "flex",
   flexDirection: "column",
   gap: 18,
+  animation: `${surgirConteudo} 0.45s ease 0.08s both`,
 });
 
 export const GrupoCampo = styled(Box)({
   width: "100%",
+  transition: "transform 0.2s ease",
+
+  "&:focus-within": {
+    transform: "translateY(-2px)",
+  },
 });
 
 export const Rotulo = styled("label")({
@@ -323,6 +387,13 @@ export const Campo = styled("input")({
   color: "#202434",
   fontFamily: '"Ubuntu", "Inter", sans-serif',
   fontSize: "0.95rem",
+  transition:
+    "background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease",
+
+  "&:hover": {
+    backgroundColor: "rgba(255, 255, 255, 0.82)",
+    borderColor: "#aa4cff",
+  },
 
   "&::placeholder": {
     color: "#9b9ba5",
@@ -367,6 +438,7 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
   marginTop: 18,
 
   "& .MuiButtonBase-root": {
+    position: "relative",
     width: "100%",
     minHeight: 50,
     padding: "12px 42px",
@@ -374,10 +446,34 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
     fontSize: "1.05rem",
     fontWeight: 800,
     boxShadow: "0 16px 32px rgba(146, 63, 231, 0.34)",
+    overflow: "hidden",
+
+    "&::after": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "38%",
+      height: "100%",
+      background:
+        "linear-gradient(90deg, transparent, rgba(255,255,255,0.38), transparent)",
+      transform: "translateX(-120%) skewX(-18deg)",
+      pointerEvents: "none",
+    },
 
     "&:hover": {
       background: "#AA4CFF",
       filter: "brightness(0.95)",
+      transform: "translateY(-2px)",
+      boxShadow: "0 20px 38px rgba(146, 63, 231, 0.42)",
+    },
+
+    "&:hover::after": {
+      animation: `${brilhoBotao} 0.8s ease`,
+    },
+
+    "&:active": {
+      transform: "translateY(0)",
     },
   },
 
@@ -388,6 +484,10 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
     filter: "none",
     opacity: 0.72,
     cursor: "not-allowed",
+
+    "&::after": {
+      display: "none",
+    },
   },
 
   [theme.breakpoints.down("sm")]: {
@@ -395,6 +495,20 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
 
     "& .MuiButtonBase-root": {
       width: "100%",
+    },
+  },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    "& .MuiButtonBase-root": {
+      transition: "none",
+
+      "&:hover": {
+        transform: "none",
+      },
+
+      "&:hover::after": {
+        animation: "none",
+      },
     },
   },
 }));
