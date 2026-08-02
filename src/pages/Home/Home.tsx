@@ -1,4 +1,4 @@
-import { Navbar } from "../../components/Navbar/Navbar";
+import { MenuNavegacao } from "../../components/Navbar/Navbar";
 import { Footer } from "../../components/Footer/Footer";
 import * as Style from "./Home.styled";
 import { Button } from "../../components/Button/Button";
@@ -20,7 +20,7 @@ export const Home = () => {
 
   return (
     <>
-      <Navbar />
+      <MenuNavegacao />
 
       <Style.HeroSection id="topo">
 

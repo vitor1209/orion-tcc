@@ -1,7 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { AppBar, Box } from "@mui/material";
 
-export const NavbarContainer = styled(AppBar)({
+export const ContainerNavegacao = styled(AppBar)({
   backgroundColor: "#FFFFFF",
   boxShadow: "none",
   position: "fixed", 
@@ -10,7 +10,7 @@ export const NavbarContainer = styled(AppBar)({
   color: "#050505",
 });
 
-export const NavbarContent = styled(Box)({
+export const ConteudoNavegacao = styled(Box)({
   maxWidth: "1120px",
   width: "100%",
   height: "47px",
@@ -35,7 +35,7 @@ export const Logo = styled("img")({
   display: "block",
 });
 
-export const NavLinks = styled(Box)({
+export const LinksNavegacao = styled(Box)({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
@@ -54,7 +54,7 @@ export const NavLinks = styled(Box)({
   },
 });
 
-export const AuthActions = styled(Box)({
+export const AcoesAutenticacao = styled(Box)({
   display: "flex",
   justifyContent: "flex-end",
   alignItems: "center",
@@ -73,7 +73,7 @@ export const AuthActions = styled(Box)({
   },
 });
 
-export const LoginLink = styled("a")({
+export const LinkEntrar = styled("a")({
   display: "inline-flex",
   alignItems: "center",
   gap: "7px",

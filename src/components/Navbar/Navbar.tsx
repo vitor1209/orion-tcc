@@ -2,37 +2,37 @@ import { LogIn } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
 import {
-  AuthActions,
-  LoginLink,
-  NavbarContainer,
-  NavbarContent,
+  AcoesAutenticacao,
+  LinkEntrar,
+  ContainerNavegacao,
+  ConteudoNavegacao,
   Logo,
-  NavLinks,
+  LinksNavegacao,
 } from "./Navbar.styles";
 
-export function Navbar() {
+export function MenuNavegacao() {
   return (
-    <NavbarContainer>
-      <NavbarContent>
+    <ContainerNavegacao>
+      <ConteudoNavegacao>
         <a href="#topo" aria-label="Voltar ao topo">
           <Logo src={logo} alt="Orion" />
         </a>
 
-        <NavLinks>
+        <LinksNavegacao>
           <a href="#como-funciona">Como Funciona</a>
           <a href="#pratique">Pratique</a>
           <a href="#proposito">Propósito</a>
           <a href="#dicionario">Dicionário</a>
-        </NavLinks>
+        </LinksNavegacao>
 
-        <AuthActions>
-          <LoginLink href="#entrar">
+        <AcoesAutenticacao>
+          <LinkEntrar href="#entrar">
             Entrar
             <LogIn size={18} strokeWidth={1.8} />
-          </LoginLink>
+          </LinkEntrar>
           <a href="#criar-conta">Criar conta</a>
-        </AuthActions>
-      </NavbarContent>
-    </NavbarContainer>
+        </AcoesAutenticacao>
+      </ConteudoNavegacao>
+    </ContainerNavegacao>
   );
 }
