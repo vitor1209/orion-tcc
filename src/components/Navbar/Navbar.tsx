@@ -1,6 +1,9 @@
+import { LogIn } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
 import {
+  AuthActions,
+  LoginLink,
   NavbarContainer,
   NavbarContent,
   Logo,
@@ -19,7 +22,16 @@ export function Navbar() {
           <a href="#como-funciona">Como Funciona</a>
           <a href="#pratique">Pratique</a>
           <a href="#proposito">Propósito</a>
+          <a href="#dicionario">Dicionário</a>
         </NavLinks>
+
+        <AuthActions>
+          <LoginLink href="#entrar">
+            Entrar
+            <LogIn size={18} strokeWidth={1.8} />
+          </LoginLink>
+          <a href="#criar-conta">Criar conta</a>
+        </AuthActions>
       </NavbarContent>
     </NavbarContainer>
   );
