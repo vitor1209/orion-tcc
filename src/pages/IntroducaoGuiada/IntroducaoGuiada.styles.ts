@@ -23,6 +23,7 @@ export const LessonArea = styled(Stack)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     flexDirection: "column",
+    minHeight: "auto",
   },
 }));
 
@@ -60,7 +61,7 @@ export const Sidebar = styled(Stack)(({ theme }) => ({
 
   [theme.breakpoints.down("sm")]: {
     width: "100%",
-    minHeight: 420,
+    minHeight: 360,
     padding: "28px 24px",
     borderRight: 0,
     borderBottom: "1px solid #d8dce6",
@@ -147,12 +148,17 @@ export const Main = styled(Stack)(({ theme }) => ({
   },
 }));
 
-export const Header = styled(Stack)({
+export const Header = styled(Stack)(({ theme }) => ({
   flexDirection: "row",
   alignItems: "flex-start",
   justifyContent: "space-between",
   gap: 24,
-});
+
+  [theme.breakpoints.down("sm")]: {
+    flexDirection: "column",
+    gap: 18,
+  },
+}));
 
 export const HeadingGroup = styled(Stack)({
   gap: 10,
@@ -213,6 +219,11 @@ export const TheoryCard = styled(Paper)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     marginTop: 34,
     padding: "24px 28px 64px 24px",
+    height: "min(560px, 72vh)",
+  },
+
+  [theme.breakpoints.down(420)]: {
+    padding: "22px 20px 64px",
   },
 }));
 
@@ -230,7 +241,7 @@ export const CardTitle = styled(Typography)({
   marginBottom: 16,
 });
 
-export const Copy = styled(Stack)({
+export const Copy = styled(Stack)(({ theme }) => ({
   flex: 1,
   minHeight: 0,
   maxWidth: "none",
@@ -254,11 +265,15 @@ export const Copy = styled(Stack)({
     borderRadius: 999,
     background: "linear-gradient(180deg, #dc66ff 0%, #7d8dff 100%)",
   },
-});
+
+  [theme.breakpoints.down("sm")]: {
+    paddingRight: 18,
+  },
+}));
 
 export const Paragraph = styled(Typography)({
   color: "#60636c",
-  fontSize: "clamp(0.76rem, 0.8vw, 0.9rem)",
+  fontSize: "clamp(0.86rem, 1vw, 0.95rem)",
   lineHeight: 1.55,
 });
 
@@ -278,5 +293,13 @@ export const NextButton = styled(Button)({
   "&:hover": {
     background: "linear-gradient(135deg, #a853f4, #7178f4)",
     boxShadow: "none",
+  },
+
+  "@media (max-width: 520px)": {
+    right: 18,
+    bottom: 14,
+    width: 56,
+    minWidth: 56,
+    height: 48,
   },
 });

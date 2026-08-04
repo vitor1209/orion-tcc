@@ -4,6 +4,10 @@ export const FooterWrapper = styled.footer`
   background-color: #f5f5f5;
   border-top: 1px solid #e0e0e0;
   padding: 56px 40px;
+
+  @media (max-width: 640px) {
+    padding: 42px 22px;
+  }
 `;
 
 export const Inner = styled.div`
@@ -11,7 +15,14 @@ export const Inner = styled.div`
   margin: 0 auto;
   display: flex;
   flex-direction: row;
-  gap: 180px;
+  gap: clamp(48px, 12vw, 180px);
+
+  @media (max-width: 760px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 34px;
+    text-align: center;
+  }
 `;
 
 export const BrandBlock = styled.div`
@@ -55,6 +66,10 @@ export const LinksBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 760px) {
+    align-items: center;
+  }
 `;
 
 export const CollabBlock = styled.div`
@@ -62,6 +77,10 @@ export const CollabBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @media (max-width: 760px) {
+    align-items: center;
+  }
 `;
 
 export const ColumnTitle = styled.h4`
