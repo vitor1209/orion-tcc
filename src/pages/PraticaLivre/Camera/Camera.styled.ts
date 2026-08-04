@@ -17,8 +17,8 @@ export const PageWrapper = styled(Box)({
     position: "absolute",
     top: -300,
     right: 0,
-    width: "640px",
-    height: "640px",
+    width: "min(640px, 90vw)",
+    height: "min(640px, 90vw)",
     backgroundImage: `url(${notaBottom})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
@@ -34,8 +34,8 @@ export const PageWrapper = styled(Box)({
     position: "absolute",
     bottom: "23%",
     left: 0,
-    width: "640px",
-    height: "640px",
+    width: "min(640px, 90vw)",
+    height: "min(640px, 90vw)",
     backgroundImage: `url(${ notaTop})`,
     backgroundRepeat: "no-repeat",
     backgroundSize: "contain",
@@ -61,9 +61,15 @@ export const ModalCard = styled(Stack)({
   alignItems: "center",
 
   "@media (max-width: 900px)": {
+    maxWidth: "calc(100vw - 32px)",
     minHeight: "calc(100vh - 40px)",
     margin: "20px 16px",
     padding: "24px",
+  },
+
+  "@media (max-width: 520px)": {
+    borderRadius: "16px",
+    padding: "20px 16px",
   },
 });
 
@@ -94,6 +100,10 @@ export const PageSubtitle = styled(Typography)({
   color: "#888888",
   lineHeight: 1.6,
   marginBottom: "24px",
+
+  "@media (max-width: 600px)": {
+    fontSize: "0.84rem",
+  },
 });
 
 export const CameraBox = styled(Box)({
@@ -113,4 +123,10 @@ export const BackButtonWrapper = styled(Box)({
   top: "16px",
   right: "16px",
   zIndex: 2,
+
+  "@media (max-width: 600px)": {
+    position: "static",
+    alignSelf: "flex-end",
+    marginBottom: "12px",
+  },
 });

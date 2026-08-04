@@ -17,6 +17,10 @@ export const PageInner = styled.div`
   box-sizing: border-box;
   margin: 0 auto;
   padding: 32px 24px 24px;
+
+  @media (max-width: 520px) {
+    padding: 22px 16px 24px;
+  }
 `;
 
 export const Topbar = styled.header`
@@ -30,6 +34,10 @@ export const Topbar = styled.header`
     flex-direction: column;
     align-items: flex-start;
   }
+
+  @media (max-width: 520px) {
+    padding-bottom: 18px;
+  }
 `;
 
 export const BrandBlock = styled.div`
@@ -41,6 +49,10 @@ export const BrandBlock = styled.div`
 export const LogoImage = styled.img`
   height: 52px;
   object-fit: contain;
+
+  @media (max-width: 520px) {
+    height: 44px;
+  }
 `;
 
 export const Tagline = styled.p`
@@ -51,6 +63,11 @@ export const Tagline = styled.p`
   font-weight: 700;
   color: #5f4af8;
   margin: 0;
+
+  @media (max-width: 520px) {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+  }
 `;
 
 export const AccentLine = styled.div`
@@ -59,6 +76,10 @@ export const AccentLine = styled.div`
   justify-content: space-between;
   gap: 18px;
   margin-bottom: 36px;
+
+  @media (max-width: 520px) {
+    margin-bottom: 22px;
+  }
 
   div {
     flex: 1;
@@ -81,11 +102,16 @@ export const Content = styled.main`
   justify-content: center;
   flex: 1;
   padding-bottom: 40px;
+
+  @media (max-width: 520px) {
+    gap: 22px;
+    padding-bottom: 28px;
+  }
 `;
 
 export const WelcomeTitle = styled.h1`
   font-family: "Inter", Arial, Helvetica, sans-serif;
-  font-size: clamp(2.8rem, 4vw, 4.5rem);
+  font-size: clamp(2.25rem, 9vw, 4.5rem);
   font-weight: 700;
   line-height: 1.02;
   letter-spacing: -0.03em;
@@ -100,11 +126,16 @@ export const WelcomeSubtitle = styled.p`
   line-height: 1.9;
   color: #515d7d;
   margin: 0;
+
+  @media (max-width: 520px) {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
 `;
 
 export const CardsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 320px));
   justify-content: center;
   gap: 14px;
 
@@ -131,6 +162,11 @@ export const InstrumentCard = styled.article`
   border: 1px solid rgba(124, 92, 255, 0.14);
   box-shadow: 0 12px 24px rgba(77, 44, 176, 0.08);
   overflow: visible;
+
+  @media (max-width: 520px) {
+    min-height: 190px;
+    padding: 24px 20px 14px;
+  }
 `;
 
 export const CardImageWrapper = styled.div`
@@ -212,6 +248,7 @@ export const LevelsContainer = styled.div`
 
   @media (max-width: 600px) {
     flex-direction: column;
+    align-items: stretch;
   }
 `;
 
@@ -265,6 +302,10 @@ export const LevelButton = styled.button<LevelButtonProps>`
   &:hover {
     transform: translateY(-2px);
   }
+
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const ContinueButton = styled.button`
@@ -303,5 +344,9 @@ export const ContinueButton = styled.button`
     opacity: 0.5;
     cursor: not-allowed;
     box-shadow: none;
+  }
+
+  @media (max-width: 520px) {
+    width: 100%;
   }
 `;
