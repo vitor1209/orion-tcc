@@ -51,10 +51,19 @@ export const LuvaPage = () => {
     useEffect(() => {
         if (!estado?.nota) return;
         const notaComOitava = `${estado.nota}${oitava}` as NotaComOitava;
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setNotas((prev) => [...prev, notaComOitava]);
-    }, [estado?.nota, oitava]);
+
+    }, [estado?.nota, oitava, notas]);
 
     const ultimaNota = notas[notas.length - 1];
+
+    function handleNotaClicada(midiNumber: number) {
+        const { note } = MidiNumbers.getAttributes(midiNumber); // ex: "C4"
+        setNotas((prev) => [...prev, note as NotaComOitava]);
+    }
+
+    console.log("ultimaNota", ultimaNota);
 
     useNotaSound({ notas: ultimaNota });
 
@@ -163,7 +172,7 @@ export const LuvaPage = () => {
                                         <Piano
                                             key={oitava}
                                             noteRange={{ first: firstNote, last: lastNote }}
-                                            playNote={() => { }}
+                                            playNote={handleNotaClicada}
                                             stopNote={() => { }}
                                             activeNotes={notaAtiva !== null ? [notaAtiva] : []}
                                             width={800}
