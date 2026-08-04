@@ -16,7 +16,7 @@ import { useNotaSound } from "../../../hooks/useNotaSound/useNotaSound.hook";
 
 export const LuvaPage = () => {
 
-    const [oitava, setOitava] = useState<"1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">("4");
+    const [oitava, setOitava] = useState<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">("4");
     const [notas, setNotas] = useState<NotaComOitava[]>([]);
 
     function limparNotas() {
@@ -25,15 +25,15 @@ export const LuvaPage = () => {
 
     const handleChange = (
         _: React.MouseEvent<HTMLElement>,
-        newValue: "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8"
+        newValue: "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8"
     ) => {
         if (newValue !== null) {
             setOitava(newValue);
         }
     };
 
-    const firstNote = MidiNumbers.fromNote("C" + oitava);
-    const lastNote = MidiNumbers.fromNote("B" + oitava);
+    const firstNote = MidiNumbers.fromNote(oitava === "0" ? "A0" : `C${oitava}`);
+    const lastNote = MidiNumbers.fromNote(oitava === "8" ? "C8" : `B${oitava}`);
 
     const { estado } = useLuva();
 
@@ -46,6 +46,18 @@ export const LuvaPage = () => {
             return null;
         }
     }, [estado?.nota, oitava]);
+
+    const LARGURA_POR_TECLA_BRANCA = 113;
+
+    const larguraPiano = useMemo(() => {
+        let teclasBrancas = 0;
+        for (let midi = firstNote; midi <= lastNote; midi++) {
+            const { pitchName } = MidiNumbers.getAttributes(midi);
+            const isAcidental = pitchName.length > 1;
+            if (!isAcidental) teclasBrancas++;
+        }
+        return teclasBrancas * LARGURA_POR_TECLA_BRANCA;
+    }, [firstNote, lastNote]);
 
     // useEffect cuida do efeito colateral (atualizar o histórico de notas)
     useEffect(() => {
@@ -103,6 +115,7 @@ export const LuvaPage = () => {
 
                                 }}
                             >
+                                <ToggleButton value="0">0</ToggleButton>
                                 <ToggleButton value="1">1</ToggleButton>
                                 <ToggleButton value="2">2</ToggleButton>
                                 <ToggleButton value="3">3</ToggleButton>
@@ -175,7 +188,7 @@ export const LuvaPage = () => {
                                             playNote={handleNotaClicada}
                                             stopNote={() => { }}
                                             activeNotes={notaAtiva !== null ? [notaAtiva] : []}
-                                            width={800}
+                                            width={larguraPiano}
                                         />
                                     </div>
                                 </motion.div>

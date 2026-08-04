@@ -44,10 +44,10 @@ export const useNotaSound = ({ notas }: UseNotaSoundProps) => {
         if (!samplerRef.current?.loaded) return;
         if (Array.isArray(notas)) return;
 
-        const ultimaNota = notas;
-        if (!MAPA_AUDIO_NOTAS_PIANO[ultimaNota]) return;
+        const {nota} = notas
+        if (!MAPA_AUDIO_NOTAS_PIANO[nota]) return;
 
-        samplerRef.current.triggerAttackRelease(ultimaNota, "4n");
+        samplerRef.current.triggerAttackRelease(nota, "4n");
     }, [notas]);
 
     return { tocarPartitura };

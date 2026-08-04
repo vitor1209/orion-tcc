@@ -39,9 +39,9 @@ export const ModeSelection = () => {
   // const cameraRoute = isModoLivre
   //   ? "/PraticaLivre/Camera?interacao=camera"
   //   : "/introducao-guiada?interacao=camera";
-  // const gloveRoute = isModoLivre
-  //   ? "/conexaoLuva"
-  //   : "/introducao-guiada?interacao=luva";
+  const gloveRoute = isModoLivre
+    ? "/conexaoLuva"
+    : "/introducao-guiada?interacao=luva";
 
   const { handleConectar, desconectar } = useSelecaoModo();
 
@@ -76,7 +76,7 @@ export const ModeSelection = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ModeCard onClick={desconectar}>
+              <ModeCard onClick={() => navigate(gloveRoute)}>
                 <CardContent>
                   <CardTitle as="h2">Câmera</CardTitle>
 
