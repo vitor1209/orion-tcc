@@ -39,16 +39,16 @@ export const useNotaSound = ({ notas }: UseNotaSoundProps) => {
         };
     }, []);
 
-    useEffect(() => {
-        if (!notas) return;
-        if (!samplerRef.current?.loaded) return;
-        if (Array.isArray(notas)) return;
+    // useEffect(() => {
+    //     if (!notas) return;
+    //     if (!samplerRef.current?.loaded) return;
+    //     if (Array.isArray(notas)) return;
 
-        const {nota} = notas
-        if (!MAPA_AUDIO_NOTAS_PIANO[nota]) return;
+    //     const {nota} = notas
+    //     if (!MAPA_AUDIO_NOTAS_PIANO[nota]) return;
 
-        samplerRef.current.triggerAttackRelease(nota, "4n");
-    }, [notas]);
+    //     samplerRef.current.triggerAttackRelease(nota, "4n");
+    // }, [notas]);
 
     return { tocarPartitura };
 };
