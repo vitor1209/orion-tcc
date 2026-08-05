@@ -14,18 +14,16 @@ export function IntroducaoGuiada() {
   const interaction = params.get("interacao");
   const modo = params.get("modo") ?? "guiado";
   const instrumento = params.get("instrumento") ?? "teclado";
-  const nivel = params.get("nivel") ?? "iniciante";
   const fluxoQuery = new URLSearchParams({
     modo,
     interacao: interaction ?? "luva",
     instrumento,
-    nivel,
   });
   const nextPage =
     interaction === "camera"
       ? `/PraticaLivre/Camera?${fluxoQuery.toString()}`
       : `/atividade-guiada-1?${fluxoQuery.toString()}`;
-  const backPage = `/selecao-atividade?${fluxoQuery.toString()}`;
+  const backPage = `/Teclado?${fluxoQuery.toString()}`;
 
   return (
     <S.Page>
@@ -55,7 +53,7 @@ export function IntroducaoGuiada() {
             </S.HeadingGroup>
 
             <Button variante="Voltar" tamanho="md" onClick={() => navigate(backPage)}>
-              <ArrowLeft size={16} />
+              <ArrowLeft size={16} />pm run
               Voltar
             </Button>
           </S.Header>
