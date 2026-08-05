@@ -1,5 +1,5 @@
-import type { NotaType } from "../../utils/Notas.types";
+import type { NotaComOitava } from "../../utils/Notas.types";
 
 export type ResponseWs = {
-    nota?: NotaType;
+    nota?: NotaComOitava;
   };

@@ -44,11 +44,31 @@ export const useNotaSound = ({ notas }: UseNotaSoundProps) => {
         if (!samplerRef.current?.loaded) return;
         if (Array.isArray(notas)) return;
 
-        const ultimaNota = notas;
-        if (!MAPA_AUDIO_NOTAS_PIANO[ultimaNota]) return;
+        const notaKey = notas as keyof typeof MAPA_AUDIO_NOTAS_PIANO;
+        if (!MAPA_AUDIO_NOTAS_PIANO[notaKey]) return;
 
-        samplerRef.current.triggerAttackRelease(ultimaNota, "4n");
+        samplerRef.current.triggerAttackRelease(notaKey as string, "4n");
     }, [notas]);
 
-    return { tocarPartitura };
+    const play = async (notaOuNotas: UseNotaSoundProps['notas']) => {
+        if (!notaOuNotas) return;
+        try {
+            await Tone.start();
+        } catch {
+        }
+        if (!samplerRef.current?.loaded) return;
+
+        const lista = (Array.isArray(notaOuNotas) ? notaOuNotas : [notaOuNotas])
+            .filter(n => MAPA_AUDIO_NOTAS_PIANO[n as keyof typeof MAPA_AUDIO_NOTAS_PIANO]);
+
+        if (!lista.length) return;
+
+        const duracaoNota = Tone.Time("4n").toSeconds();
+
+        lista.forEach((n, i) => {
+            samplerRef.current!.triggerAttackRelease(n as string, duracaoNota, Tone.now() + i * duracaoNota);
+        });
+    };
+
+    return { tocarPartitura, play };
 };

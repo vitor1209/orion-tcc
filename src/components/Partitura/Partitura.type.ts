@@ -1,6 +1,6 @@
-import type { NotaType } from "../../utils/Notas.types";
+import type { NotaComOitava } from "../../utils/Notas.types";
 
 export type PartituraProps = {
-    notas?: NotaType[];
+    notas?: NotaComOitava[];
     onClear?: () => void;
 };

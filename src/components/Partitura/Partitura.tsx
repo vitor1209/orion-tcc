@@ -14,7 +14,7 @@ export const Partitura = ({ notas = [], onClear }: PartituraProps) => {
 	const { tocarPartitura } = useNotaSound({ notas });
 
 	return (
-		<Stack sx={styles.container}>
+		<Stack sx={styles.container} >
 			<Stack direction="column" spacing={1}>
 				<Button
 					variante="Icone"
