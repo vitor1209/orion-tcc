@@ -48,7 +48,7 @@ export function MenuNavegacao() {
             Entrar
             <LogIn size={18} strokeWidth={1.8} />
           </LinkEntrar>
-          <a href="#criar-conta">Criar conta</a>
+          <a href="/login?aba=cadastro">Criar conta</a>
         </AcoesAutenticacao>
 
         <BotaoMenuMobile
@@ -83,7 +83,7 @@ export function MenuNavegacao() {
             Entrar
             <LogIn size={18} strokeWidth={1.8} />
           </LinkEntrar>
-          <a href="#criar-conta" onClick={fecharMenu}>
+          <a href="/login?aba=cadastro" onClick={fecharMenu}>
             Criar conta
           </a>
         </LinksMenuMobile>

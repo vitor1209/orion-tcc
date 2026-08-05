@@ -78,12 +78,12 @@ const surgirConteudo = keyframes`
 const trocarFormulario = keyframes`
   from {
     opacity: 0;
-    transform: translate3d(16px, 0, 0);
+    transform: translateX(18px);
   }
 
   to {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
 `;
 
@@ -233,11 +233,8 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
   padding: "34px 52px 44px",
   border: "1px solid rgba(206, 216, 255, 0.72)",
   borderRadius: 36,
-  backgroundColor: "rgba(255, 255, 255, 0.78)",
-  backgroundImage: `url(${estrelas})`,
-  backgroundRepeat: "repeat",
-  backgroundSize: "1180px auto",
-  backgroundPosition: "center",
+  backgroundColor: "#ffffff",
+  backgroundImage: "none",
   backdropFilter: "blur(20px)",
   boxShadow:
     "0 34px 100px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.94)",
@@ -256,8 +253,7 @@ export const CartaoLogin = styled(Stack)(({ theme }) => ({
     position: "absolute",
     inset: 0,
     borderRadius: "inherit",
-    background:
-      "linear-gradient(180deg, rgba(255,255,255,0.56), transparent 42%), radial-gradient(circle at top left, rgba(190, 116, 255, 0.24), transparent 34%), radial-gradient(circle at bottom right, rgba(120, 148, 255, 0.2), transparent 30%)",
+    background: "transparent",
     pointerEvents: "none",
   },
 
@@ -333,12 +329,24 @@ export const Logo = styled("img")({
   marginBottom: 20,
 });
 
+export const ConteudoFormularioAnimado = styled(Stack, {
+  shouldForwardProp: (prop) => prop !== "cadastroAtivo",
+})<{ cadastroAtivo?: boolean }>(({ cadastroAtivo }) => ({
+  width: "100%",
+  alignItems: "center",
+  animation: `${trocarFormulario} 0.28s ease both`,
+  transformOrigin: cadastroAtivo ? "top right" : "top left",
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+  },
+}));
+
 export const CabecalhoLogin = styled(Stack)({
   alignItems: "center",
   textAlign: "center",
   gap: 8,
   marginBottom: 30,
-  animation: `${surgirConteudo} 0.45s ease both`,
 });
 
 export const TituloLogin = styled(Typography)({
@@ -362,7 +370,6 @@ export const Formulario = styled("form")({
   display: "flex",
   flexDirection: "column",
   gap: 18,
-  animation: `${trocarFormulario} 0.35s ease both`,
 });
 
 export const GrupoCampo = styled(Box)({

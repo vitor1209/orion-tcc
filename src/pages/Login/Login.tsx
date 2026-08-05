@@ -1,14 +1,16 @@
 import { ArrowLeft, Eye, EyeOff } from "lucide-react";
 import type { FormEvent } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 import { Button } from "../../components/Button/Button";
 import * as S from "./Login.styles";
 
 export function Login() {
   const navigate = useNavigate();
-  const [modoFormulario, setModoFormulario] = useState<"entrar" | "cadastro">("entrar");
+  const [searchParams] = useSearchParams();
+  const abaInicial = searchParams.get("aba") === "cadastro" ? "cadastro" : "entrar";
+  const [modoFormulario, setModoFormulario] = useState<"entrar" | "cadastro">(abaInicial);
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -97,119 +99,121 @@ export function Login() {
 
         <S.Logo src={S.imagemLogo} alt="Orion" />
 
-        {cadastroAtivo ? (
-          <S.CabecalhoLogin>
-            <S.TituloLogin>Crie sua conta</S.TituloLogin>
-            <S.SubtituloLogin>
-              Comece sua jornada musical com a Orion em poucos passos.
-            </S.SubtituloLogin>
-          </S.CabecalhoLogin>
-        ) : (
-          <S.CabecalhoLogin>
-            <S.TituloLogin>Bem-vindo de volta</S.TituloLogin>
-            <S.SubtituloLogin>
-              Continue de onde parou na sua jornada musical.
-            </S.SubtituloLogin>
-          </S.CabecalhoLogin>
-        )}
+        <S.ConteudoFormularioAnimado key={modoFormulario} cadastroAtivo={cadastroAtivo}>
+          {cadastroAtivo ? (
+            <S.CabecalhoLogin>
+              <S.TituloLogin>Crie sua conta</S.TituloLogin>
+              <S.SubtituloLogin>
+                Comece sua jornada musical com a Orion em poucos passos.
+              </S.SubtituloLogin>
+            </S.CabecalhoLogin>
+          ) : (
+            <S.CabecalhoLogin>
+              <S.TituloLogin>Bem-vindo de volta</S.TituloLogin>
+              <S.SubtituloLogin>
+                Continue de onde parou na sua jornada musical.
+              </S.SubtituloLogin>
+            </S.CabecalhoLogin>
+          )}
 
-        <S.Formulario onSubmit={enviarFormulario} noValidate>
-          {cadastroAtivo && (
+          <S.Formulario onSubmit={enviarFormulario} noValidate>
+            {cadastroAtivo && (
+              <S.GrupoCampo>
+                <S.Rotulo htmlFor="nome">Nome</S.Rotulo>
+                <S.Campo
+                  id="nome"
+                  type="text"
+                  placeholder="Digite seu nome de usuário"
+                  value={nome}
+                  onChange={(event) => setNome(event.target.value)}
+                  aria-invalid={mostrarErroNome}
+                />
+                {mostrarErroNome && (
+                  <S.MensagemCampo>Digite pelo menos 3 caracteres.</S.MensagemCampo>
+                )}
+              </S.GrupoCampo>
+            )}
+
             <S.GrupoCampo>
-              <S.Rotulo htmlFor="nome">Nome</S.Rotulo>
+              <S.Rotulo htmlFor="email">Email</S.Rotulo>
               <S.Campo
-                id="nome"
-                type="text"
-                placeholder="Digite seu nome de usuário"
-                value={nome}
-                onChange={(event) => setNome(event.target.value)}
-                aria-invalid={mostrarErroNome}
+                id="email"
+                type="email"
+                placeholder="Entre com seu email"
+                value={email}
+                onChange={(event) => setEmail(event.target.value)}
+                aria-invalid={mostrarErroEmail}
               />
-              {mostrarErroNome && (
-                <S.MensagemCampo>Digite pelo menos 3 caracteres.</S.MensagemCampo>
+              {mostrarErroEmail && (
+                <S.MensagemCampo>Digite um email válido.</S.MensagemCampo>
               )}
             </S.GrupoCampo>
-          )}
 
-          <S.GrupoCampo>
-            <S.Rotulo htmlFor="email">Email</S.Rotulo>
-            <S.Campo
-              id="email"
-              type="email"
-              placeholder="Entre com seu email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              aria-invalid={mostrarErroEmail}
-            />
-            {mostrarErroEmail && (
-              <S.MensagemCampo>Digite um email válido.</S.MensagemCampo>
-            )}
-          </S.GrupoCampo>
+            <S.GrupoCampo>
+              <S.Rotulo htmlFor="senha">
+                {cadastroAtivo ? "Digite sua senha" : "Senha"}
+              </S.Rotulo>
+              <S.CampoSenha>
+                <S.Campo
+                  id="senha"
+                  type={mostrarSenha ? "text" : "password"}
+                  placeholder={cadastroAtivo ? "Escolha uma senha de acesso" : "Digite sua senha"}
+                  value={senha}
+                  onChange={(event) => setSenha(event.target.value)}
+                  aria-invalid={mostrarErroSenha}
+                />
+                <S.IconeSenha
+                  type="button"
+                  onClick={() => setMostrarSenha((estadoAtual) => !estadoAtual)}
+                  aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+                >
+                  {mostrarSenha ? <Eye size={17} /> : <EyeOff size={17} />}
+                </S.IconeSenha>
+              </S.CampoSenha>
+              {mostrarErroSenha && (
+                <S.MensagemCampo>
+                  {cadastroAtivo
+                    ? "Use pelo menos 6 caracteres."
+                    : "Digite sua senha para continuar."}
+                </S.MensagemCampo>
+              )}
+              {cadastroAtivo && senha.length > 0 && (
+                <S.ForcaSenha>
+                  <S.BarraForca forca={forcaSenha} />
+                  <S.TextoForca>
+                    Senha {forcaSenha === "media" ? "média" : forcaSenha}
+                  </S.TextoForca>
+                </S.ForcaSenha>
+              )}
+              {!cadastroAtivo && (
+                <S.EsqueceuSenha href="#recuperar-senha">
+                  Esqueceu sua senha?
+                </S.EsqueceuSenha>
+              )}
+            </S.GrupoCampo>
 
-          <S.GrupoCampo>
-            <S.Rotulo htmlFor="senha">
-              {cadastroAtivo ? "Digite sua senha" : "Senha"}
-            </S.Rotulo>
-            <S.CampoSenha>
-              <S.Campo
-                id="senha"
-                type={mostrarSenha ? "text" : "password"}
-                placeholder={cadastroAtivo ? "Escolha uma senha de acesso" : "Digite sua senha"}
-                value={senha}
-                onChange={(event) => setSenha(event.target.value)}
-                aria-invalid={mostrarErroSenha}
-              />
-              <S.IconeSenha
-                type="button"
-                onClick={() => setMostrarSenha((estadoAtual) => !estadoAtual)}
-                aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+            <S.AreaEntrar>
+              <Button
+                variante="Gradiente"
+                tamanho="lg"
+                disabled={!formularioValido || enviando}
+                type="submit"
               >
-                {mostrarSenha ? <Eye size={17} /> : <EyeOff size={17} />}
-              </S.IconeSenha>
-            </S.CampoSenha>
-            {mostrarErroSenha && (
-              <S.MensagemCampo>
-                {cadastroAtivo
-                  ? "Use pelo menos 6 caracteres."
-                  : "Digite sua senha para continuar."}
-              </S.MensagemCampo>
-            )}
-            {cadastroAtivo && senha.length > 0 && (
-              <S.ForcaSenha>
-                <S.BarraForca forca={forcaSenha} />
-                <S.TextoForca>
-                  Senha {forcaSenha === "media" ? "média" : forcaSenha}
-                </S.TextoForca>
-              </S.ForcaSenha>
-            )}
-            {!cadastroAtivo && (
-              <S.EsqueceuSenha href="#recuperar-senha">
-                Esqueceu sua senha?
-              </S.EsqueceuSenha>
-            )}
-          </S.GrupoCampo>
+                {enviando
+                  ? cadastroAtivo
+                    ? "Cadastrando..."
+                    : "Entrando..."
+                  : cadastroAtivo
+                    ? "Cadastrar"
+                    : "Entrar"}
+              </Button>
+            </S.AreaEntrar>
 
-          <S.AreaEntrar>
-            <Button
-              variante="Gradiente"
-              tamanho="lg"
-              disabled={!formularioValido || enviando}
-              type="submit"
-            >
-              {enviando
-                ? cadastroAtivo
-                  ? "Cadastrando..."
-                  : "Entrando..."
-                : cadastroAtivo
-                  ? "Cadastrar"
-                  : "Entrar"}
-            </Button>
-          </S.AreaEntrar>
-
-          {mensagemFeedback && (
-            <S.FeedbackFormulario>{mensagemFeedback}</S.FeedbackFormulario>
-          )}
-        </S.Formulario>
+            {mensagemFeedback && (
+              <S.FeedbackFormulario>{mensagemFeedback}</S.FeedbackFormulario>
+            )}
+          </S.Formulario>
+        </S.ConteudoFormularioAnimado>
       </S.CartaoLogin>
     </S.PaginaLogin>
   );
