@@ -58,10 +58,12 @@ const PracticeNow: React.FC = () => {
         <LogoImage src={logo} alt="Logo Orion" />
 
         <ButtonsRow>
-          <PrimaryButton variant="contained" onClick={() => navigate("/SelecaoInstrumento")}>
+          <PrimaryButton variant="contained" onClick={() => navigate("/SelecaoModo?modo=guiado")}>
             Modo Guiado
           </PrimaryButton>
-          <SecondaryButton variant="outlined">Modo Livre</SecondaryButton>
+          <SecondaryButton variant="outlined" onClick={() => navigate("/SelecaoModo?modo=livre")}>
+            Modo Livre
+          </SecondaryButton>
         </ButtonsRow>
       </Content>
     </Section>

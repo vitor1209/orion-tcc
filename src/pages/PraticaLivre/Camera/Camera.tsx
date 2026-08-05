@@ -9,8 +9,17 @@ import { Footer } from "../../../components/Footer/Footer";
 import * as Style from "./Camera.styled";
 import { Button } from "../../../components/Button/Button";
 import { ArrowLeft } from "lucide-react";
+import { useLocation } from "react-router-dom";
 
 export const CameraPage = () => {
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const backQuery = new URLSearchParams({
+    modo: params.get("modo") ?? "livre",
+    interacao: params.get("interacao") ?? "camera",
+    instrumento: params.get("instrumento") ?? "teclado",
+    nivel: params.get("nivel") ?? "iniciante",
+  });
   const { isStreamActive, sessionKey, startSession, stopSession, wsAtivo } =
     useCameraPage();
 
@@ -18,7 +27,7 @@ export const CameraPage = () => {
     <Style.PageWrapper>
 
       <Style.BackButtonWrapper>
-        <Button variante="Voltar" tamanho="md" to="/SelecaoModo?modo=livre">
+        <Button variante="Voltar" tamanho="md" to={`/selecao-atividade?${backQuery.toString()}`}>
           <ArrowLeft size={16} />
           Voltar
         </Button>

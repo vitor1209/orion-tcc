@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 import { Footer } from "../../components/Footer/Footer";
@@ -35,8 +35,25 @@ import { useState } from "react";
 export const InstrumentTeclado = () => {
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const modo = params.get("modo") ?? "guiado";
+  const interacao = params.get("interacao") ?? "luva";
+  const instrumento = params.get("instrumento") ?? "teclado";
 
   const [level, setLevel] = useState("");
+
+  const queryFluxo = new URLSearchParams({
+    modo,
+    interacao,
+    instrumento,
+  });
+
+  const rotaAnterior = `/SelecaoInstrumento?modo=${modo}&interacao=${interacao}`;
+
+  const rotaDestino = (() => {
+    return `/selecao-atividade?${queryFluxo.toString()}&nivel=${level}`;
+  })();
 
   return (
     <PageWrapper>
@@ -47,7 +64,7 @@ export const InstrumentTeclado = () => {
             <Tagline>LUVA INTERATIVA MUSICAL</Tagline>
           </BrandBlock>
 
-          <Button variante="Voltar" tamanho="md" onClick={() => navigate("/SelecaoInstrumento")}>
+          <Button variante="Voltar" tamanho="md" onClick={() => navigate(rotaAnterior)}>
             <ArrowLeft size={16} />
             Voltar
           </Button>
@@ -110,7 +127,7 @@ export const InstrumentTeclado = () => {
           <ContinueButton
             disabled={!level}
             onClick={() => {
-              navigate("/SelecaoModo");
+              navigate(rotaDestino);
             }}
           >
             Começar Jornada

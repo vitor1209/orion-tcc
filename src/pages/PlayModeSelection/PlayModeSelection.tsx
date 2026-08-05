@@ -34,13 +34,9 @@ export const ModeSelection = () => {
   const location = useLocation();
   const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
   const isModoLivre = modo === "livre";
-  const backRoute = isModoLivre ? "/SelecaoInstrumento?modo=livre" : "/Teclado";
-  const cameraRoute = isModoLivre
-    ? "/PraticaLivre/Camera?interacao=camera"
-    : "/introducao-guiada?interacao=camera";
-  const gloveRoute = isModoLivre
-    ? "/PraticaLivre/Luva"
-    : "/introducao-guiada?interacao=luva";
+  const backRoute = "/";
+  const cameraRoute = `/SelecaoInstrumento?modo=${modo}&interacao=camera`;
+  const gloveRoute = `/SelecaoInstrumento?modo=${modo}&interacao=luva`;
 
   return (
     <PageWrapper>
@@ -64,29 +60,12 @@ export const ModeSelection = () => {
         <Content as="main">
           <WelcomeTitle as="h1">Como deseja tocar?</WelcomeTitle>
           <WelcomeSubtitle as="p">
-            Selecione a forma de interação que deseja utilizar para tocar o instrumento.
+            {isModoLivre
+              ? "Antes de escolher o instrumento, selecione como deseja praticar no modo livre."
+              : "Antes de escolher o instrumento e o nível, selecione como deseja tocar no modo guiado."}
           </WelcomeSubtitle>
 
           <CardsGrid>
-            <motion.div
-              whileHover={{ y: -6 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            >
-              <ModeCard onClick={() => navigate(cameraRoute)}>
-                <CardContent>
-                  <CardTitle as="h2">Câmera</CardTitle>
-
-                  <CardDescription as="p">
-                    Utilize suas mãos para tocar através do reconhecimento por
-                    câmera.
-                  </CardDescription>
-                </CardContent>
-
-                <CardIcon as="img" src={cameraIcon} alt="Câmera" />
-              </ModeCard>
-            </motion.div>
-
             <motion.div
               whileHover={{ y: -6 }}
               whileTap={{ scale: 0.98 }}
@@ -106,6 +85,28 @@ export const ModeSelection = () => {
                 </CardContent>
 
                 <CardIcon as="img" src={handIcon} alt="Luva Musical" />
+              </ModeCard>
+            </motion.div>
+
+            <motion.div
+              whileHover={{ y: -6 }}
+              whileTap={{ scale: 0.98 }}
+              transition={{
+                type: "spring",
+                stiffness: 300,
+              }}
+            >
+              <ModeCard onClick={() => navigate(cameraRoute)}>
+                <CardContent>
+                  <CardTitle as="h2">Câmera</CardTitle>
+
+                  <CardDescription as="p">
+                    Utilize suas mãos para tocar através do reconhecimento por
+                    câmera.
+                  </CardDescription>
+                </CardContent>
+
+                <CardIcon as="img" src={cameraIcon} alt="Câmera" />
               </ModeCard>
             </motion.div>
           </CardsGrid>

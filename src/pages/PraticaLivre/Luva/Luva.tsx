@@ -8,6 +8,7 @@ import "react-piano/dist/styles.css";
 import "./stylesPiano.css";
 import { Partitura } from "../../../components/Partitura/Partitura";
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import fundoNotas from "../../../assets/images/fundo_notas.png";
 import { useLuva } from "../../../hooks/useLuva/useLuva.hook";
@@ -15,6 +16,14 @@ import type { NotaComOitava } from "../../../utils/Notas.types";
 import { useNotaSound } from "../../../hooks/useNotaSound/useNotaSound.hook";
 
 export const LuvaPage = () => {
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const backQuery = new URLSearchParams({
+        modo: params.get("modo") ?? "livre",
+        interacao: params.get("interacao") ?? "luva",
+        instrumento: params.get("instrumento") ?? "teclado",
+        nivel: params.get("nivel") ?? "iniciante",
+    });
 
     const [oitava, setOitava] = useState<"0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8">("4");
     const [notas, setNotas] = useState<NotaComOitava[]>([]);
@@ -169,7 +178,7 @@ export const LuvaPage = () => {
                 </Stack>
 
                 <Stack width={"70%"} alignItems={"end"} p={"5% 5% 5% 0"}>
-                    <Button variante="Voltar" tamanho="md" to="/SelecaoModo?modo=livre">
+                    <Button variante="Voltar" tamanho="md" to={`/selecao-atividade?${backQuery.toString()}`}>
                         <ArrowLeft size={16} />
                         Voltar
                     </Button>
