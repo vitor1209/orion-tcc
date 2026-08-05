@@ -7,7 +7,7 @@ import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
 import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
 import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
 import { AtividadeGuiada1 } from "../pages/Atividades/AtividadeGuiada1/AtividadeGuiada1";
-import { ConexaoLuva } from "../pages/PraticaLivre/Luva/ConexaoLuva";
+import { LuvaPage } from "../pages/PraticaLivre/Luva/Luva";
 
 function ScrollToTopLayout() {
   const { pathname, search } = useLocation();
@@ -53,8 +53,8 @@ export const Router = createBrowserRouter([
         element: <AtividadeGuiada1 />,
       },
       {
-        path: "/conexaoLuva",
-        element: <ConexaoLuva />,
+        path: "/PraticaLivre/Luva",
+        element: <LuvaPage />,
       },
     ],
   },

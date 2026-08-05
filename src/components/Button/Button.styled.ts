@@ -98,6 +98,7 @@ export const ButtonVariants = styled(ButtonBase, {
             alignItems: "center",
             justifyContent: "center",
             minWidth: 0,
+            maxWidth: "100px",
             minHeight: "auto",
             padding: "12px 20px",
             border: "1px solid rgba(95, 74, 248, 0.18)",

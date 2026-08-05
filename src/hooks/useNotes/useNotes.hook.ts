@@ -2,14 +2,14 @@
 import { Enum } from "../../utils/Enums";
 import type { ResponseWs } from "./useNotes.types";
 import { useEffect, useRef, useState } from "react";
-import type { NotaType } from "../../utils/Notas.types";
+import type { NotaComOitava } from "../../utils/Notas.types";
 import { api } from "../../api/Axios";
 
 const wsUrl = (api.defaults.baseURL ?? "http://localhost:8000").replace(/^http/, "ws") + "/ws";
 
 export const useNotes = (ativo: boolean) => {
     const wsRef = useRef<WebSocket | null>(null);
-    const [notas, setNotas] = useState<NotaType[]>([]);
+    const [notas, setNotas] = useState<NotaComOitava[]>([]);
     const [statusConexao, setStatusConexao] = useState<Enum.TipoConexao>(Enum.TipoConexao.FECHADO);
 
     function limparNotas() {

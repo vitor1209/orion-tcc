@@ -1,24 +1,37 @@
 import { useEffect, useRef, useState } from "react";
-import type { NotaType } from "../../utils/Notas.types";
+import type { NotaComOitava } from "../../utils/Notas.types";
 import { Accidental, Formatter, Renderer, Stave, StaveNote } from "vexflow";
 
 const NOTA_REGEX = /^([A-Ga-g])([#b]?)(\d+)$/;
 const NOTAS_POR_COMPASSO = 4;
 const LARGURA_COMPASSO_INICIAL = 250;
 const LARGURA_COMPASSO = 180;
-const ALTURA_LINHA = 120;
 const ALTURA_CONTAINER = 220;
 
-const calcularX = (coluna: number, linha: number): number => {
+const PX_POR_DEGRAU = 5;
+const ALTURA_PENTAGRAMA = 40
+
+const LETRA_VALOR: Record<string, number> = { C: 0, D: 1, E: 2, F: 3, G: 4, A: 5, B: 6 };
+const IDX_LINHA_BAIXO = 4 * 7 + LETRA_VALOR.E; 
+const IDX_LINHA_CIMA = 5 * 7 + LETRA_VALOR.F;  
+
+const MARGEM_MINIMA = 30;
+
+const calcularX = (coluna: number, linha: number, larguraCompassoInicial: number, larguraCompasso: number): number => {
 	if (linha === 0) {
 		return coluna === 0
 			? 16
-			: LARGURA_COMPASSO_INICIAL + (coluna - 1) * LARGURA_COMPASSO + 16;
+			: larguraCompassoInicial + (coluna - 1) * larguraCompasso + 16;
 	}
-	return coluna * LARGURA_COMPASSO + 16;
+	return coluna * larguraCompasso + 16;
 }
 
-export const usePartitura = (notas: NotaType[]) => {
+const obterIndiceDiatonico = (letra: string, oitava: number): number => {
+	const valorLetra = LETRA_VALOR[letra.toUpperCase()];
+	return oitava * 7 + valorLetra;
+}
+
+export const usePartitura = (notas: NotaComOitava[]) => {
 	const containerRef = useRef<HTMLDivElement | null>(null);
 	const [largura, setLargura] = useState(0);
 
@@ -51,15 +64,35 @@ export const usePartitura = (notas: NotaType[]) => {
 			Math.floor((largura - LARGURA_COMPASSO_INICIAL) / LARGURA_COMPASSO) + 1
 		);
 
-		const compassos: NotaType[][] = [];
+		const compassos: NotaComOitava[][] = [];
 		for (let i = 0; i < Math.max(notas.length, 1); i += NOTAS_POR_COMPASSO) {
 			compassos.push(notas.slice(i, i + NOTAS_POR_COMPASSO));
 		}
 
+		let idxMax = IDX_LINHA_CIMA;
+		let idxMin = IDX_LINHA_BAIXO;
+
+		notas.forEach((nota) => {
+			if (typeof nota !== "string") return;
+			const match = nota.match(NOTA_REGEX);
+			if (!match) return;
+
+			const [, letter, , octave] = match;
+			const idx = obterIndiceDiatonico(letter, Number(octave));
+
+			if (idx > idxMax) idxMax = idx;
+			if (idx < idxMin) idxMin = idx;
+		});
+
+		const margemAcima = Math.max(0, idxMax - IDX_LINHA_CIMA) * PX_POR_DEGRAU + MARGEM_MINIMA;
+		const margemAbaixo = Math.max(0, IDX_LINHA_BAIXO - idxMin) * PX_POR_DEGRAU + MARGEM_MINIMA;
+
+		const alturaLinha = margemAcima + ALTURA_PENTAGRAMA + margemAbaixo;
+
 		const totalLinhas = Math.ceil(compassos.length / compassosPorLinha);
 		const totalAltura = Math.max(
 			ALTURA_CONTAINER,
-			totalLinhas * ALTURA_LINHA + 40
+			margemAcima + totalLinhas * alturaLinha
 		);
 
 		try {
@@ -79,9 +112,8 @@ export const usePartitura = (notas: NotaType[]) => {
 						? LARGURA_COMPASSO_INICIAL
 						: LARGURA_COMPASSO;
 
-				const xAtual = calcularX(coluna, linha);
-				const offsetTopo = (ALTURA_CONTAINER / 2) - (ALTURA_LINHA / 2);
-				const yAtual = offsetTopo + linha * ALTURA_LINHA;
+				const xAtual = calcularX(coluna, linha, LARGURA_COMPASSO_INICIAL, LARGURA_COMPASSO);
+				const yAtual = margemAcima + linha * alturaLinha;
 
 				const stave = new Stave(xAtual, yAtual, larguraCompasso);
 				if (isPrimeiroNaLinha) stave.addClef("treble");
