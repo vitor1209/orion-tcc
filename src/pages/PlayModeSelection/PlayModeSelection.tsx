@@ -28,7 +28,6 @@ import {
   CardContent,
   CardIcon,
 } from "./PlayModeSelection.styles";
-import { useSelecaoModo } from "./PlayModeSelection.hook";
 
 export const ModeSelection = () => {
   const navigate = useNavigate();
@@ -36,14 +35,12 @@ export const ModeSelection = () => {
   const modo = new URLSearchParams(location.search).get("modo") ?? "guiado";
   const isModoLivre = modo === "livre";
   const backRoute = isModoLivre ? "/SelecaoInstrumento?modo=livre" : "/Teclado";
-  // const cameraRoute = isModoLivre
-  //   ? "/PraticaLivre/Camera?interacao=camera"
-  //   : "/introducao-guiada?interacao=camera";
+  const cameraRoute = isModoLivre
+    ? "/PraticaLivre/Camera?interacao=camera"
+    : "/introducao-guiada?interacao=camera";
   const gloveRoute = isModoLivre
-    ? "/conexaoLuva"
+    ? "/PraticaLivre/Luva"
     : "/introducao-guiada?interacao=luva";
-
-  const { handleConectar, desconectar } = useSelecaoModo();
 
   return (
     <PageWrapper>
@@ -76,7 +73,7 @@ export const ModeSelection = () => {
               whileTap={{ scale: 0.98 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <ModeCard onClick={() => navigate(gloveRoute)}>
+              <ModeCard onClick={() => navigate(cameraRoute)}>
                 <CardContent>
                   <CardTitle as="h2">Câmera</CardTitle>
 
@@ -99,7 +96,7 @@ export const ModeSelection = () => {
                 delay: 0.05,
               }}
             >
-              <ModeCard onClick={handleConectar}>
+              <ModeCard onClick={() => navigate(gloveRoute)}>
                 <CardContent>
                   <CardTitle as="h2">Luva Musical</CardTitle>
 

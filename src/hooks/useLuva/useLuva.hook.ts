@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type Nota =
   | "C"
@@ -18,17 +18,23 @@ export type NotaType = {
   nota: Nota;
 };
 
+const eventTarget = new EventTarget();
+let sharedEstado: NotaType | null = null;
+let sharedConectado = false;
+let sharedLuvaRef: Luva | null = null;
+
 export const useLuva = () => {
-  const [estado, setEstado] = useState<NotaType | null>(null);
-  const [conectado, setConectado] = useState(false);
-  const luvaRef = useRef<Luva | null>(null);
+  const [estado, setEstado] = useState<NotaType | null>(sharedEstado);
+  const [conectado, setConectado] = useState(sharedConectado);
+  const luvaRef = useRef<Luva | null>(sharedLuvaRef);
 
   const conectar = async () => {
-    if (luvaRef.current) return;
+    if (sharedLuvaRef) return;
+    console.log("Luva: iniciando conexão...");
     await desconectar();
 
     const NOTAS_VALIDAS: Nota[] = [
-      "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"
+      "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B",
     ];
 
     const isNotaValida = (valor: unknown): valor is Nota => {
@@ -39,7 +45,9 @@ export const useLuva = () => {
       try {
         const dados = JSON.parse(linha);
         if (dados && isNotaValida(dados.nota)) {
-          setEstado(dados as NotaType);
+          console.log('Luva: nota recebida', dados);
+          sharedEstado = dados as NotaType;
+          eventTarget.dispatchEvent(new Event("change"));
         } else {
           console.warn("Nota inválida recebida da luva:", dados);
         }
@@ -48,13 +56,17 @@ export const useLuva = () => {
       }
     });
 
-    luvaRef.current = luva;
-    const sucesso = await luva.conectar();
-    setConectado(sucesso);
+    sharedLuvaRef = luva;
+    eventTarget.dispatchEvent(new Event("change"));
 
+    const sucesso = await luva.conectar();
+    sharedConectado = sucesso;
+    // eslint-disable-next-line no-console
+    console.log("Luva: conexão result:", sucesso);
     if (!sucesso) {
-      luvaRef.current = null;
+      sharedLuvaRef = null;
     }
+    eventTarget.dispatchEvent(new Event("change"));
   };
 
   const desconectar = async () => {
@@ -62,10 +74,24 @@ export const useLuva = () => {
     for (const port of ports) {
       await port.forget();
     }
-    await luvaRef.current?.desconectar();
-    luvaRef.current = null;
-    setConectado(false);
+    // eslint-disable-next-line no-console
+    console.log("Luva: desconectando...");
+    await sharedLuvaRef?.desconectar();
+    sharedLuvaRef = null;
+    sharedConectado = false;
+    sharedEstado = null;
+    eventTarget.dispatchEvent(new Event("change"));
   };
+
+  useEffect(() => {
+    const handler = () => {
+      setEstado(sharedEstado);
+      setConectado(sharedConectado);
+      luvaRef.current = sharedLuvaRef;
+    };
+    eventTarget.addEventListener("change", handler);
+    return () => eventTarget.removeEventListener("change", handler);
+  }, []);
 
   return { conectar, desconectar, estado, conectado };
 };

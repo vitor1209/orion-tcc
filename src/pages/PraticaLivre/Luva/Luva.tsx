@@ -35,7 +35,9 @@ export const LuvaPage = () => {
     const firstNote = MidiNumbers.fromNote(oitava === "0" ? "A0" : `C${oitava}`);
     const lastNote = MidiNumbers.fromNote(oitava === "8" ? "C8" : `B${oitava}`);
 
-    const { estado } = useLuva();
+    const { estado, conectar, desconectar, conectado } = useLuva();
+
+    const [logs, setLogs] = useState<string[]>([]);
 
     const notaAtiva = useMemo(() => {
         if (!estado?.nota) return null;
@@ -59,25 +61,35 @@ export const LuvaPage = () => {
         return teclasBrancas * LARGURA_POR_TECLA_BRANCA;
     }, [firstNote, lastNote]);
 
-    // useEffect cuida do efeito colateral (atualizar o histórico de notas)
+    const { play } = useNotaSound({});
+
     useEffect(() => {
         if (!estado?.nota) return;
         const notaComOitava = `${estado.nota}${oitava}` as NotaComOitava;
-        // eslint-disable-next-line react-hooks/set-state-in-effect
-        setNotas((prev) => [...prev, notaComOitava]);
+        try {
+            const midi = MidiNumbers.fromNote(notaComOitava);
+            // add to on-screen log
+            const ts = new Date().toLocaleTimeString();
+            setLogs((prev) => [...prev, `${ts} - Luva: ${notaComOitava}`]);
+            // simulate piano key click: play + add to partitura
+            void handleNotaClicada(midi);
+        } catch {
+            // ignore invalid note
+        }
 
-    }, [estado?.nota, oitava, notas]);
+    }, [estado?.nota, oitava]);
 
-    const ultimaNota = notas[notas.length - 1];
+    useEffect(() => {
+        // log connection changes
+        const ts = new Date().toLocaleTimeString();
+        setLogs((prev) => [...prev, `${ts} - Conectado: ${conectado}`]);
+    }, [conectado]);
 
-    function handleNotaClicada(midiNumber: number) {
-        const { note } = MidiNumbers.getAttributes(midiNumber); // ex: "C4"
+    async function handleNotaClicada(midiNumber: number) {
+        const { note } = MidiNumbers.getAttributes(midiNumber);
+        await play(note as NotaComOitava);
         setNotas((prev) => [...prev, note as NotaComOitava]);
     }
-
-    console.log("ultimaNota", ultimaNota);
-
-    useNotaSound({ notas: ultimaNota });
 
     return (
         <>
@@ -126,6 +138,18 @@ export const LuvaPage = () => {
                                 <ToggleButton value="8">8</ToggleButton>
                             </ToggleButtonGroupStyled>
 
+
+                        </Stack>
+
+                        <Stack mt={2}>
+                            <Button
+                                variante={conectado ? "Vermelho" : "Gradiente"}
+                                tamanho="md"
+                                onClick={() => (conectado ? void desconectar() : void conectar())}
+                                sx={{ ml: 2 }}
+                            >
+                                {conectado ? "Desconectar Luva" : "Conectar Luva"}
+                            </Button>
                         </Stack>
                     </Stack>
 
@@ -196,6 +220,21 @@ export const LuvaPage = () => {
 
                         </ModalCard>
                         <Partitura notas={notas} onClear={limparNotas} />
+
+                        <Stack mt={2} sx={{ width: '100%' }}>
+                            <Typography variant="subtitle2" sx={{ mb: 1 }}>
+                                Logs da Luva:
+                            </Typography>
+                            <div style={{ maxHeight: 120, overflow: 'auto', background: '#fff', padding: 8, border: '1px solid #eee' }}>
+                                {logs.length === 0 ? (
+                                    <Typography variant="caption" color="text.secondary">Nenhum evento ainda</Typography>
+                                ) : (
+                                    logs.map((l, i) => (
+                                        <div key={i} style={{ fontSize: 12, marginBottom: 4 }}>{l}</div>
+                                    ))
+                                )}
+                            </div>
+                        </Stack>
                     </Stack>
                 </Stack>
 
