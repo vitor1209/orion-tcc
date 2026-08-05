@@ -1,4 +1,5 @@
-import { ArrowLeft, EyeOff } from "lucide-react";
+import { ArrowLeft, Eye, EyeOff } from "lucide-react";
+import type { FormEvent } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,10 +12,53 @@ export function Login() {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [mostrarSenha, setMostrarSenha] = useState(false);
+  const [tentouEnviar, setTentouEnviar] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+  const [mensagemFeedback, setMensagemFeedback] = useState("");
   const cadastroAtivo = modoFormulario === "cadastro";
-  const formularioPreenchido = cadastroAtivo
-    ? nome.trim().length > 0 && email.trim().length > 0 && senha.trim().length > 0
-    : email.trim().length > 0 && senha.trim().length > 0;
+  const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  const senhaValida = cadastroAtivo ? senha.length >= 6 : senha.trim().length > 0;
+  const nomeValido = !cadastroAtivo || nome.trim().length >= 3;
+  const formularioValido = cadastroAtivo
+    ? nomeValido && emailValido && senhaValida
+    : emailValido && senhaValida;
+  const mostrarErroNome =
+    cadastroAtivo && (tentouEnviar || nome.length > 0) && !nomeValido;
+  const mostrarErroEmail = (tentouEnviar || email.length > 0) && !emailValido;
+  const mostrarErroSenha =
+    (tentouEnviar || senha.length > 0) && !senhaValida;
+  const forcaSenha = senha.length >= 10 ? "forte" : senha.length >= 6 ? "media" : "fraca";
+
+  const alterarModoFormulario = (modo: "entrar" | "cadastro") => {
+    setEnviando(false);
+    setModoFormulario(modo);
+    setTentouEnviar(false);
+    setMensagemFeedback("");
+    setMostrarSenha(false);
+  };
+
+  const enviarFormulario = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setTentouEnviar(true);
+
+    if (!formularioValido) {
+      setMensagemFeedback("Confira os campos destacados antes de continuar.");
+      return;
+    }
+
+    setEnviando(true);
+    setMensagemFeedback(cadastroAtivo ? "Criando sua conta..." : "Entrando na sua conta...");
+
+    window.setTimeout(() => {
+      setEnviando(false);
+      setMensagemFeedback(
+        cadastroAtivo
+          ? "Cadastro em desenvolvimento."
+          : "Login em desenvolvimento."
+      );
+    }, 900);
+  };
 
   return (
     <S.PaginaLogin>
@@ -38,14 +82,14 @@ export function Login() {
           <S.Aba
             type="button"
             selecionada={!cadastroAtivo}
-            onClick={() => setModoFormulario("entrar")}
+            onClick={() => alterarModoFormulario("entrar")}
           >
             Entrar
           </S.Aba>
           <S.Aba
             type="button"
             selecionada={cadastroAtivo}
-            onClick={() => setModoFormulario("cadastro")}
+            onClick={() => alterarModoFormulario("cadastro")}
           >
             Cadastre-se
           </S.Aba>
@@ -53,16 +97,23 @@ export function Login() {
 
         <S.Logo src={S.imagemLogo} alt="Orion" />
 
-        {!cadastroAtivo && (
+        {cadastroAtivo ? (
+          <S.CabecalhoLogin>
+            <S.TituloLogin>Crie sua conta</S.TituloLogin>
+            <S.SubtituloLogin>
+              Comece sua jornada musical com a Orion em poucos passos.
+            </S.SubtituloLogin>
+          </S.CabecalhoLogin>
+        ) : (
           <S.CabecalhoLogin>
             <S.TituloLogin>Bem-vindo de volta</S.TituloLogin>
             <S.SubtituloLogin>
-              Acesse sua conta Orion para continuar sua jornada musical.
+              Continue de onde parou na sua jornada musical.
             </S.SubtituloLogin>
           </S.CabecalhoLogin>
         )}
 
-        <S.Formulario>
+        <S.Formulario onSubmit={enviarFormulario} noValidate>
           {cadastroAtivo && (
             <S.GrupoCampo>
               <S.Rotulo htmlFor="nome">Nome</S.Rotulo>
@@ -72,7 +123,11 @@ export function Login() {
                 placeholder="Digite seu nome de usuário"
                 value={nome}
                 onChange={(event) => setNome(event.target.value)}
+                aria-invalid={mostrarErroNome}
               />
+              {mostrarErroNome && (
+                <S.MensagemCampo>Digite pelo menos 3 caracteres.</S.MensagemCampo>
+              )}
             </S.GrupoCampo>
           )}
 
@@ -84,7 +139,11 @@ export function Login() {
               placeholder="Entre com seu email"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+              aria-invalid={mostrarErroEmail}
             />
+            {mostrarErroEmail && (
+              <S.MensagemCampo>Digite um email válido.</S.MensagemCampo>
+            )}
           </S.GrupoCampo>
 
           <S.GrupoCampo>
@@ -94,15 +153,35 @@ export function Login() {
             <S.CampoSenha>
               <S.Campo
                 id="senha"
-                type="password"
+                type={mostrarSenha ? "text" : "password"}
                 placeholder={cadastroAtivo ? "Escolha uma senha de acesso" : "Digite sua senha"}
                 value={senha}
                 onChange={(event) => setSenha(event.target.value)}
+                aria-invalid={mostrarErroSenha}
               />
-              <S.IconeSenha aria-hidden="true">
-                <EyeOff size={16} />
+              <S.IconeSenha
+                type="button"
+                onClick={() => setMostrarSenha((estadoAtual) => !estadoAtual)}
+                aria-label={mostrarSenha ? "Ocultar senha" : "Mostrar senha"}
+              >
+                {mostrarSenha ? <Eye size={17} /> : <EyeOff size={17} />}
               </S.IconeSenha>
             </S.CampoSenha>
+            {mostrarErroSenha && (
+              <S.MensagemCampo>
+                {cadastroAtivo
+                  ? "Use pelo menos 6 caracteres."
+                  : "Digite sua senha para continuar."}
+              </S.MensagemCampo>
+            )}
+            {cadastroAtivo && senha.length > 0 && (
+              <S.ForcaSenha>
+                <S.BarraForca forca={forcaSenha} />
+                <S.TextoForca>
+                  Senha {forcaSenha === "media" ? "média" : forcaSenha}
+                </S.TextoForca>
+              </S.ForcaSenha>
+            )}
             {!cadastroAtivo && (
               <S.EsqueceuSenha href="#recuperar-senha">
                 Esqueceu sua senha?
@@ -114,11 +193,22 @@ export function Login() {
             <Button
               variante="Gradiente"
               tamanho="lg"
-              disabled={!formularioPreenchido}
+              disabled={!formularioValido || enviando}
+              type="submit"
             >
-              {cadastroAtivo ? "Cadastrar" : "Entrar"}
+              {enviando
+                ? cadastroAtivo
+                  ? "Cadastrando..."
+                  : "Entrando..."
+                : cadastroAtivo
+                  ? "Cadastrar"
+                  : "Entrar"}
             </Button>
           </S.AreaEntrar>
+
+          {mensagemFeedback && (
+            <S.FeedbackFormulario>{mensagemFeedback}</S.FeedbackFormulario>
+          )}
         </S.Formulario>
       </S.CartaoLogin>
     </S.PaginaLogin>

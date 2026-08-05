@@ -75,6 +75,18 @@ const surgirConteudo = keyframes`
   }
 `;
 
+const trocarFormulario = keyframes`
+  from {
+    opacity: 0;
+    transform: translate3d(16px, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+`;
+
 const brilhoBotao = keyframes`
   from {
     transform: translateX(-120%) skewX(-18deg);
@@ -350,7 +362,7 @@ export const Formulario = styled("form")({
   display: "flex",
   flexDirection: "column",
   gap: 18,
-  animation: `${surgirConteudo} 0.45s ease 0.08s both`,
+  animation: `${trocarFormulario} 0.35s ease both`,
 });
 
 export const GrupoCampo = styled(Box)({
@@ -404,16 +416,85 @@ export const Campo = styled("input")({
     borderColor: "#9b5cff",
     boxShadow: "0 0 0 4px rgba(192, 108, 255, 0.16)",
   },
+
+  "&[aria-invalid='true']": {
+    borderColor: "#ef4444",
+    boxShadow: "0 0 0 4px rgba(239, 68, 68, 0.12)",
+  },
 });
 
-export const IconeSenha = styled(Box)({
+export const IconeSenha = styled("button")({
   position: "absolute",
-  right: 18,
+  right: 12,
   top: "50%",
   display: "inline-flex",
+  alignItems: "center",
+  justifyContent: "center",
+  width: 34,
+  height: 34,
+  border: 0,
+  borderRadius: "50%",
+  backgroundColor: "transparent",
   transform: "translateY(-50%)",
   color: "#111111",
-  pointerEvents: "none",
+  cursor: "pointer",
+  transition: "background-color 0.2s ease, color 0.2s ease",
+
+  "&:hover": {
+    color: "#7c3aed",
+    backgroundColor: "rgba(170, 76, 255, 0.1)",
+  },
+
+  "&:focus-visible": {
+    outline: "3px solid rgba(170, 76, 255, 0.22)",
+    outlineOffset: 2,
+  },
+});
+
+export const MensagemCampo = styled(Typography)({
+  marginTop: 7,
+  color: "#dc2626",
+  fontFamily: '"Ubuntu", "Inter", sans-serif',
+  fontSize: "0.78rem",
+  fontWeight: 700,
+  lineHeight: 1.35,
+});
+
+export const ForcaSenha = styled(Box)({
+  marginTop: 10,
+  display: "grid",
+  gap: 6,
+});
+
+export const BarraForca = styled(Box, {
+  shouldForwardProp: (prop) => prop !== "forca",
+})<{ forca: "fraca" | "media" | "forte" }>(({ forca }) => {
+  const largura = forca === "forte" ? "100%" : forca === "media" ? "66%" : "34%";
+  const cor = forca === "forte" ? "#22c55e" : forca === "media" ? "#AA4CFF" : "#C27DFF";
+
+  return {
+    height: 7,
+    borderRadius: 999,
+    backgroundColor: "rgba(170, 76, 255, 0.13)",
+    overflow: "hidden",
+
+    "&::before": {
+      content: '""',
+      display: "block",
+      width: largura,
+      height: "100%",
+      borderRadius: "inherit",
+      backgroundColor: cor,
+      transition: "width 0.25s ease, background-color 0.25s ease",
+    },
+  };
+});
+
+export const TextoForca = styled(Typography)({
+  color: "#5b6474",
+  fontFamily: '"Ubuntu", "Inter", sans-serif',
+  fontSize: "0.78rem",
+  fontWeight: 700,
 });
 
 export const EsqueceuSenha = styled("a")({
@@ -512,3 +593,17 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
     },
   },
 }));
+
+export const FeedbackFormulario = styled(Typography)({
+  marginTop: -4,
+  padding: "10px 14px",
+  borderRadius: 14,
+  backgroundColor: "rgba(170, 76, 255, 0.1)",
+  color: "#4c2a86",
+  fontFamily: '"Ubuntu", "Inter", sans-serif',
+  fontSize: "0.86rem",
+  fontWeight: 700,
+  lineHeight: 1.4,
+  textAlign: "center",
+  animation: `${surgirConteudo} 0.25s ease both`,
+});
