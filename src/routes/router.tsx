@@ -7,7 +7,6 @@ import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
 import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
 import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
 import { AtividadeGuiada1 } from "../pages/Atividades/AtividadeGuiada1/AtividadeGuiada1";
-import { ConexaoLuva } from "../pages/PraticaLivre/Luva/ConexaoLuva";
 import { Login } from "../pages/Login/Login";
 import { LuvaPage } from "../pages/PraticaLivre/Luva/Luva";
 
