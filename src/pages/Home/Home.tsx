@@ -143,14 +143,14 @@ export const Home = () => {
           <Style.ButtonsRow>
             <Button
               tamanho="lg"
-              to="/SelecaoInstrumento?modo=guiado"
+              to="/SelecaoModo?modo=guiado"
             >
               Modo Guiado
             </Button>
             <Button
               variante="Gradiente"
               tamanho="lg"
-              to="/SelecaoInstrumento?modo=livre"
+              to="/SelecaoModo?modo=livre"
             >
               Modo Livre
             </Button>

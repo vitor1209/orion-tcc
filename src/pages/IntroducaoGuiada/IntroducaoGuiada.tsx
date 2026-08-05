@@ -10,9 +10,20 @@ const lessons = ["Introdução", "Atividade 1", "Atividade 2", "Atividade 3"];
 export function IntroducaoGuiada() {
   const navigate = useNavigate();
   const location = useLocation();
-  const interaction = new URLSearchParams(location.search).get("interacao");
+  const params = new URLSearchParams(location.search);
+  const interaction = params.get("interacao");
+  const modo = params.get("modo") ?? "guiado";
+  const instrumento = params.get("instrumento") ?? "teclado";
+  const fluxoQuery = new URLSearchParams({
+    modo,
+    interacao: interaction ?? "luva",
+    instrumento,
+  });
   const nextPage =
-    interaction === "camera" ? "/PraticaLivre/Camera" : "/atividade-guiada-1";
+    interaction === "camera"
+      ? `/PraticaLivre/Camera?${fluxoQuery.toString()}`
+      : `/atividade-guiada-1?${fluxoQuery.toString()}`;
+  const backPage = `/Teclado?${fluxoQuery.toString()}`;
 
   return (
     <S.Page>
@@ -41,8 +52,8 @@ export function IntroducaoGuiada() {
               <S.LevelChip label="Iniciante" size="small" />
             </S.HeadingGroup>
 
-            <Button variante="Voltar" tamanho="md" onClick={() => navigate("/SelecaoModo")}>
-              <ArrowLeft size={16} />
+            <Button variante="Voltar" tamanho="md" onClick={() => navigate(backPage)}>
+              <ArrowLeft size={16} />pm run
               Voltar
             </Button>
           </S.Header>

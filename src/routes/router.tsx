@@ -9,6 +9,7 @@ import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
 import { AtividadeGuiada1 } from "../pages/Atividades/AtividadeGuiada1/AtividadeGuiada1";
 import { Login } from "../pages/Login/Login";
 import { LuvaPage } from "../pages/PraticaLivre/Luva/Luva";
+import { SelecaoAtividade } from "../pages/SelecaoAtividade/SelecaoAtividade";
 
 function ScrollToTopLayout() {
   const { pathname, search } = useLocation();
@@ -52,6 +53,10 @@ export const Router = createBrowserRouter([
       {
         path: "/atividade-guiada-1",
         element: <AtividadeGuiada1 />,
+      },
+      {
+        path: "/selecao-atividade",
+        element: <SelecaoAtividade />,
       },
       {
         path: "/PraticaLivre/Luva",

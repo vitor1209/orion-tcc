@@ -198,7 +198,7 @@ export const ModeCard = styled(Stack)`
   border-radius: 12px;
 
   position: relative; 
-  overflow: visible;
+  overflow: hidden;
 
   display: flex;
   && {
@@ -228,29 +228,31 @@ export const SectionTitle = styled(Typography)`
 `;
 
 export const CardContent = styled(Stack)`
-  max-width: min(240px, calc(100% - 92px)); 
+  max-width: min(245px, calc(100% - 104px)); 
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
+  z-index: 2;
 `;
 
 export const CardIcon = styled(CardMedia)`
-  width: 130px;
-  height: 130px;
+  width: 138px;
+  height: 138px;
   object-fit: contain;
   flex-shrink: 0;
   pointer-events: none;
   filter: drop-shadow(0 12px 12px rgba(45, 33, 79, 0.18));
-
   position: absolute;
-  bottom: -18px;
-  right: -16px;
+  right: -6px;
+  bottom: -30px;
+  z-index: 1;
 
   @media (max-width: 520px) {
-    width: 96px;
-    height: 96px;
+    width: 118px;
+    height: 118px;
     right: -8px;
-    bottom: -12px;
+    bottom: -24px;
   }
 `;
 

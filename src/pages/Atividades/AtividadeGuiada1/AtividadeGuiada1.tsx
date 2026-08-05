@@ -1,6 +1,6 @@
 import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import type { SliderProps } from "@mui/material/Slider";
 
 import { Footer } from "../../../components/Footer/Footer";
@@ -12,6 +12,14 @@ const octaveOptions = [1, 2];
 
 export function AtividadeGuiada1() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const backQuery = new URLSearchParams({
+    modo: params.get("modo") ?? "guiado",
+    interacao: params.get("interacao") ?? "luva",
+    instrumento: params.get("instrumento") ?? "teclado",
+    nivel: params.get("nivel") ?? "iniciante",
+  });
   const [octave, setOctave] = useState(1);
   const [volume, setVolume] = useState(32);
   const handleVolumeChange: NonNullable<SliderProps["onChange"]> = (
@@ -80,7 +88,7 @@ export function AtividadeGuiada1() {
             <Button
               variante="Voltar"
               tamanho="md"
-              onClick={() => navigate("/introducao-guiada?interacao=luva")}
+              onClick={() => navigate(`/selecao-atividade?${backQuery.toString()}`)}
             >
               <ArrowLeft size={16} />
               Voltar
