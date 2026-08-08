@@ -1,6 +1,12 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography, Container, Stack } from "@mui/material";
 
+export const HomeRoot = styled(Box)({
+  width: "100%",
+  overflowX: "hidden",
+  backgroundColor: "#020b2d",
+});
+
 export const HeroSection = styled(Box)({
   minHeight: "100vh",
   background: "#020b2d",
