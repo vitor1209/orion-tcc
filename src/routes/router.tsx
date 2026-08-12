@@ -2,7 +2,6 @@ import { createBrowserRouter, Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Home } from "../pages/Home/Home";
 import { InstrumentSelection } from "../pages/InstrumentSelection/InstrumentSelection";
-import { InstrumentTeclado } from "../pages/InstrumentTeclado/InstrumentTeclado";
 import { ModeSelection } from "../pages/PlayModeSelection/PlayModeSelection";
 import { CameraPage } from "../pages/PraticaLivre/Camera/Camera";
 import { IntroducaoGuiada } from "../pages/IntroducaoGuiada/IntroducaoGuiada";
@@ -10,6 +9,8 @@ import { AtividadeGuiada1 } from "../pages/Atividades/AtividadeGuiada1/Atividade
 import { Login } from "../pages/Login/Login";
 import { LuvaPage } from "../pages/PraticaLivre/Luva/Luva";
 import { SelecaoAtividade } from "../pages/SelecaoAtividade/SelecaoAtividade";
+import { FinalizarPedido } from "../pages/FinalizarPedido/FinalizarPedido";
+import { Loja } from "../pages/Loja/Loja";
 
 function ScrollToTopLayout() {
   const { pathname, search } = useLocation();
@@ -33,10 +34,6 @@ export const Router = createBrowserRouter([
       {
         path: "/SelecaoInstrumento/",
         element: <InstrumentSelection />,
-      },
-      {
-        path: "/Teclado",
-        element: <InstrumentTeclado />,
       },
       {
         path: "/SelecaoModo",
@@ -65,6 +62,14 @@ export const Router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/finalizar-pedido",
+        element: <FinalizarPedido />,
+      },
+      {
+        path: "/loja",
+        element: <Loja />,
       },
     ],
   },

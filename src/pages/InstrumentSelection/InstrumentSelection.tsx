@@ -38,7 +38,7 @@ export const InstrumentSelection = () => {
       instrumento: instrumento.toLowerCase(),
     });
 
-    navigate(`/Teclado?${query.toString()}`);
+    navigate(`/selecao-atividade?${query.toString()}`);
   };
 
   return (

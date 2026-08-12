@@ -17,10 +17,11 @@ import {
 } from "./Navbar.styles";
 
 const links = [
-  { href: "#como-funciona", label: "Como Funciona" },
-  { href: "#pratique", label: "Pratique" },
-  { href: "#proposito", label: "Propósito" },
-  { href: "#dicionario", label: "Dicionário" },
+  { href: "/#como-funciona", label: "Como Funciona" },
+  { href: "/#pratique", label: "Pratique" },
+  { href: "/#proposito", label: "Propósito" },
+  { href: "/#dicionario", label: "Dicionário" },
+  { href: "/loja", label: "Loja" },
 ];
 
 export function MenuNavegacao() {
@@ -31,7 +32,7 @@ export function MenuNavegacao() {
   return (
     <ContainerNavegacao>
       <ConteudoNavegacao>
-        <a href="#topo" aria-label="Voltar ao topo">
+        <a href="/#topo" aria-label="Voltar ao topo">
           <Logo src={logo} alt="Orion" />
         </a>
 
