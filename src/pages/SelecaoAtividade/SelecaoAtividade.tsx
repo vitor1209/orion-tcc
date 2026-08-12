@@ -61,20 +61,16 @@ export function SelecaoAtividade() {
   const modo = params.get("modo") ?? "guiado";
   const interacao = params.get("interacao") ?? "luva";
   const instrumento = params.get("instrumento") ?? "teclado";
-  const nivel = params.get("nivel") ?? "iniciante";
-  const nivelFormatado = nivel.charAt(0).toUpperCase() + nivel.slice(1);
 
   const fluxoQuery = new URLSearchParams({
     modo,
     interacao,
     instrumento,
-    nivel,
   });
 
-  const rotaAnterior = `/Teclado?${new URLSearchParams({
+  const rotaAnterior = `/SelecaoInstrumento?${new URLSearchParams({
     modo,
     interacao,
-    instrumento,
   }).toString()}`;
 
   const rotaAtividade = (() => {
@@ -217,7 +213,7 @@ export function SelecaoAtividade() {
                 <S.ProgressTitle>Acompanhe seu progresso</S.ProgressTitle>
                 <S.ProgressSubtitle>
                   Você concluiu {atividadesConcluidas} de {atividades.length}{" "}
-                  atividades da trilha {nivelFormatado}
+                  atividades disponíveis
                 </S.ProgressSubtitle>
               </S.ProgressText>
 

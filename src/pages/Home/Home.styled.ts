@@ -246,7 +246,7 @@ export const Sectiononda = styled(Box)({
   justifyContent: "center",
   minHeight: "min(800px, 100vh)",
 
-  /* Curva branca no topo */
+  /* Curva no topo */
   "&::before": {
     content: '""',
     position: "absolute",
@@ -254,12 +254,12 @@ export const Sectiononda = styled(Box)({
     left: "-5%",
     width: "110%",
     height: "120px",
-    background: "#f0f2f8",
+    background: "#E4E5EC",
     borderRadius: "0 0 50% 50%",
     zIndex: 1,
   },
 
-  /* Curva branca no rodapé */
+  /* Curva no rodapé */
   "&::after": {
     content: '""',
     position: "absolute",

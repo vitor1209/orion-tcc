@@ -23,7 +23,7 @@ export function IntroducaoGuiada() {
     interaction === "camera"
       ? `/PraticaLivre/Camera?${fluxoQuery.toString()}`
       : `/atividade-guiada-1?${fluxoQuery.toString()}`;
-  const backPage = `/Teclado?${fluxoQuery.toString()}`;
+  const backPage = `/selecao-atividade?${fluxoQuery.toString()}`;
 
   return (
     <S.Page>
@@ -53,7 +53,7 @@ export function IntroducaoGuiada() {
             </S.HeadingGroup>
 
             <Button variante="Voltar" tamanho="md" onClick={() => navigate(backPage)}>
-              <ArrowLeft size={16} />pm run
+              <ArrowLeft size={16} />
               Voltar
             </Button>
           </S.Header>
