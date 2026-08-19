@@ -105,12 +105,12 @@ export const PaginaLogin = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   overflow: "hidden",
   padding: "112px 24px 72px",
-  backgroundColor: "#101728",
+  backgroundColor: "#0C1528",
   backgroundImage: `
     url(${estrelas})
   `,
   backgroundRepeat: "repeat",
-  backgroundSize: "1120px auto",
+  backgroundSize: "560px auto",
   backgroundPosition: "left -80px top -120px",
   animation: `${moverEstrelas} 95s linear infinite`,
 
