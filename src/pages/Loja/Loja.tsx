@@ -162,7 +162,7 @@ export function Loja() {
 
   return (
     <S.Page ref={pageRef}>
-      <MenuNavegacao />
+      <MenuNavegacao escuroNoTopo />
 
       <S.HeroLoja>
         <S.Content>

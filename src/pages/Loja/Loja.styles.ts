@@ -1,28 +1,92 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
+import { keyframes } from "@emotion/react";
 
 import estrelas from "../../assets/images/estrelass.png";
 
+const moverEstrelas = keyframes`
+  from {
+    background-position: left -80px top -120px;
+  }
+
+  to {
+    background-position: left 120px top 120px;
+  }
+`;
+
+const deslizarCamadaEstrelas = keyframes`
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-90px, 70px, 0);
+  }
+`;
+
+const pulsarEstrelas = keyframes`
+  0%, 100% {
+    opacity: 0.16;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+`;
+
 export const Page = styled(Box)({
   minHeight: "100vh",
-  backgroundColor: "#0d1428",
+  backgroundColor: "#0C1528",
   color: "#ffffff",
   overflowX: "hidden",
 });
 
 export const HeroLoja = styled(Box)({
+  position: "relative",
   minHeight: "100vh",
   boxSizing: "border-box",
   padding: "clamp(86px, 11vh, 116px) clamp(20px, 7vw, 96px) 72px",
-  backgroundColor: "#0d1428",
-  backgroundImage: `radial-gradient(circle at 28% 34%, rgba(44, 189, 255, 0.14), transparent 28%), linear-gradient(90deg, rgba(13, 20, 40, 0.28), rgba(13, 20, 40, 0.97)), url(${estrelas})`,
-  backgroundRepeat: "no-repeat, no-repeat, repeat",
-  backgroundSize: "auto, auto, 560px",
+  backgroundColor: "#0C1528",
+  backgroundImage: `url(${estrelas})`,
+  backgroundRepeat: "repeat",
+  backgroundSize: "560px auto",
+  backgroundPosition: "left -80px top -120px",
   overflow: "hidden",
+  animation: `${moverEstrelas} 95s linear infinite`,
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: "-20%",
+    backgroundImage: `
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.8px),
+      radial-gradient(circle, rgba(190, 207, 255, 0.78) 0 1px, transparent 1.6px)
+    `,
+    backgroundSize: "320px 320px, 480px 480px",
+    backgroundPosition: "20px 40px, 150px 180px",
+    opacity: 0.2,
+    pointerEvents: "none",
+    animation: `${deslizarCamadaEstrelas} 70s linear infinite, ${pulsarEstrelas} 7s ease-in-out infinite`,
+  },
+
+  "@media (max-width: 520px)": {
+    backgroundSize: "940px auto",
+    backgroundPosition: "left -240px top -120px",
+  },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+
+    "&::before": {
+      animation: "none",
+    },
+  },
 });
 
 export const Content = styled(Box)({
+  position: "relative",
+  zIndex: 1,
   width: "100%",
   maxWidth: 1240,
   minHeight: "calc(100vh - 188px)",

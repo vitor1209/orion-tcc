@@ -1,21 +1,75 @@
 import { styled } from "@mui/material/styles";
 import { Box, Typography, Container, Stack } from "@mui/material";
+import { keyframes } from "@emotion/react";
+
+import estrelas from "../../assets/images/estrelass.png";
+
+const moverEstrelas = keyframes`
+  from {
+    background-position: left -80px top -120px;
+  }
+
+  to {
+    background-position: left 120px top 120px;
+  }
+`;
+
+const deslizarCamadaEstrelas = keyframes`
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-90px, 70px, 0);
+  }
+`;
+
+const pulsarEstrelas = keyframes`
+  0%, 100% {
+    opacity: 0.16;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+`;
 
 export const HomeRoot = styled(Box)({
   width: "100%",
   overflowX: "hidden",
-  backgroundColor: "#020b2d",
+  backgroundColor: "#0C1528",
 });
 
 export const HeroSection = styled(Box)({
+  position: "relative",
   minHeight: "100vh",
-  background: "#020b2d",
+  backgroundColor: "#0C1528",
+  backgroundImage: `url(${estrelas})`,
+  backgroundRepeat: "repeat",
+  backgroundSize: "620px auto",
+  backgroundPosition: "left -80px top -120px",
   display: "flex",
   alignItems: "center",
   justifyContent: "space-between",
   gap: "clamp(32px, 5vw, 80px)",
   padding: "clamp(96px, 12vh, 140px) clamp(20px, 8vw, 8%) 56px",
   overflow: "hidden",
+  animation: `${moverEstrelas} 95s linear infinite`,
+
+  "&::before": {
+    content: '""',
+    position: "absolute",
+    inset: "-20%",
+    backgroundImage: `
+      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.8px),
+      radial-gradient(circle, rgba(190, 207, 255, 0.78) 0 1px, transparent 1.6px)
+    `,
+    backgroundSize: "320px 320px, 480px 480px",
+    backgroundPosition: "20px 40px, 150px 180px",
+    opacity: 0.2,
+    pointerEvents: "none",
+    animation: `${deslizarCamadaEstrelas} 70s linear infinite, ${pulsarEstrelas} 7s ease-in-out infinite`,
+  },
 
   "@media (max-width: 1100px)": {
     flexDirection: "column",
@@ -25,6 +79,16 @@ export const HeroSection = styled(Box)({
 
   "@media (max-width: 600px)": {
     padding: "96px 18px 42px",
+    backgroundSize: "940px auto",
+    backgroundPosition: "left -240px top -120px",
+  },
+
+  "@media (prefers-reduced-motion: reduce)": {
+    animation: "none",
+
+    "&::before": {
+      animation: "none",
+    },
   },
 });
 
@@ -65,6 +129,8 @@ export const ButtonsContainer = styled(Box)({
 
 
 export const HeroContent = styled(Box)({
+  position: "relative",
+  zIndex: 1,
   width: "min(100%, 900px)",
 });
 
@@ -103,6 +169,7 @@ export const HeroDescricao = styled(Typography)({
 
 export const ImageContainer = styled(Box)({
   position: "relative",
+  zIndex: 1,
   width: "min(44vw, 760px)",
   flexShrink: 1,
 

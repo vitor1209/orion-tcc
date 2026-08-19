@@ -176,7 +176,7 @@ export const Home = () => {
 
   return (
     <Style.HomeRoot ref={homeRef}>
-      <MenuNavegacao />
+      <MenuNavegacao escuroNoTopo />
 
       <Style.HeroSection id="topo" className="home-hero">
         <Style.HeroContent>
@@ -227,7 +227,7 @@ export const Home = () => {
           aria-label="Efeito de onda"
         >
           <path
-            fill="#020b2d"
+            fill="#0C1528"
             fillOpacity="1"
             d="M0,128L80,117.3C160,107,320,85,480,90.7C640,96,800,128,960,133.3C1120,139,1280,117,1360,106.7L1440,96L1440,0L1360,0C1280,0,1120,0,960,0C800,0,640,0,480,0C320,0,160,0,80,0L0,0Z"
           />
@@ -323,7 +323,7 @@ export const Home = () => {
                 <Style.FeatureDescription>
                   {feature.description}
                 </Style.FeatureDescription>
-                <Button variante="Preto" tamanho="md">
+                <Button variante="Preto" tamanho="md" to="/saiba-mais">
                   Saiba mais
                 </Button>
               </Style.TextBlock>

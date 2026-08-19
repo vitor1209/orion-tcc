@@ -11,6 +11,7 @@ import { LuvaPage } from "../pages/PraticaLivre/Luva/Luva";
 import { SelecaoAtividade } from "../pages/SelecaoAtividade/SelecaoAtividade";
 import { FinalizarPedido } from "../pages/FinalizarPedido/FinalizarPedido";
 import { Loja } from "../pages/Loja/Loja";
+import { SaibaMais } from "../pages/SaibaMais/SaibaMais";
 
 function ScrollToTopLayout() {
   const { pathname, search } = useLocation();
@@ -70,6 +71,10 @@ export const Router = createBrowserRouter([
       {
         path: "/loja",
         element: <Loja />,
+      },
+      {
+        path: "/saiba-mais",
+        element: <SaibaMais />,
       },
     ],
   },

@@ -1,25 +1,39 @@
 import { styled } from "@mui/material/styles";
 import { AppBar, Box, Drawer, IconButton, Stack } from "@mui/material";
 
-export const ContainerNavegacao = styled(AppBar)({
-  backgroundColor: "#FFFFFF",
-  boxShadow: "none",
+export const ContainerNavegacao = styled(AppBar, {
+  shouldForwardProp: (prop) => prop !== "$escuro",
+})<{ $escuro?: boolean }>(({ $escuro }) => ({
+  backgroundColor: $escuro ? "#0C1528" : "#FFFFFF",
+  boxShadow: $escuro ? "none" : "0 1px 0 rgba(15, 23, 42, 0.08)",
   position: "fixed",
   top: 0,
-  borderBottom: "1px solid #e0e0e0",
-  color: "#050505",
-});
+  borderBottom: $escuro ? "none" : "1px solid #e0e0e0",
+  color: $escuro ? "#ffffff" : "#050505",
+  transition:
+    "background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease",
+
+  "& a": {
+    color: $escuro ? "#ffffff" : "#111111",
+  },
+
+  "& svg": {
+    color: $escuro ? "#ffffff" : "#111111",
+  },
+
+  "& img": {
+    filter: $escuro ? "brightness(0) invert(1)" : "none",
+  },
+}));
 
 export const ConteudoNavegacao = styled(Box)({
   maxWidth: "1120px",
   width: "100%",
   height: "47px",
   margin: "0 auto",
-
   display: "grid",
   gridTemplateColumns: "180px 1fr 240px",
   alignItems: "center",
-
   padding: "0 12px",
 
   "@media (max-width: 900px)": {
@@ -33,6 +47,7 @@ export const Logo = styled("img")({
   height: "39px",
   objectFit: "contain",
   display: "block",
+  transition: "filter 0.25s ease",
 });
 
 export const LinksNavegacao = styled(Box)({
@@ -43,10 +58,14 @@ export const LinksNavegacao = styled(Box)({
 
   "& a": {
     textDecoration: "none",
-    color: "#111",
     fontSize: "0.95rem",
     fontWeight: 500,
     whiteSpace: "nowrap",
+    transition: "color 0.2s ease, opacity 0.2s ease",
+  },
+
+  "& a:hover": {
+    opacity: 0.72,
   },
 
   "@media (max-width: 900px)": {
@@ -62,10 +81,14 @@ export const AcoesAutenticacao = styled(Box)({
 
   "& a": {
     textDecoration: "none",
-    color: "#111",
     fontSize: "0.95rem",
     fontWeight: 500,
     whiteSpace: "nowrap",
+    transition: "color 0.2s ease, opacity 0.2s ease",
+  },
+
+  "& a:hover": {
+    opacity: 0.72,
   },
 
   "@media (max-width: 900px)": {
@@ -82,7 +105,6 @@ export const LinkEntrar = styled("a")({
 export const BotaoMenuMobile = styled(IconButton)({
   display: "none",
   justifySelf: "flex-end",
-  color: "#111",
   borderRadius: "12px",
   padding: "8px",
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { LogIn, Menu, X } from "lucide-react";
 import logo from "../../assets/images/logo.png";
 
@@ -16,6 +16,10 @@ import {
   MenuMobile,
 } from "./Navbar.styles";
 
+type MenuNavegacaoProps = {
+  escuroNoTopo?: boolean;
+};
+
 const links = [
   { href: "/#como-funciona", label: "Como Funciona" },
   { href: "/#pratique", label: "Pratique" },
@@ -24,13 +28,27 @@ const links = [
   { href: "/loja", label: "Loja" },
 ];
 
-export function MenuNavegacao() {
+export function MenuNavegacao({ escuroNoTopo = false }: MenuNavegacaoProps) {
   const [menuAberto, setMenuAberto] = useState(false);
+  const [estaNoTopo, setEstaNoTopo] = useState(true);
 
   const fecharMenu = () => setMenuAberto(false);
 
+  useEffect(() => {
+    const atualizarEstadoDoTopo = () => {
+      setEstaNoTopo(window.scrollY < 16);
+    };
+
+    atualizarEstadoDoTopo();
+    window.addEventListener("scroll", atualizarEstadoDoTopo, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", atualizarEstadoDoTopo);
+    };
+  }, []);
+
   return (
-    <ContainerNavegacao>
+    <ContainerNavegacao $escuro={escuroNoTopo && estaNoTopo}>
       <ConteudoNavegacao>
         <a href="/#topo" aria-label="Voltar ao topo">
           <Logo src={logo} alt="Orion" />
