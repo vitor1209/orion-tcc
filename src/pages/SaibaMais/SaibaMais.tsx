@@ -126,7 +126,7 @@ export function SaibaMais() {
 
   return (
     <S.Page ref={pageRef}>
-      <MenuNavegacao />
+      <MenuNavegacao escuroNoTopo />
 
       <S.Hero>
         <S.HeroCopy className="saiba-hero-copy">

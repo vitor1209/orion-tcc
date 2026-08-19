@@ -176,7 +176,7 @@ export const Home = () => {
 
   return (
     <Style.HomeRoot ref={homeRef}>
-      <MenuNavegacao />
+      <MenuNavegacao escuroNoTopo />
 
       <Style.HeroSection id="topo" className="home-hero">
         <Style.HeroContent>

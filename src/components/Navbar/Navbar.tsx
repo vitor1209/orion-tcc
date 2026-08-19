@@ -16,6 +16,10 @@ import {
   MenuMobile,
 } from "./Navbar.styles";
 
+type MenuNavegacaoProps = {
+  escuroNoTopo?: boolean;
+};
+
 const links = [
   { href: "/#como-funciona", label: "Como Funciona" },
   { href: "/#pratique", label: "Pratique" },
@@ -24,7 +28,7 @@ const links = [
   { href: "/loja", label: "Loja" },
 ];
 
-export function MenuNavegacao() {
+export function MenuNavegacao({ escuroNoTopo = false }: MenuNavegacaoProps) {
   const [menuAberto, setMenuAberto] = useState(false);
   const [estaNoTopo, setEstaNoTopo] = useState(true);
 
@@ -44,7 +48,7 @@ export function MenuNavegacao() {
   }, []);
 
   return (
-    <ContainerNavegacao $escuro={estaNoTopo}>
+    <ContainerNavegacao $escuro={escuroNoTopo && estaNoTopo}>
       <ConteudoNavegacao>
         <a href="/#topo" aria-label="Voltar ao topo">
           <Logo src={logo} alt="Orion" />
