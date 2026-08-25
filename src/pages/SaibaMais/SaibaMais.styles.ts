@@ -1,43 +1,13 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { keyframes } from "@emotion/react";
 
-import estrelas from "../../assets/images/estrelass.png";
-
-const moverEstrelas = keyframes`
-  from {
-    background-position: left -80px top -120px;
-  }
-
-  to {
-    background-position: left 120px top 120px;
-  }
-`;
-
-const deslizarCamadaEstrelas = keyframes`
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-90px, 70px, 0);
-  }
-`;
-
-const pulsarEstrelas = keyframes`
-  0%, 100% {
-    opacity: 0.18;
-  }
-
-  50% {
-    opacity: 0.34;
-  }
-`;
+import { coresOrion, raiosOrion, sombrasOrion } from "../../styles/designTokens";
+import { criarCeuEstrelado } from "../../styles/efeitos";
 
 export const Page = styled(Box)({
   minHeight: "100vh",
   backgroundColor: "#ffffff",
-  color: "#080a14",
+  color: coresOrion.textoPrincipal,
   overflowX: "hidden",
 });
 
@@ -49,38 +19,13 @@ export const Hero = styled(Box)({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  backgroundColor: "#0d1428",
-  backgroundImage: `url(${estrelas})`,
-  backgroundRepeat: "repeat",
-  backgroundSize: "560px auto",
-  backgroundPosition: "left -80px top -120px",
+  ...criarCeuEstrelado({
+    opacidadeMinima: 0.18,
+    opacidadeMaxima: 0.34,
+  }),
   color: "#ffffff",
   textAlign: "center",
   overflow: "hidden",
-  animation: `${moverEstrelas} 95s linear infinite`,
-
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: "-20%",
-    backgroundImage: `
-      radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.8px),
-      radial-gradient(circle, rgba(190, 207, 255, 0.78) 0 1px, transparent 1.6px)
-    `,
-    backgroundSize: "320px 320px, 480px 480px",
-    backgroundPosition: "20px 40px, 150px 180px",
-    opacity: 0.2,
-    pointerEvents: "none",
-    animation: `${deslizarCamadaEstrelas} 70s linear infinite, ${pulsarEstrelas} 7s ease-in-out infinite`,
-  },
-
-  "@media (prefers-reduced-motion: reduce)": {
-    animation: "none",
-
-    "&::before": {
-      animation: "none",
-    },
-  },
 });
 
 export const HeroCopy = styled(Box)({
@@ -193,17 +138,17 @@ export const PillarsGrid = styled(Box)({
 export const PillarCard = styled(Box)({
   minHeight: 390,
   padding: 26,
-  border: "1px solid rgba(142, 170, 255, 0.62)",
-  borderRadius: 30,
+  border: `1px solid ${coresOrion.bordaSuave}`,
+  borderRadius: raiosOrion.cardGrande,
   backgroundColor: "#ffffff",
-  boxShadow: "0 16px 34px rgba(33, 48, 84, 0.08)",
+  boxShadow: sombrasOrion.card,
   transition:
     "transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease",
 
   "&:hover": {
     transform: "translateY(-7px)",
     borderColor: "#a874ff",
-    boxShadow: "0 22px 42px rgba(33, 48, 84, 0.13)",
+    boxShadow: sombrasOrion.cardHover,
   },
 
   "&:hover img": {
@@ -310,7 +255,7 @@ export const StepNumber = styled("span")({
   display: "grid",
   placeItems: "center",
   borderRadius: "50%",
-  backgroundColor: "#a874ff",
+  backgroundColor: coresOrion.azulDestaque,
   color: "#ffffff",
   fontFamily: '"Ubuntu", "Inter", sans-serif',
   fontWeight: 800,
