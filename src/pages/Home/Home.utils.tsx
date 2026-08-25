@@ -25,7 +25,6 @@ export const passos = [
   },
 ];
 
-
 export const features = [
   {
     id: 1,
@@ -55,3 +54,4 @@ export const features = [
     reverse: false,
   },
 ];
+
