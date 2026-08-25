@@ -3,43 +3,14 @@ import { styled } from "@mui/material/styles";
 import { keyframes } from "@emotion/react";
 
 import constelacaoOrion from "../../assets/images/constelacao_orion.png";
-import estrelas from "../../assets/images/estrelass.png";
 import logo from "../../assets/images/logo.png";
 import lua from "../../assets/images/lua.png";
+import { coresOrion, sombrasOrion } from "../../styles/designTokens";
+import { criarCeuEstrelado } from "../../styles/efeitos";
 
 export const imagemConstelacao = constelacaoOrion;
 export const imagemLua = lua;
 export const imagemLogo = logo;
-
-const moverEstrelas = keyframes`
-  from {
-    background-position: left -80px top -120px;
-  }
-
-  to {
-    background-position: left 120px top 120px;
-  }
-`;
-
-const deslizarCamadaEstrelas = keyframes`
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(-90px, 70px, 0);
-  }
-`;
-
-const pulsarEstrelas = keyframes`
-  0%, 100% {
-    opacity: 0.28;
-  }
-
-  50% {
-    opacity: 0.46;
-  }
-`;
 
 const flutuarAstro = keyframes`
   0%, 100% {
@@ -105,29 +76,10 @@ export const PaginaLogin = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   overflow: "hidden",
   padding: "112px 24px 72px",
-  backgroundColor: "#0C1528",
-  backgroundImage: `
-    url(${estrelas})
-  `,
-  backgroundRepeat: "repeat",
-  backgroundSize: "560px auto",
-  backgroundPosition: "left -80px top -120px",
-  animation: `${moverEstrelas} 95s linear infinite`,
-
-  "&::before": {
-    content: '""',
-    position: "absolute",
-    inset: "-20%",
-    backgroundImage: `
-      radial-gradient(circle, rgba(255, 255, 255, 0.95) 0 1px, transparent 1.8px),
-      radial-gradient(circle, rgba(190, 207, 255, 0.85) 0 1px, transparent 1.6px)
-    `,
-    backgroundSize: "320px 320px, 480px 480px",
-    backgroundPosition: "20px 40px, 150px 180px",
-    opacity: 0.2,
-    pointerEvents: "none",
-    animation: `${deslizarCamadaEstrelas} 70s linear infinite, ${pulsarEstrelas} 7s ease-in-out infinite`,
-  },
+  ...criarCeuEstrelado({
+    opacidadeMinima: 0.28,
+    opacidadeMaxima: 0.46,
+  }),
 
   "&::after": {
     content: '""',
@@ -141,20 +93,10 @@ export const PaginaLogin = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down("sm")]: {
     padding: "104px 18px 56px",
     alignItems: "flex-start",
-    backgroundSize: "940px auto",
-    backgroundPosition: "left -240px top -120px",
 
     "&::before": {
       backgroundSize: "360px 360px, 540px 540px",
       opacity: 0.16,
-    },
-  },
-
-  "@media (prefers-reduced-motion: reduce)": {
-    animation: "none",
-
-    "&::before": {
-      animation: "none",
     },
   },
 }));
@@ -477,7 +419,12 @@ export const BarraForca = styled(Box, {
   shouldForwardProp: (prop) => prop !== "forca",
 })<{ forca: "fraca" | "media" | "forte" }>(({ forca }) => {
   const largura = forca === "forte" ? "100%" : forca === "media" ? "66%" : "34%";
-  const cor = forca === "forte" ? "#22c55e" : forca === "media" ? "#AA4CFF" : "#C27DFF";
+  const cor =
+    forca === "forte"
+      ? "#22c55e"
+      : forca === "media"
+        ? coresOrion.roxoPrincipal
+        : coresOrion.roxoSuave;
 
   return {
     height: 7,
@@ -530,10 +477,10 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
     width: "100%",
     minHeight: 50,
     padding: "12px 42px",
-    background: "#AA4CFF",
+    background: coresOrion.roxoPrincipal,
     fontSize: "1.05rem",
     fontWeight: 800,
-    boxShadow: "0 16px 32px rgba(146, 63, 231, 0.34)",
+    boxShadow: sombrasOrion.roxo,
     overflow: "hidden",
 
     "&::after": {
@@ -550,7 +497,7 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
     },
 
     "&:hover": {
-      background: "#AA4CFF",
+      background: coresOrion.roxoPrincipal,
       filter: "brightness(0.95)",
       transform: "translateY(-2px)",
       boxShadow: "0 20px 38px rgba(146, 63, 231, 0.42)",
@@ -566,7 +513,7 @@ export const AreaEntrar = styled(Box)(({ theme }) => ({
   },
 
   "& .MuiButtonBase-root:disabled, & .MuiButtonBase-root.Mui-disabled": {
-    background: "#C27DFF !important",
+    background: `${coresOrion.roxoSuave} !important`,
     color: "rgba(255, 255, 255, 0.82) !important",
     boxShadow: "none",
     filter: "none",
